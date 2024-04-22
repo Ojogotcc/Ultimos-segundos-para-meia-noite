@@ -1,0 +1,4 @@
+repository "TCC2@ojogotcc24@cloud"
+  path "/"
+    br "/main"
+    co "/main"
