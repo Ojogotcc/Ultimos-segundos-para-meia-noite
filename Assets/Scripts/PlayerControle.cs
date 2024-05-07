@@ -15,12 +15,13 @@ public class PlayerControle : MonoBehaviour
     public float multiplicador_gravidade = 5.0f;
     public float gravidade_valor = -10;
     public bool estaNoChao = false;
-    public float checkChaoDistancia = 8f;
+    private float checkChaoDistancia = 8f;
 
     // Animações
     public Animator animator;
     private string estadoAtual;
 
+    // Sprites em diversas direcoes
     const string PLAYER_FRENTE_IDLE = "Player_frente_idle";
     const string PLAYER_ESQUERDA_IDLE = "Player_esquerda_idle";
     const string PLAYER_DIREITA_IDLE = "Player_direita_idle";
@@ -69,6 +70,11 @@ public class PlayerControle : MonoBehaviour
         else
         {
             gravidade_total = 0.0f;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                gravidade_total += 50 ;
+            }
         }
         
         RB.velocity = new Vector3(moverInput.x * velocidade, gravidade_total, moverInput.y * velocidade);
