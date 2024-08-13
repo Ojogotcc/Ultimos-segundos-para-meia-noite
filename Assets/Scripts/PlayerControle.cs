@@ -5,7 +5,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerControle : MonoBehaviour
-{
+{   
+    public static PlayerControle instance;
     public Rigidbody RB; // Refer�ncia ao componente Rigidbody do player
     public SpriteRenderer Sprite; // Refer�ncia ao componente SpriteRenderer do player
     public float velocidade; // Velocidade de movimento do player
@@ -33,13 +34,20 @@ public class PlayerControle : MonoBehaviour
     const string PLAYER_COSTA = "Player_costa_run"; // Estado de corrida de costas
     const string PLAYER_DIREITA_TIRO = "Player_direita_tiro";
     const string PLAYER_ESQUERDA_TIRO = "Player_esquerda_tiro";
-
-    // tiro
+    const string PLAYER_COSTA_IDLE_AIM = "Player_costa_idle_aim";
+    const string PLAYER_COSTA_RUN_AIM = "Player_costa_run_aim";
 
     public bool canShot; // verifica se pode atirar
-    public float inputShot, fireRate; //cria o botao de tiro e o espaco entre eles
+    public float inputShot, fireRate, inputAim; //cria o botao de tiro, o espaco entre eles e a mira
     public Transform[] playerAim; //cria a mira
     public GameObject playerShot; // cria um gameobject para atirar
+    public bool IsAim;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         // Inicializa��o do script
@@ -50,6 +58,7 @@ public class PlayerControle : MonoBehaviour
         CheckChao(); // Verifica se o player est� no ch�o
         InputPlayer(); // Recebe os inputs do player
         MoverPlayer(moverInput); // Move o player com base nos inputs
+        ChecarMira(); // recebe o input de mirar
         Animacoes(moverInput); // Atualiza as anima��es com base nos inputs     
     }
 
@@ -69,6 +78,25 @@ public class PlayerControle : MonoBehaviour
     {
         moverInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); // Obt�m os inputs de movimento
         moverInput.Normalize(); // Normaliza os inputs para garantir movimento consistente
+        inputAim = Input.GetAxis("Fire2");
+    }
+
+    private void ChecarMira() // verifica se o personagem está mirando
+    {   
+        if(inputAim != 0)
+        {
+            IsAim = true;
+            Mirar();
+            
+        }
+        else
+        {
+            IsAim = false;
+        }
+    }
+
+    private void Mirar()
+    {
     }
 
     private void MoverPlayer(Vector2 moverInput) // Movimenta��o do player
@@ -91,66 +119,93 @@ public class PlayerControle : MonoBehaviour
     }
 
     private void Animacoes(Vector2 moverInput) // Anima��es do player
-    {
-        // Anima��o Idle (parado)
-        if (moverInput.x == 0 && moverInput.y == 0)
+    {    
+        if(IsAim == true) 
         {
-            if (estadoAtual == PLAYER_FRENTE)
+            if (moverInput.x == 0 && moverInput.y == 0)
             {
-                MudarEstadoAnimacao(PLAYER_FRENTE_IDLE); // Altera para anima��o idle frente
+                MudarEstadoAnimacao(PLAYER_COSTA_IDLE_AIM);
             }
-            else if (estadoAtual == PLAYER_ESQUERDA)
+            if (moverInput.x == 0 && moverInput.y > 0)
             {
-                MudarEstadoAnimacao(PLAYER_ESQUERDA_IDLE); // Altera para anima��o idle esquerda
+                MudarEstadoAnimacao(PLAYER_COSTA_RUN_AIM);
             }
-            else if (estadoAtual == PLAYER_DIREITA)
+            if (moverInput.x == 0 && moverInput.y < 0)
             {
-                MudarEstadoAnimacao(PLAYER_DIREITA_IDLE); // Altera para anima��o idle direita
+                MudarEstadoAnimacao(PLAYER_COSTA_RUN_AIM);
             }
-            else if (estadoAtual == PLAYER_COSTA)
+
+        }
+        else 
+        {
+            if (moverInput.x == 0 && moverInput.y == 0)
             {
-                MudarEstadoAnimacao(PLAYER_COSTA_IDLE); // Altera para anima��o idle costas
+                if (estadoAtual == PLAYER_FRENTE)
+                {
+                    MudarEstadoAnimacao(PLAYER_FRENTE_IDLE); // Altera para anima��o idle frente
+                }
+                else if(estadoAtual == PLAYER_COSTA_IDLE)
+                {
+                    MudarEstadoAnimacao(PLAYER_FRENTE);
+                }
+                else if(estadoAtual == PLAYER_COSTA_RUN_AIM)
+                {
+                    MudarEstadoAnimacao(PLAYER_FRENTE);
+                }
+                else if (estadoAtual == PLAYER_ESQUERDA)
+                {
+                    MudarEstadoAnimacao(PLAYER_ESQUERDA_IDLE); // Altera para anima��o idle esquerda
+                }
+                else if (estadoAtual == PLAYER_DIREITA)
+                {
+                    MudarEstadoAnimacao(PLAYER_DIREITA_IDLE); // Altera para anima��o idle direita
+                }
+                else if (estadoAtual == PLAYER_COSTA)
+                {
+                    MudarEstadoAnimacao(PLAYER_COSTA_IDLE); // Altera para anima��o idle costas
+                }
             }
-        }
-        // Anima��o Direita
-        if (moverInput.x > 0 && moverInput.y == 0)
-        {
-            MudarEstadoAnimacao(PLAYER_DIREITA); // Altera para anima��o de corrida � direita
-        }
-        // Anima��o Esquerda
-        if (moverInput.x < 0 && moverInput.y == 0)
-        {
-            MudarEstadoAnimacao(PLAYER_ESQUERDA); // Altera para anima��o de corrida � esquerda
-        }
-        // Anima��o Frente
-        if (moverInput.x == 0 && moverInput.y < 0)
-        {
-            MudarEstadoAnimacao(PLAYER_FRENTE); // Altera para anima��o de corrida para frente
-        }
-        // Anima��o Costas
-        if (moverInput.x == 0 && moverInput.y > 0)
-        {
-            MudarEstadoAnimacao(PLAYER_COSTA); // Altera para anima��o de corrida para tr�s
-        }
-        // Anima��o Frente diagonal direita
-        if (moverInput.x > 0 && moverInput.y < 0)
-        {
-            MudarEstadoAnimacao(PLAYER_DIREITA); // Altera para anima��o de corrida � direita
-        }
-        // Anima��o Frente diagonal esquerda
-        if (moverInput.x < 0 && moverInput.y < 0)
-        {
-            MudarEstadoAnimacao(PLAYER_ESQUERDA); // Altera para anima��o de corrida � esquerda
-        }
-        // Anima��o Costas diagonal direita
-        if (moverInput.x > 0 && moverInput.y > 0)
-        {
-            MudarEstadoAnimacao(PLAYER_DIREITA); // Altera para anima��o de corrida � direita
-        }
-        // Anima��o Costas diagonal esquerda
-        if (moverInput.x < 0 && moverInput.y > 0)
-        {
-            MudarEstadoAnimacao(PLAYER_ESQUERDA); // Altera para anima��o de corrida � esquerda
+
+            // Anima��o Direita
+            if (moverInput.x > 0 && moverInput.y == 0)
+            {
+                MudarEstadoAnimacao(PLAYER_DIREITA); // Altera para anima��o de corrida � direita
+            }
+            // Anima��o Esquerda
+            if (moverInput.x < 0 && moverInput.y == 0)
+            {
+                MudarEstadoAnimacao(PLAYER_ESQUERDA); // Altera para anima��o de corrida � esquerda
+            }
+            // Anima��o Frente
+            if (moverInput.x == 0 && moverInput.y < 0)
+            {
+                MudarEstadoAnimacao(PLAYER_FRENTE); // Altera para anima��o de corrida para frente
+            }
+            // Anima��o Costas
+            if (moverInput.x == 0 && moverInput.y > 0)
+            {
+                MudarEstadoAnimacao(PLAYER_COSTA); // Altera para anima��o de corrida para tr�s
+            }
+            // Anima��o Frente diagonal direita
+            if (moverInput.x > 0 && moverInput.y < 0)
+            {
+                MudarEstadoAnimacao(PLAYER_DIREITA); // Altera para anima��o de corrida � direita
+            }
+            // Anima��o Frente diagonal esquerda
+            if (moverInput.x < 0 && moverInput.y < 0)
+            {
+                MudarEstadoAnimacao(PLAYER_ESQUERDA); // Altera para anima��o de corrida � esquerda
+            }
+            // Anima��o Costas diagonal direita
+            if (moverInput.x > 0 && moverInput.y > 0)
+            {
+                MudarEstadoAnimacao(PLAYER_DIREITA); // Altera para anima��o de corrida � direita
+            }
+            // Anima��o Costas diagonal esquerda
+            if (moverInput.x < 0 && moverInput.y > 0)
+            {
+                MudarEstadoAnimacao(PLAYER_ESQUERDA); // Altera para anima��o de corrida � esquerda
+            }
         }
     }
 

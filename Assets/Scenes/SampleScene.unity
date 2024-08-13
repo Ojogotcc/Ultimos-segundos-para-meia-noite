@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 65884240}
   - component: {fileID: 65884241}
   - component: {fileID: 65884242}
+  - component: {fileID: 65884243}
+  - component: {fileID: 65884244}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -229,6 +231,35 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &65884243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65884239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24ab1b13a3791e4a84ca766039304ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &65884244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65884239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f33b41a19ea5040beddc1af7387a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainTransform: {fileID: 541737361}
+  backAngle: 65
+  sideAngle: 155
+  animator: {fileID: 65884242}
+  SpriteRenderer: {fileID: 65884241}
 --- !u!1 &173932144
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,10 +845,17 @@ MonoBehaviour:
   RB: {fileID: 541737362}
   Sprite: {fileID: 65884241}
   velocidade: 30
-  multiplicador_gravidade: 5
+  multiplicador_gravidade: 10
   gravidade_valor: -10
   estaNoChao: 0
   animator: {fileID: 65884242}
+  canShot: 0
+  inputShot: 0
+  fireRate: 0
+  inputAim: 0
+  playerAim: []
+  playerShot: {fileID: 0}
+  IsAim: 0
 --- !u!136 &541737365
 CapsuleCollider:
   m_ObjectHideFlags: 0
