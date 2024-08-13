@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -56,7 +57,8 @@ public class PlayerControle : MonoBehaviour
         CheckChao(); // Verifica se o player est� no ch�o
         InputPlayer(); // Recebe os inputs do player
         MoverPlayer(moverInput); // Move o player com base nos inputs
-        Animacoes(moverInput); // Atualiza as anima��es com base nos inputs     
+        Animacoes(moverInput); // Atualiza as anima��es com base nos inputs    
+        ChecarMira(); 
     }
 
     private void CheckChao() // Verifica se o player est� no ch�o
@@ -89,11 +91,18 @@ public class PlayerControle : MonoBehaviour
         else
         {
             IsAim = false;
+            cameraMira.SetActive(false);
+            mira.SetActive(false);
         }
     }
 
     private void Mirar()
     {
+        if(IsAim)
+        {
+            cameraMira.SetActive(true);
+            mira.SetActive(true);
+        }
     }
 
     private void MoverPlayer(Vector2 moverInput) // Movimenta��o do player
