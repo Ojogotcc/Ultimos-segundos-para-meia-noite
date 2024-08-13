@@ -5,72 +5,64 @@ using UnityEngine.InputSystem;
 
 public class PlayerControle : MonoBehaviour
 {
-    public Rigidbody RB; // Referência ao componente Rigidbody do player
-    public SpriteRenderer Sprite; // Referência ao componente SpriteRenderer do player
+    private Rigidbody RB;
+    private SpriteRenderer Sprite;
     public float velocidade; // Velocidade de movimento do player
     private Vector2 moverInput; // Armazena o input de movimento do player
 
     // Gravidade
-    private float gravidade_total; // Armazena o valor total da gravidade aplicada ao player
-    public float multiplicador_gravidade = 5.0f; // Multiplicador da gravidade para ajustar a intensidade
-    public float gravidade_valor = -10; // Valor da gravidade
-    public bool estaNoChao = false; // Indica se o player está no chão
-    private float checkChaoDistancia = 8f; // Distância para verificar se o player está no chão
+    public float multiplicador_gravidade = 5.0f; 
+    public float gravidade_valor = -10;
+    private float gravidade_total; // multiplicador * valor
+    // Pulo
+    public bool estaNoChao = false; // Indica se o player esta no chao
+    private float checkChaoDistancia = 8f; // Distancia para verificar se o player esta no chao
 
-    // Animações
-    public Animator animator; // Referência ao componente Animator do player
-    private string estadoAtual; // Armazena o estado atual da animação do player
-
-    // Sprites em diversas direções
-    const string PLAYER_FRENTE_IDLE = "Player_frente_idle"; // Estado de idle na frente
-    const string PLAYER_ESQUERDA_IDLE = "Player_esquerda_idle"; // Estado de idle à esquerda
-    const string PLAYER_DIREITA_IDLE = "Player_direita_idle"; // Estado de idle à direita
-    const string PLAYER_COSTA_IDLE = "Player_costa_idle"; // Estado de idle de costas
-    const string PLAYER_ESQUERDA = "Player_esquerda_run"; // Estado de corrida à esquerda
-    const string PLAYER_DIREITA = "Player_direita_run"; // Estado de corrida à direita
-    const string PLAYER_FRENTE = "Player_frente_run"; // Estado de corrida na frente
-    const string PLAYER_COSTA = "Player_costa_run"; // Estado de corrida de costas
+    // Animacoes
+    public Animator animator; // Referencia ao componente Animator do player
+    private string animacaoAtual; 
 
     void Start()
     {
-        // Inicialização do script
+        RB = GetComponent<Rigidbody>();
+        Sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        CheckChao(); // Verifica se o player está no chão
+        CheckChao(); // Verifica se o player esta no chao
         InputPlayer(); // Recebe os inputs do player
         MoverPlayer(moverInput); // Move o player com base nos inputs
-        Animacoes(moverInput); // Atualiza as animações com base nos inputs     
+        Animacoes(moverInput); // Atualiza as animacoes com base nos inputs     
     }
 
-    private void CheckChao() // Verifica se o player está no chão
+    private void CheckChao()
     {
         if (Physics.Raycast(transform.position, Vector3.down, checkChaoDistancia))
         {
-            estaNoChao = true; // Player está no chão
+            estaNoChao = true;
         }
         else
         {
-            estaNoChao = false; // Player não está no chão
+            estaNoChao = false;
         }
     }
 
-    private void InputPlayer() // Inputs do player
+    private void InputPlayer()
     {
-        moverInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); // Obtém os inputs de movimento
-        moverInput.Normalize(); // Normaliza os inputs para garantir movimento consistente
+        moverInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        moverInput.Normalize(); // Normaliza os inputs para garantir movimento ideal
     }
 
-    private void MoverPlayer(Vector2 moverInput) // Movimentação do player
+    private void MoverPlayer(Vector2 moverInput)
     {
         if (!estaNoChao)
         {
-            gravidade_total += gravidade_valor * multiplicador_gravidade * Time.deltaTime; // Aplica a gravidade se não estiver no chão
+            gravidade_total += gravidade_valor * multiplicador_gravidade * Time.deltaTime; // Aplica a gravidade se nao estiver no chao
         }
         else
         {
-            gravidade_total = 0.0f; // Reseta a gravidade quando está no chão
+            gravidade_total = 0.0f; // Reseta a gravidade quando esta no chao
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -78,78 +70,78 @@ public class PlayerControle : MonoBehaviour
             }
         }
 
-        RB.velocity = new Vector3(moverInput.x * velocidade, gravidade_total, moverInput.y * velocidade); // Aplica movimento ao Rigidbody do player
+        RB.velocity = new Vector3(moverInput.x * velocidade, gravidade_total, moverInput.y * velocidade);
     }
 
-    private void Animacoes(Vector2 moverInput) // Animações do player
+    private void Animacoes(Vector2 moverInput) // Animacaoes do player
     {
-        // Animação Idle (parado)
+        // Animacaoo Idle (parado) ele retem as animaÃ§Ãµes
         if (moverInput.x == 0 && moverInput.y == 0)
         {
-            if (estadoAtual == PLAYER_FRENTE)
+            if (animacaoAtual == "Player_frente_idle")
             {
-                MudarEstadoAnimacao(PLAYER_FRENTE_IDLE); // Altera para animação idle frente
+                MudarEstadoAnimacao("Player_frente_idle"); // Altera para animacao idle frente
             }
-            else if (estadoAtual == PLAYER_ESQUERDA)
+            else if (animacaoAtual == "Player_esquerda_idle")
             {
-                MudarEstadoAnimacao(PLAYER_ESQUERDA_IDLE); // Altera para animação idle esquerda
+                MudarEstadoAnimacao("Player_esquerda_idle"); // Altera para animacao idle esquerda
             }
-            else if (estadoAtual == PLAYER_DIREITA)
+            else if (animacaoAtual == "Player_direita_idle")
             {
-                MudarEstadoAnimacao(PLAYER_DIREITA_IDLE); // Altera para animação idle direita
+                MudarEstadoAnimacao("Player_direita_idle"); // Altera para animacao idle direita
             }
-            else if (estadoAtual == PLAYER_COSTA)
+            else if (animacaoAtual == "Player_costa_idle")
             {
-                MudarEstadoAnimacao(PLAYER_COSTA_IDLE); // Altera para animação idle costas
+                MudarEstadoAnimacao("Player_costa_idle"); // Altera para animacao idle costas
             }
         }
-        // Animação Direita
+        // Animacaoo Direita
         if (moverInput.x > 0 && moverInput.y == 0)
         {
-            MudarEstadoAnimacao(PLAYER_DIREITA); // Altera para animação de corrida à direita
+            MudarEstadoAnimacao("Player_direita_run"); // Altera para animacao de corrida direita
         }
-        // Animação Esquerda
+        // Animacaoo Esquerda
         if (moverInput.x < 0 && moverInput.y == 0)
         {
-            MudarEstadoAnimacao(PLAYER_ESQUERDA); // Altera para animação de corrida à esquerda
+            MudarEstadoAnimacao("Player_esquerda_run"); // Altera para animacao de corrida esquerda
         }
-        // Animação Frente
+        // Animacaoo Frente
         if (moverInput.x == 0 && moverInput.y < 0)
         {
-            MudarEstadoAnimacao(PLAYER_FRENTE); // Altera para animação de corrida para frente
+            MudarEstadoAnimacao("Player_frente_run"); // Altera para animacao de corrida para frente
         }
-        // Animação Costas
+        // Animacaoo Costas
         if (moverInput.x == 0 && moverInput.y > 0)
         {
-            MudarEstadoAnimacao(PLAYER_COSTA); // Altera para animação de corrida para trás
+            MudarEstadoAnimacao("Player_costa_run"); // Altera para animacao de corrida para tras
         }
-        // Animação Frente diagonal direita
+        // Animacaoo Frente diagonal direita
         if (moverInput.x > 0 && moverInput.y < 0)
         {
-            MudarEstadoAnimacao(PLAYER_DIREITA); // Altera para animação de corrida à direita
+            MudarEstadoAnimacao("Player_direita_run"); // Altera para animacao de corrida direita
         }
-        // Animação Frente diagonal esquerda
+        // Animacaoo Frente diagonal esquerda
         if (moverInput.x < 0 && moverInput.y < 0)
         {
-            MudarEstadoAnimacao(PLAYER_ESQUERDA); // Altera para animação de corrida à esquerda
+            MudarEstadoAnimacao("Player_esquerda_run"); // Altera para animacao de corrida esquerda
         }
-        // Animação Costas diagonal direita
+        // Animacaoo Costas diagonal direita
         if (moverInput.x > 0 && moverInput.y > 0)
         {
-            MudarEstadoAnimacao(PLAYER_DIREITA); // Altera para animação de corrida à direita
+            MudarEstadoAnimacao("Player_direita_run"); // Altera para animacao de corrida direita
         }
-        // Animação Costas diagonal esquerda
+        // Animacaoo Costas diagonal esquerda
         if (moverInput.x < 0 && moverInput.y > 0)
         {
-            MudarEstadoAnimacao(PLAYER_ESQUERDA); // Altera para animação de corrida à esquerda
+            MudarEstadoAnimacao("Player_esquerda_run"); // Altera para animacao de corrida esquerda
         }
     }
 
-    private void MudarEstadoAnimacao(string novoEstado) // Função para alternar as animações do player
+    private void MudarEstadoAnimacao(string animacaoNova) // Funcao para alternar as animacoes do player
     {
-        if (estadoAtual == novoEstado) return; // Se o estado atual já é o novo estado, não faz nada
+        if (animacaoAtual == animacaoNova) return; // Se a animacaoAtual == animacaoNova entao continua
 
-        animator.Play(novoEstado); // Reproduz a nova animação
-        estadoAtual = novoEstado; // Atualiza o estado atual
+        animator.Play(animacaoNova); // Reproduz a nova Animacaoo
+        animacaoAtual = animacaoNova; // Atualiza o estado atual
     }
 }
