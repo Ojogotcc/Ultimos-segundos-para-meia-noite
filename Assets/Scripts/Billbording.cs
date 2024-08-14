@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using Cinemachine;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Billbording : MonoBehaviour
-{
-    void Update()
+{     
+    [SerializeField] bool freezeXZ;
+    private void Update()
     {
-        if(PlayerControle.instance.IsAim == true)
+        if(freezeXZ)
         {
-            transform.rotation = Quaternion.Euler(0f, Camera.main.transform.rotation.eulerAngles.y, 0f);
+            transform.rotation = quaternion.Euler(0f, Camera.main.transform.rotation.eulerAngles.y, 0f);
         }
-        else
-        {
+        else{
             transform.rotation = Camera.main.transform.rotation;
         }
     }

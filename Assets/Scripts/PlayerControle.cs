@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerControle : MonoBehaviour
 {   
@@ -42,6 +43,8 @@ public class PlayerControle : MonoBehaviour
     public Transform[] playerAim; //cria a mira
     public GameObject playerShot; // cria um gameobject para atirar
     public bool IsAim;
+    public GameObject mira;
+    public GameObject cameraMira;
 
     private void Awake()
     {
@@ -50,7 +53,8 @@ public class PlayerControle : MonoBehaviour
 
     void Start()
     {
-        // Inicializa��o do script
+        cameraMira.SetActive(false);
+        mira.SetActive(false);
     }
 
     void Update()
@@ -92,11 +96,18 @@ public class PlayerControle : MonoBehaviour
         else
         {
             IsAim = false;
+            cameraMira.SetActive(false);
+            mira.SetActive(false);
         }
     }
 
     private void Mirar()
     {
+        if(IsAim)
+        {
+            cameraMira.SetActive(true);
+            mira.SetActive(true);
+        }
     }
 
     private void MoverPlayer(Vector2 moverInput) // Movimenta��o do player
@@ -133,6 +144,15 @@ public class PlayerControle : MonoBehaviour
             if (moverInput.x == 0 && moverInput.y < 0)
             {
                 MudarEstadoAnimacao(PLAYER_COSTA_RUN_AIM);
+            }
+            if (moverInput.x > 0 && moverInput.y == 0)
+            {
+                MudarEstadoAnimacao(PLAYER_COSTA_RUN_AIM); // Altera para anima��o de corrida � direita
+            }
+            // Anima��o Esquerda
+            if (moverInput.x < 0 && moverInput.y == 0)
+            {
+                MudarEstadoAnimacao(PLAYER_COSTA_RUN_AIM); // Altera para anima��o de corrida � esquerda
             }
 
         }
