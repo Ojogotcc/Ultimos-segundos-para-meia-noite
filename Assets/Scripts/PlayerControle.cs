@@ -33,29 +33,16 @@ public class PlayerControle : MonoBehaviour
     const string PLAYER_DIREITA = "Player_direita_run"; // Estado de corrida � direita
     const string PLAYER_FRENTE = "Player_frente_run"; // Estado de corrida na frente
     const string PLAYER_COSTA = "Player_costa_run"; // Estado de corrida de costas
-<<<<<<< Updated upstream
-    const string PLAYER_COSTA_IDLE_AIM = "player_costa_idle_aim";
-    const string PLAYER_COSTA_RUN_AIM = "player_costa_run_aim";
-=======
-    const string PLAYER_DIREITA_TIRO = "Player_direita_tiro";
-    const string PLAYER_ESQUERDA_TIRO = "Player_esquerda_tiro";
     const string PLAYER_COSTA_IDLE_AIM = "Player_costa_idle_aim";
     const string PLAYER_COSTA_RUN_AIM = "Player_costa_run_aim";
->>>>>>> Stashed changes
 
     public bool canShot; // verifica se pode atirar
     public float inputShot, fireRate, inputAim; //cria o botao de tiro, o espaco entre eles e a mira
     public Transform[] playerAim; //cria a mira
     public GameObject playerShot; // cria um gameobject para atirar
     public bool IsAim;
-<<<<<<< Updated upstream
-    public float inputAim;
     public GameObject cameraMira;
     public GameObject mira;
-=======
-    public GameObject mira;
-    public GameObject cameraMira;
->>>>>>> Stashed changes
 
     
 
@@ -70,13 +57,8 @@ public class PlayerControle : MonoBehaviour
         CheckChao(); // Verifica se o player est� no ch�o
         InputPlayer(); // Recebe os inputs do player
         MoverPlayer(moverInput); // Move o player com base nos inputs
-<<<<<<< Updated upstream
-        Animacoes(moverInput); // Atualiza as anima��es com base nos inputs    
-        ChecarMira(); 
-=======
         ChecarMira(); // recebe o input de mirar
         Animacoes(moverInput); // Atualiza as anima��es com base nos inputs     
->>>>>>> Stashed changes
     }
 
     private void CheckChao() // Verifica se o player est� no ch�o
@@ -158,11 +140,7 @@ public class PlayerControle : MonoBehaviour
             {
                 MudarEstadoAnimacao(PLAYER_COSTA_RUN_AIM);
             }
-<<<<<<< Updated upstream
-             if (moverInput.x > 0 && moverInput.y == 0)
-=======
             if (moverInput.x > 0 && moverInput.y == 0)
->>>>>>> Stashed changes
             {
                 MudarEstadoAnimacao(PLAYER_COSTA_RUN_AIM); // Altera para anima��o de corrida � direita
             }

@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class Billbording : MonoBehaviour
 {
+
+    [SerializeField] bool freezeXZ;
     void Update()
     {
-        if(PlayerControle.instance.IsAim == true)
+        if(freezeXZ)
         {
             transform.rotation = Quaternion.Euler(0f, Camera.main.transform.rotation.eulerAngles.y, 0f);
         }
