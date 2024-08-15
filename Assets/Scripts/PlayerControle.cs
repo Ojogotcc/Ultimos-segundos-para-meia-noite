@@ -1,26 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerControle : MonoBehaviour
+
 {   
     public static PlayerControle instance;
+
     public Rigidbody RB; // Refer�ncia ao componente Rigidbody do player
     public SpriteRenderer Sprite; // Refer�ncia ao componente SpriteRenderer do player
     public float velocidade; // Velocidade de movimento do player
     private Vector2 moverInput; // Armazena o input de movimento do player
 
     // Gravidade
+
     private float gravidade_total; // Armazena o valor total da gravidade aplicada ao player
     public float multiplicador_gravidade = 5.0f; // Multiplicador da gravidade para ajustar a intensidade
     public float gravidade_valor = -10; // Valor da gravidade
     public bool estaNoChao = false; // Indica se o player est� no ch�o
     private float checkChaoDistancia = 8f; // Dist�ncia para verificar se o player est� no ch�o
 
-    // Anima��es
     public Animator animator; // Refer�ncia ao componente Animator do player
     private string estadoAtual; // Armazena o estado atual da anima��o do player
 
@@ -48,12 +49,14 @@ public class PlayerControle : MonoBehaviour
 
     void Start()
     {
+
         cameraMira.SetActive(false);
         mira.SetActive(false);
     }
 
     void Update()
     {
+
         CheckChao(); // Verifica se o player est� no ch�o
         InputPlayer(); // Recebe os inputs do player
         MoverPlayer(moverInput); // Move o player com base nos inputs
@@ -70,15 +73,15 @@ public class PlayerControle : MonoBehaviour
         else
         {
             estaNoChao = false; // Player n�o est� no ch�o
-        }
     }
-
-    private void InputPlayer() // Inputs do player
+    }
+    private void InputPlayer()
     {
         moverInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); // Obt�m os inputs de movimento
         moverInput.Normalize(); // Normaliza os inputs para garantir movimento consistente
         inputAim = Input.GetAxis("Fire2");
     }
+
 
     private void ChecarMira() // verifica se o personagem está mirando
     {   
@@ -114,23 +117,17 @@ public class PlayerControle : MonoBehaviour
         else
         {
             gravidade_total = 0.0f; // Reseta a gravidade quando est� no ch�o
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                gravidade_total += 50; // Aplica impulso para pular
-            }
         }
-
-        RB.velocity = new Vector3(moverInput.x * velocidade, gravidade_total, moverInput.y * velocidade); // Aplica movimento ao Rigidbody do player
     }
 
     private void Animacoes(Vector2 moverInput) // Anima��es do player
+
     {    
         if(IsAim == true) 
+    {
+        if (moverInput.x == 0 && moverInput.y == 0)
         {
-            if (moverInput.x == 0 && moverInput.y == 0)
-            {
-                MudarEstadoAnimacao(PLAYER_COSTA_IDLE_AIM);
+                MudarEstadoAnimacao(PLAYER_COSTA_IDLE_AIM);        
             }
             if (moverInput.x == 0 && moverInput.y > 0)
             {
@@ -230,5 +227,6 @@ public class PlayerControle : MonoBehaviour
 
         animator.Play(novoEstado); // Reproduz a nova anima��o
         estadoAtual = novoEstado; // Atualiza o estado atual
+        // Anima��o Direita
     }
 }

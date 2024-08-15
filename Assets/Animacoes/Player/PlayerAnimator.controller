@@ -67,7 +67,7 @@ AnimatorState:
   m_Name: player_costa_idle_aim
 =======
   m_Name: Player_esquerda_tiro
->>>>>>> Stashed changes
+
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -80,11 +80,11 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-<<<<<<< Updated upstream
+
   m_Motion: {fileID: 7400000, guid: 452cb7b18dead7e4fb7736969c27a945, type: 2}
 =======
   m_Motion: {fileID: 7400000, guid: dee3128ba79d3c84ca0cc0fc1adfc517, type: 2}
->>>>>>> Stashed changes
+
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -216,7 +216,31 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &2548298870452692965
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player_direita_tiro
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: e1b958b927f25404bab531cb6bf1aa53, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -268,6 +292,31 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player_costa_idle_aim
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 452cb7b18dead7e4fb7736969c27a945, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &5303367549648421211
 AnimatorState:
   serializedVersion: 6
@@ -294,7 +343,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1107 &5919548241004275655
 AnimatorStateMachine:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -331,7 +379,6 @@ AnimatorStateMachine:
     m_State: {fileID: -7122254285852850132}
     m_Position: {x: 539.6471, y: 706.2353, z: 0}
   - serializedVersion: 1
-<<<<<<< Updated upstream
     m_State: {fileID: -4960194585720290305}
     m_Position: {x: 574.6471, y: 771.2353, z: 0}
   - serializedVersion: 1
@@ -349,7 +396,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 8633525239479681035}
     m_Position: {x: 760, y: 970, z: 0}
->>>>>>> Stashed changes
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
