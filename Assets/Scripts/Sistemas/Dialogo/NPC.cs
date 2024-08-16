@@ -10,6 +10,8 @@ public class NPC : MonoBehaviour
     public DialogueTrigger trigger;
     public GameObject icone;
     public static bool dialogoAtivado = false;
+
+    public GameObject player;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -28,6 +30,7 @@ public class NPC : MonoBehaviour
             icone.transform.LeanScale(Vector3.zero, 0.2f);
             trigger.IniciarDialogo();
             dialogoAtivado = true;
+            player.GetComponent<PlayerControle>().DesabilitarPulo();
         }
     }
 
@@ -40,6 +43,7 @@ public class NPC : MonoBehaviour
             {
                 trigger.FinalizarDialogo();
                 dialogoAtivado = false;
+                player.GetComponent<PlayerControle>().HabilitarPulo();
             }
         }
     }

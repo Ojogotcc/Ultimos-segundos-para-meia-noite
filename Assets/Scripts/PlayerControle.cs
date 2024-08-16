@@ -9,34 +9,22 @@ public class PlayerControle : MonoBehaviour
 {   
     public static PlayerControle instance;
 
-    public Rigidbody RB; // Refer�ncia ao componente Rigidbody do player
-    public SpriteRenderer Sprite; // Refer�ncia ao componente SpriteRenderer do player
+    private Rigidbody RB; // Referencia ao componente Rigidbody do player
+    private SpriteRenderer Sprite; // Referencia ao componente SpriteRenderer do player
     public float velocidade; // Velocidade de movimento do player
     private Vector2 moverInput; // Armazena o input de movimento do player
 
     // Gravidade
-
     private float gravidade_total; // Armazena o valor total da gravidade aplicada ao player
     public float multiplicador_gravidade = 5.0f; // Multiplicador da gravidade para ajustar a intensidade
     public float gravidade_valor = -10; // Valor da gravidade
-    public bool estaNoChao = false; // Indica se o player est� no ch�o
-    private float checkChaoDistancia = 8f; // Dist�ncia para verificar se o player est� no ch�o
+    public bool estaNoChao = false; // Indica se o player esta no chao
+    private float checkChaoDistancia = 8f; // Distancia para verificar se o player est� no chao
 
-    public Animator animator; // Refer�ncia ao componente Animator do player
-    private string estadoAtual; // Armazena o estado atual da anima��o do player
+    private Animator animator; // Referancia ao componente Animator do player
+    private string animacaoAtual; // Armazena o estado atual da animacao do player
 
-    // Sprites em diversas dire��es
-    const string PLAYER_FRENTE_IDLE = "Player_frente_idle"; // Estado de idle na frente
-    const string PLAYER_ESQUERDA_IDLE = "Player_esquerda_idle"; // Estado de idle � esquerda
-    const string PLAYER_DIREITA_IDLE = "Player_direita_idle"; // Estado de idle � direita
-    const string PLAYER_COSTA_IDLE = "Player_costa_idle"; // Estado de idle de costas
-    const string PLAYER_ESQUERDA = "Player_esquerda_run"; // Estado de corrida � esquerda
-    const string PLAYER_DIREITA = "Player_direita_run"; // Estado de corrida � direita
-    const string PLAYER_FRENTE = "Player_frente_run"; // Estado de corrida na frente
-    const string PLAYER_COSTA = "Player_costa_run"; // Estado de corrida de costas
-    const string PLAYER_COSTA_IDLE_AIM = "Player_costa_idle_aim";
-    const string PLAYER_COSTA_RUN_AIM = "Player_costa_run_aim";
-
+    // Mira
     public bool canShot; // verifica se pode atirar
     public float inputShot, fireRate, inputAim; //cria o botao de tiro, o espaco entre eles e a mira
     public Transform[] playerAim; //cria a mira
@@ -46,9 +34,11 @@ public class PlayerControle : MonoBehaviour
     public GameObject mira;
 
     
-
     void Start()
     {
+        RB = GetComponent<Rigidbody>();
+        Sprite = GetComponent<SpriteRenderer>();
+        Animator = GetComponent<Animator>();
 
         cameraMira.SetActive(false);
         mira.SetActive(false);
@@ -56,34 +46,51 @@ public class PlayerControle : MonoBehaviour
 
     void Update()
     {
-
-        CheckChao(); // Verifica se o player est� no ch�o
+        CheckChao(); // Verifica se o player esta no chao
         InputPlayer(); // Recebe os inputs do player
         MoverPlayer(moverInput); // Move o player com base nos inputs
         ChecarMira(); // recebe o input de mirar
-        Animacoes(moverInput); // Atualiza as anima��es com base nos inputs     
+        Animacoes(moverInput); // Atualiza as animacoes com base nos inputs     
     }
 
-    private void CheckChao() // Verifica se o player est� no ch�o
+    public void DesabilitarPulo()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, checkChaoDistancia))
+        podePular = false;
+    }
+
+    public void HabilitarPulo()
+    {
+        podePular = true;
+    }
+
+    private void CheckChao() // Verifica se o player esta no chao
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, checkChaoDistancia))
         {
-            estaNoChao = true; // Player est� no ch�o
+            if (hit.collider.CompareTag("Chao"))
+            {
+                estaNoChao = true;    
+            }
+            else
+            {
+                estaNoChao = false;
+            }
         }
         else
         {
-            estaNoChao = false; // Player n�o est� no ch�o
+            estaNoChao = false;
+        }
     }
-    }
+
     private void InputPlayer()
     {
-        moverInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); // Obt�m os inputs de movimento
+        moverInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         moverInput.Normalize(); // Normaliza os inputs para garantir movimento consistente
         inputAim = Input.GetAxis("Fire2");
     }
 
-
-    private void ChecarMira() // verifica se o personagem está mirando
+    private void ChecarMira() // Verifica se o personagem está mirando
     {   
         if(inputAim != 0)
         {
@@ -108,25 +115,31 @@ public class PlayerControle : MonoBehaviour
         }
     }
 
-    private void MoverPlayer(Vector2 moverInput) // Movimenta��o do player
+    private void MoverPlayer(Vector2 moverInput) // Movimentacao do player
     {
         if (!estaNoChao)
         {
-            gravidade_total += gravidade_valor * multiplicador_gravidade * Time.deltaTime; // Aplica a gravidade se n�o estiver no ch�o
+            gravidade_total += gravidade_valor * multiplicador_gravidade * Time.deltaTime; // Aplica a gravidade se nao estiver no chao
         }
         else
         {
-            gravidade_total = 0.0f; // Reseta a gravidade quando est� no ch�o
+            gravidade_total = 0.0f; // Reseta a gravidade quando esta no chao
+
+            if (Input.GetKeyDown(KeyCode.Space) && podePular == true)
+            {
+                gravidade_total += 50; // Aplica impulso para pular
+            }
         }
+
+        RB.velocity = new Vector3(moverInput.x * velocidade, gravidade_total, moverInput.y * velocidade);
     }
 
     private void Animacoes(Vector2 moverInput) // Anima��es do player
-
     {    
         if(IsAim == true) 
-    {
-        if (moverInput.x == 0 && moverInput.y == 0)
         {
+            if (moverInput.x == 0 && moverInput.y == 0)
+            {
                 MudarEstadoAnimacao(PLAYER_COSTA_IDLE_AIM);        
             }
             if (moverInput.x == 0 && moverInput.y > 0)
@@ -139,94 +152,83 @@ public class PlayerControle : MonoBehaviour
             }
             if (moverInput.x > 0 && moverInput.y == 0)
             {
-                MudarEstadoAnimacao(PLAYER_COSTA_RUN_AIM); // Altera para anima��o de corrida � direita
+                MudarEstadoAnimacao(PLAYER_COSTA_RUN_AIM); // Altera para animacao de corrida � direita
             }
-            // Anima��o Esquerda
             if (moverInput.x < 0 && moverInput.y == 0)
             {
-                MudarEstadoAnimacao(PLAYER_COSTA_RUN_AIM); // Altera para anima��o de corrida � esquerda
+                MudarEstadoAnimacao(PLAYER_COSTA_RUN_AIM); // Altera para animacao de corrida � esquerda
             }
-
         }
         else 
         {
             if (moverInput.x == 0 && moverInput.y == 0)
             {
-                if (estadoAtual == PLAYER_FRENTE)
+                if (animacaoAtual == "Player_frente_run" || animacaoAtual == "Player_costa_run_aim")
                 {
-                    MudarEstadoAnimacao(PLAYER_FRENTE_IDLE); // Altera para anima��o idle frente
+                    MudarEstadoAnimacao("Player_frente_idle"); // Altera para animacao idle frente
                 }
-                else if(estadoAtual == PLAYER_COSTA_IDLE)
+                else if (animacaoAtual == "Player_costa_run")
                 {
-                    MudarEstadoAnimacao(PLAYER_FRENTE);
+                    MudarEstadoAnimacao("Player_costa_idle"); // Altera para animacao idle costas
                 }
-                else if(estadoAtual == PLAYER_COSTA_RUN_AIM)
+                else if (animacaoAtual == "Player_esquerda_run")
                 {
-                    MudarEstadoAnimacao(PLAYER_FRENTE);
+                    MudarEstadoAnimacao("Player_esquerda_idle"); // Altera para animacao idle esquerda
                 }
-                else if (estadoAtual == PLAYER_ESQUERDA)
+                else if (animacaoAtual == "Player_direita_run")
                 {
-                    MudarEstadoAnimacao(PLAYER_ESQUERDA_IDLE); // Altera para anima��o idle esquerda
-                }
-                else if (estadoAtual == PLAYER_DIREITA)
-                {
-                    MudarEstadoAnimacao(PLAYER_DIREITA_IDLE); // Altera para anima��o idle direita
-                }
-                else if (estadoAtual == PLAYER_COSTA)
-                {
-                    MudarEstadoAnimacao(PLAYER_COSTA_IDLE); // Altera para anima��o idle costas
+                    MudarEstadoAnimacao("Player_direita_idle"); // Altera para animacao idle direita
                 }
             }
 
-            // Anima��o Direita
+            // Animacao Direita
             if (moverInput.x > 0 && moverInput.y == 0)
             {
-                MudarEstadoAnimacao(PLAYER_DIREITA); // Altera para anima��o de corrida � direita
+                MudarEstadoAnimacao("Player_direita_run"); // Altera para animacao de corrida direita
             }
-            // Anima��o Esquerda
+            // Animacao Esquerda
             if (moverInput.x < 0 && moverInput.y == 0)
             {
-                MudarEstadoAnimacao(PLAYER_ESQUERDA); // Altera para anima��o de corrida � esquerda
+                MudarEstadoAnimacao("Player_esquerda_run"); // Altera para animacao de corrida esquerda
             }
-            // Anima��o Frente
+            // Animacao Frente
             if (moverInput.x == 0 && moverInput.y < 0)
             {
-                MudarEstadoAnimacao(PLAYER_FRENTE); // Altera para anima��o de corrida para frente
+                MudarEstadoAnimacao("Player_frente_run"); // Altera para animacao de corrida para frente
             }
-            // Anima��o Costas
+            // Animacao Costas
             if (moverInput.x == 0 && moverInput.y > 0)
             {
-                MudarEstadoAnimacao(PLAYER_COSTA); // Altera para anima��o de corrida para tr�s
+                MudarEstadoAnimacao("Player_costa_run"); // Altera para animacao de corrida para tras
             }
-            // Anima��o Frente diagonal direita
+            // Animacao Frente diagonal direita
             if (moverInput.x > 0 && moverInput.y < 0)
             {
-                MudarEstadoAnimacao(PLAYER_DIREITA); // Altera para anima��o de corrida � direita
+                MudarEstadoAnimacao("Player_direita_run"); // Altera para animacao de corrida direita
             }
-            // Anima��o Frente diagonal esquerda
+            // Animacao Frente diagonal esquerda
             if (moverInput.x < 0 && moverInput.y < 0)
             {
-                MudarEstadoAnimacao(PLAYER_ESQUERDA); // Altera para anima��o de corrida � esquerda
+                MudarEstadoAnimacao("Player_esquerda_run"); // Altera para animacao de corrida esquerda
             }
-            // Anima��o Costas diagonal direita
+            // Animacao Costas diagonal direita
             if (moverInput.x > 0 && moverInput.y > 0)
             {
-                MudarEstadoAnimacao(PLAYER_DIREITA); // Altera para anima��o de corrida � direita
+                MudarEstadoAnimacao("Player_direita_run"); // Altera para animacao de corrida direita
             }
-            // Anima��o Costas diagonal esquerda
+            // Animacao Costas diagonal esquerda
             if (moverInput.x < 0 && moverInput.y > 0)
             {
-                MudarEstadoAnimacao(PLAYER_ESQUERDA); // Altera para anima��o de corrida � esquerda
+                MudarEstadoAnimacao("Player_esquerda_run"); // Altera para animacao de corrida esquerda
             }
         }
     }
 
-    private void MudarEstadoAnimacao(string novoEstado) // Fun��o para alternar as anima��es do player
+    private void MudarEstadoAnimacao(string animacaoNova) // Funcao para alternar as animacoes do player
     {
-        if (estadoAtual == novoEstado) return; // Se o estado atual j� � o novo estado, n�o faz nada
+        if (animacaoAtual == animacaoNova) return; // Se o estado atual == o novo estado, mantem o msm
 
-        animator.Play(novoEstado); // Reproduz a nova anima��o
-        estadoAtual = novoEstado; // Atualiza o estado atual
-        // Anima��o Direita
+        animator.Play(animacaoNova); // Reproduz a nova animacao
+        animacaoAtual = animacaoNova; // Atualiza o estado atual
     }
 }
