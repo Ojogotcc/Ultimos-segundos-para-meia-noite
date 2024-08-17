@@ -4,19 +4,17 @@ using UnityEngine.AI;
 public class InimgoControle : MonoBehaviour
 {
     public NavMeshAgent agent;
-
     public Transform player;
-
     public LayerMask chaoLayer, playerLayer;
 
     public float vida;
 
-    //Patrulha
+    // Patrulha
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
-    //Attacking
+    // Ataque
     public float intervaloEntreAtaques;
     bool jaAtacou;
     public GameObject projectile;
@@ -26,15 +24,26 @@ public class InimgoControle : MonoBehaviour
 
     // Animacao
     public Animator animator;
-    private string animacaoAtual;
-
+    private string animacaoAtual = "IA_frente_idle";
     public Vector3 direcao;
-    public float offsetAnimacao = 4.0f;
+    public float offsetAnimacao = 20.0f;
+
+    public ObjetoInimigo inimigoData;
+
+    public void OnValidate()
+    {
+        visaoRange = inimigoData.alcanceVisao;
+        ataqueRange = inimigoData.distanciaAtaque;
+    }
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = inimigoData.velocidade;
+        agent.acceleration = inimigoData.aceleracao;
+        vida = inimigoData.vida;
+        intervaloEntreAtaques = inimigoData.tempoEntreAtaques;        
     }
 
     private void Update()
@@ -51,27 +60,33 @@ public class InimgoControle : MonoBehaviour
     private void Animacoes(){
         direcao = agent.desiredVelocity;
 
-        if (direcao.x == 0 && direcao.z == 0) MudarEstadoAnimacao("IA_frente_idle");
-
-        if ((direcao.x > 0 && direcao.z == 0) || (direcao.x > 0 && direcao.z < 0) || (direcao.x > 0 && direcao.z > 0))
+        // Se ficar parado troca a animacao atual para idle
+        if (direcao.x == 0 && direcao.y == 0 && animacaoAtual.Contains("run"))
         {
-            MudarEstadoAnimacao("IA_direita_run"); // Altera para animacao de corrida direita
+            string novaAnimacao = animacaoAtual.Replace("run", "idle");
+            MudarEstadoAnimacao(novaAnimacao);
         }
-        // Animacao Esquerda; Frente diagonal esquerda; Costas diagonal esquerda
-        if ((direcao.x < 0 && direcao.z == 0) || (direcao.x < 0 && direcao.z < 0) || (direcao.x < 0 && direcao.z > 0))
-        {
-            MudarEstadoAnimacao("IA_esquerda_run"); // Altera para animacao de corrida esquerda
-        }
-         // Animacao Frente
-        if (-offsetAnimacao <= direcao.x && direcao.x <= +offsetAnimacao && direcao.z < 0)
+        
+        // Animacao Frente
+        if (-offsetAnimacao <= direcao.x && direcao.x <= offsetAnimacao && direcao.z < 0)
         {
             MudarEstadoAnimacao("IA_frente_run"); // Altera para animacao de corrida para frente
         }
         // Animacao Costas
-        if (direcao.x == 0 && direcao.z > 0)
+        else if (-offsetAnimacao <= direcao.x && direcao.x <= offsetAnimacao && direcao.z > 0)
         {
             MudarEstadoAnimacao("IA_costa_run"); // Altera para animacao de corrida para tras
         }
+        // Animacao Direita
+        else if (direcao.x > offsetAnimacao)
+        {
+            MudarEstadoAnimacao("IA_direita_run"); // Altera para animacao de corrida direita
+        }
+        // Animacao Esquerda
+        else if (direcao.x < -offsetAnimacao)
+        {
+            MudarEstadoAnimacao("IA_esquerda_run"); // Altera para animacao de corrida esquerda
+        }        
     }
 
     private void Patrulhar()

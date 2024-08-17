@@ -16,10 +16,11 @@ public class PlayerControle : MonoBehaviour
     public float gravidade_valor = -10; // Valor da gravidade
     public bool estaNoChao = false; // Indica se o player esta no chao
     private float checkChaoDistancia = 8f; // Distancia para verificar se o player est� no chao
-    private bool podePular;
+    private bool podePular = true;
 
+    // Animacao
     public Animator animator; // Referancia ao componente Animator do player
-    private string animacaoAtual; // Armazena o estado atual da animacao do player
+    private string animacaoAtual = "Player_frente_idle"; // Armazena o estado atual da animacao do player
 
     // Mira
     public bool canShot; // verifica se pode atirar
@@ -89,8 +90,7 @@ public class PlayerControle : MonoBehaviour
         if(inputAim != 0)
         {
             IsAim = true;
-            Mirar();
-            
+            Mirar();            
         }
         else
         {
@@ -155,26 +155,13 @@ public class PlayerControle : MonoBehaviour
         }
         else 
         {
-            if (moverInput.x == 0 && moverInput.y == 0) // Verifica se esta parado
+            // Se ficar parado troca a animacao atual para idle
+            if (moverInput.x == 0 && moverInput.y == 0 && animacaoAtual.Contains("run"))
             {
-                if (animacaoAtual == "Player_frente_run" || animacaoAtual == "Player_costa_run_aim")
-                {
-                    MudarEstadoAnimacao("Player_frente_idle"); // Altera para animacao idle frente
-                }
-                if (animacaoAtual == "Player_costa_run")
-                {
-                    MudarEstadoAnimacao("Player_costa_idle"); // Altera para animacao idle costas
-                }
-                if (animacaoAtual == "Player_esquerda_run")
-                {
-                    MudarEstadoAnimacao("Player_esquerda_idle"); // Altera para animacao idle esquerda
-                }
-                if (animacaoAtual == "Player_direita_run")
-                {
-                    MudarEstadoAnimacao("Player_direita_idle"); // Altera para animacao idle direita
-                }
+                string novaAnimacao = animacaoAtual.Replace("run", "idle");
+                MudarEstadoAnimacao(novaAnimacao);
             }
-
+            
             // Animacao Direita; Frente diagonal direita; Costas diagonal direita
             if ((moverInput.x > 0 && moverInput.y == 0) || (moverInput.x > 0 && moverInput.y < 0) || (moverInput.x > 0 && moverInput.y > 0))
             {

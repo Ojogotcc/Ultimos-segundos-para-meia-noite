@@ -17,7 +17,7 @@ MonoBehaviour:
   drawActivationToggle: 0
   icons:
     enabled: 1
-    aligned: 1
+    aligned: 0
     pairs:
     - iconToDraw: {fileID: 2800000, guid: 60ae32c0c9aef0847919c06420cc16d1, type: 3}
       targetClasses:
@@ -34,7 +34,7 @@ MonoBehaviour:
   separator:
     enabled: 1
     startString: =
-    color: {r: 0, g: 1, b: 1, a: 1}
+    color: {r: 0, g: 1, b: 0.98154783, a: 1}
   tree:
     enabled: 1
     drawOverlayOnColoredPrefabs: 1
