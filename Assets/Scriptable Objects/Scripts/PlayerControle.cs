@@ -15,7 +15,7 @@ public class PlayerControle : MonoBehaviour
     public float multiplicador_gravidade = 5.0f; // Multiplicador da gravidade para ajustar a intensidade
     public float gravidade_valor = -10; // Valor da gravidade
     public bool estaNoChao = false; // Indica se o player esta no chao
-    private float checkChaoDistancia = 8f; // Distancia para verificar se o player est� no chao
+    float checkChaoDistancia = 8f; // Distancia para verificar se o player est� no chao
     private bool podePular;
 
     public Animator animator; // Referancia ao componente Animator do player
