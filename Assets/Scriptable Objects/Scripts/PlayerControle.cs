@@ -175,6 +175,7 @@ public class PlayerControle : MonoBehaviour
                 }
             }
 
+
             // Animacao Direita; Frente diagonal direita; Costas diagonal direita
             if ((moverInput.x > 0 && moverInput.y == 0) || (moverInput.x > 0 && moverInput.y < 0) || (moverInput.x > 0 && moverInput.y > 0))
             {
