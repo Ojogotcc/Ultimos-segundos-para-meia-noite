@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class InimgoControle : MonoBehaviour
+public class InimigoControle : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask chaoLayer, playerLayer;
 
+    // CAracteristicas
     public float vida;
 
     // Patrulha
@@ -104,7 +105,6 @@ public class InimgoControle : MonoBehaviour
     }
     private void SearchWalkPoint()
     {
-        //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
@@ -139,6 +139,7 @@ public class InimgoControle : MonoBehaviour
     public void TomarDano(int dano)
     {
         vida -= dano;
+        MudarEstadoAnimacao("IA_frente_hit");
 
         if (vida <= 0) Invoke(nameof(DestruirInimigo), 0.5f);
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerControle : MonoBehaviour
@@ -15,28 +16,33 @@ public class PlayerControle : MonoBehaviour
     public float multiplicador_gravidade = 5.0f; // Multiplicador da gravidade para ajustar a intensidade
     public float gravidade_valor = -10; // Valor da gravidade
     public bool estaNoChao = false; // Indica se o player esta no chao
-    private float checkChaoDistancia = 8f; // Distancia para verificar se o player est� no chao
+    private float checkChaoDistancia = 8f; // Distancia para verificar se o player esta no chao
     private bool podePular = true;
+
+    // Mira e Tiro
+    private bool podeAtirar = true; // Verifica se pode atirar
+    private bool estaMirando = false; // Verifica se esta com a mira acionada
+    public float fireRate; // Intervalo de tiros (quanto menor mais rapido)
+    private float miraInput, atirarInput; // Inputs de mira e tiro
+    public GameObject playerTiro; // Prefab do tiro
+    public GameObject playerTiroPos; // Posicao de onde ira sair o tiro
 
     // Animacao
     public Animator animator; // Referancia ao componente Animator do player
     private string animacaoAtual = "Player_frente_idle"; // Armazena o estado atual da animacao do player
-
-    // Mira
-    public bool canShot; // verifica se pode atirar
-    public float inputShot, fireRate, inputAim; //cria o botao de tiro, o espaco entre eles e a mira
-    public GameObject playerShot; // cria um gameobject para atirar
-    public bool IsAim;
-    public GameObject cameraMira;
-    public GameObject mira;
-
     
+    // Primeira Pessoa - Combate
+    public Camera PrimeiraCamera;
+    private Transform TransformPrimeiraCamera;
+    private float mouseX;
+    private float mouseY;
+    public float mouseSensibilidadeX;
+    public float mouseSensibilidadeY;
+    private float verticalLookRotation;
+
     void Start()
     {
-        RB = GetComponent<Rigidbody>();
-
-        cameraMira.SetActive(false);
-        mira.SetActive(false);
+        RB = GetComponent<Rigidbody>();      
     }
 
     void Update()
@@ -44,7 +50,7 @@ public class PlayerControle : MonoBehaviour
         CheckChao(); // Verifica se o player esta no chao
         InputPlayer(); // Recebe os inputs do player
         MoverPlayer(moverInput); // Move o player com base nos inputs
-        ChecarMira(); // recebe o input de mirar
+        ChecarMiraTiro(); // recebe o input de mirar
         Animacoes(moverInput); // Atualiza as animacoes com base nos inputs     
     }
 
@@ -76,37 +82,58 @@ public class PlayerControle : MonoBehaviour
         {
             estaNoChao = false;
         }
-    }
+    }   
 
     private void InputPlayer()
     {
         moverInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         moverInput.Normalize(); // Normaliza os inputs para garantir movimento consistente
-        inputAim = Input.GetAxis("Fire2");
+        atirarInput = Input.GetAxis("Fire1");
+        miraInput = Input.GetAxis("Fire2");      
+        mouseX = Input.GetAxis("Mouse X");
+        mouseY = Input.GetAxis("Mouse Y");
     }
 
-    private void ChecarMira() // Verifica se o personagem está mirando
+    private void ChecarMiraTiro() // Verifica se o personagem está mirando
     {   
-        if(inputAim != 0)
+        if(miraInput != 0)
         {
-            IsAim = true;
-            Mirar();            
+            estaMirando = true;
+            MirarFPS();
+
+            if (podeAtirar && atirarInput != 0)
+            {
+                podeAtirar = false;
+                Atirar();
+                Invoke(nameof(ResetarTiro), fireRate);
+            }
         }
         else
         {
-            IsAim = false;
-            cameraMira.SetActive(false);
-            mira.SetActive(false);
+            estaMirando = false;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
-    private void Mirar()
+    private void MirarFPS()
     {
-        if(IsAim)
-        {
-            cameraMira.SetActive(true);
-            mira.SetActive(true);
-        }
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * mouseSensibilidadeX);
+        verticalLookRotation += Input.GetAxis("Mouse Y") * mouseSensibilidadeY;
+        verticalLookRotation = Mathf.Clamp(verticalLookRotation, -60, 60);
+        TransformPrimeiraCamera.localEulerAngles = Vector3.left * verticalLookRotation;
+    }
+
+    private void ResetarTiro()
+    {
+        podeAtirar = true;
+    }
+    private void Atirar()
+    {
+        Instantiate(playerTiro, playerTiroPos.transform.position, transform.rotation);
     }
 
     private void MoverPlayer(Vector2 moverInput) // Movimentacao do player
@@ -130,25 +157,13 @@ public class PlayerControle : MonoBehaviour
 
     private void Animacoes(Vector2 moverInput) // Animacoes do player
     {    
-        if(IsAim == true) 
+        if(estaMirando == true) 
         {
             if (moverInput.x == 0 && moverInput.y == 0)
             {
                 MudarEstadoAnimacao("Player_costa_idle_aim");        
             }
-            if (moverInput.x == 0 && moverInput.y > 0)
-            {
-                MudarEstadoAnimacao("Player_costa_run_aim");
-            }
-            if (moverInput.x == 0 && moverInput.y < 0)
-            {
-                MudarEstadoAnimacao("Player_costa_run_aim");
-            }
-            if (moverInput.x > 0 && moverInput.y == 0)
-            {
-                MudarEstadoAnimacao("Player_costa_run_aim"); // Altera para animacao de corrida direita
-            }
-            if (moverInput.x < 0 && moverInput.y == 0)
+            else
             {
                 MudarEstadoAnimacao("Player_costa_run_aim"); // Altera para animacao de corrida esquerda
             }
