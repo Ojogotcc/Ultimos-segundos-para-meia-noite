@@ -6,7 +6,6 @@ using UnityEngine;
 public static class TrocarCameras
 {   
     static List<CinemachineVirtualCamera> cameras = new List<CinemachineVirtualCamera>();
-
     public static CinemachineVirtualCamera CameraAtual = null;
 
     public static bool estaCameraAtiva(CinemachineVirtualCamera camera)
@@ -31,7 +30,7 @@ public static class TrocarCameras
     }
 
     public static void RemoverCamera(CinemachineVirtualCamera camera){
-        cameras.Add(camera);
+        cameras.Remove(camera);
     }
 }
     

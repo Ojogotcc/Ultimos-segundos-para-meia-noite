@@ -30,6 +30,7 @@ public class InimigoControle : MonoBehaviour
     public float offsetAnimacao = 20.0f;
 
     public ObjetoInimigo inimigoData;
+    public GameObject efeitoMorte;
 
     public void OnValidate()
     {
@@ -62,12 +63,8 @@ public class InimigoControle : MonoBehaviour
         direcao = agent.desiredVelocity;
 
         // Se ficar parado troca a animacao atual para idle
-        if (direcao.x == 0 && direcao.y == 0 && animacaoAtual.Contains("run"))
-        {
-            string novaAnimacao = animacaoAtual.Replace("run", "idle");
-            MudarEstadoAnimacao(novaAnimacao);
-        }
-        
+        if (direcao.x == 0 && direcao.y == 0 && animacaoAtual.Contains("run")) MudarEstadoAnimacao(animacaoAtual.Replace("run", "idle"));
+            
         // Animacao Frente
         if (-offsetAnimacao <= direcao.x && direcao.x <= offsetAnimacao && direcao.z < 0)
         {
@@ -145,6 +142,7 @@ public class InimigoControle : MonoBehaviour
     }
     private void DestruirInimigo()
     {
+        Instantiate(efeitoMorte, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

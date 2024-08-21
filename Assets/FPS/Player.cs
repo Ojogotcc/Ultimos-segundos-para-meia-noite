@@ -72,7 +72,8 @@ public class Player : MonoBehaviour
         inputY = Input.GetAxis("Jump");
 
         // Converter a movimenta��o para o sistema de coordenadas do jogador
-        movement = transform.TransformDirection(new Vector3(inputX * speed, 0, inputZ * speed));        //Mostrar e Sumir mouse
+        movement = transform.TransformDirection(new Vector3(inputX * speed, 0, inputZ * speed));     
+           //Mostrar e Sumir mouse
         
         inputShoot = Input.GetAxis("Fire1");
         mouse2 = Input.GetAxis("Fire2");
@@ -94,11 +95,11 @@ public class Player : MonoBehaviour
     {
         // Atualizar a velocidade do jogador
         playerBody.velocity = new Vector3(movement.x, playerBody.velocity.y, movement.z);
-        if (isGrounded && inputY != 0)
-        {
-            // Adicionar for�a de pulo ao jogador
-            playerBody.AddForce(new Vector3(movement.x, jumpForce, movement.z));
-        }
+        // if (isGrounded && inputY != 0)
+        // {
+        //     // Adicionar for�a de pulo ao jogador
+        //     playerBody.AddForce(new Vector3(movement.x, jumpForce, movement.z));
+        // }
     }
 
     // Rotacionar o jogador com a c�mera

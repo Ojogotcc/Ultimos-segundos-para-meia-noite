@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2c9e72397edac459cb900308b223f2, type: 3}
   m_Name: PlayerTiro
   m_EditorClassIdentifier: 
-  velocidade: 50
+  velocidade: 200
   dano: 10
   duracao: 100
   sprite: {fileID: 0}
