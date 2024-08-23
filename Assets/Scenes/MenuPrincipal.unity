@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.33694, g: 325.04984, b: 430.2193, a: 1}
+  m_IndirectSpecularColor: {r: 261.90173, g: 324.4571, b: 429.43616, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c16f8bf626d2114695561c2c24273ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 301da3c1aea520e43ac5d6571b72975f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2405,7 +2405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d8f9393f3261b8f43ada1000fbfdfc6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6ab0994238f7d6f439e3c3da4c5826c7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2527,7 +2527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1857bebd82cb4147b454286186caa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fase: fase 1
+  fase: Fase1
   menuPrincipal: {fileID: 41349085}
   menuOpcoes: {fileID: 1666916347}
   menuCreditos: {fileID: 1643583601}
@@ -3205,7 +3205,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 896869e6b9748e64eadbb32a87f15d52, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 524a1ac0d4233ed469751f60ee98b5d7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

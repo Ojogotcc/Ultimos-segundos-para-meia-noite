@@ -12,16 +12,11 @@ public class PlayerControle : MonoBehaviour
     public float multiplicador_gravidade = 5.0f; // Multiplicador da gravidade para ajustar a intensidade
     public float gravidade_valor = -10; // Valor da gravidade
     public bool estaNoChao = false; // Indica se o player esta no chao
-<<<<<<< HEAD:Assets/Scriptable Objects/Scripts/PlayerControle.cs
-    float checkChaoDistancia = 8f; // Distancia para verificar se o player est� no chao
-    private bool podePular;
-=======
     private Rigidbody RB; // Referencia ao componente Rigidbody do player    
     private Vector2 moverInput; // Armazena o input de movimento do player
     private float gravidade_total; // Armazena o valor total da gravidade aplicada ao player    
     private float checkChaoDistancia = 8f; // Distancia para verificar se o player esta no chao
     private bool podePular = true;
->>>>>>> Tiro:Assets/Scripts/PlayerControle.cs
 
     [Header("Ataque")]
     public GameObject playerTiro; // Prefab do tiro
@@ -217,33 +212,9 @@ public class PlayerControle : MonoBehaviour
         }
         else 
         {
-<<<<<<< HEAD:Assets/Scriptable Objects/Scripts/PlayerControle.cs
-            if (moverInput.x == 0 && moverInput.y == 0) // Verifica se esta parado
-            {
-                if (animacaoAtual == "Player_frente_run" || animacaoAtual == "Player_costa_run_aim")
-                {
-                    MudarEstadoAnimacao("Player_frente_idle"); // Altera para animacao idle frente
-                }
-                if (animacaoAtual == "Player_costa_run")
-                {
-                    MudarEstadoAnimacao("Player_costa_idle"); // Altera para animacao idle costas
-                }
-                if (animacaoAtual == "Player_esquerda_run")
-                {
-                    MudarEstadoAnimacao("Player_esquerda_idle"); // Altera para animacao idle esquerda
-                }
-                if (animacaoAtual == "Player_direita_run")
-                {
-                    MudarEstadoAnimacao("Player_direita_idle"); // Altera para animacao idle direita
-                }
-            }
-
-
-=======
             // Se ficar parado troca a animacao atual para idle
             if (moverInput.x == 0 && moverInput.y == 0 && animacaoAtual.Contains("run")) MudarEstadoAnimacao(animacaoAtual.Replace("run", "idle"));
             
->>>>>>> Tiro:Assets/Scripts/PlayerControle.cs
             // Animacao Direita; Frente diagonal direita; Costas diagonal direita
             if ((moverInput.x > 0 && moverInput.y == 0) || (moverInput.x > 0 && moverInput.y < 0) || (moverInput.x > 0 && moverInput.y > 0))
             {

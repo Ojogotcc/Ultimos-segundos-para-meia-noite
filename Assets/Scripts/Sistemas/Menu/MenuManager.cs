@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
     public GameObject menuOpcoes;
     public GameObject menuCreditos;
     public GameObject menuPesquisa;
+    
     public void AbrirJogo()
     {
         SceneManager.LoadScene(fase);

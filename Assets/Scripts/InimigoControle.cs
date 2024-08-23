@@ -32,12 +32,6 @@ public class InimigoControle : MonoBehaviour
     public ObjetoInimigo inimigoData;
     public GameObject efeitoMorte;
 
-    public void OnValidate()
-    {
-        visaoRange = inimigoData.alcanceVisao;
-        ataqueRange = inimigoData.distanciaAtaque;
-    }
-
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -46,6 +40,8 @@ public class InimigoControle : MonoBehaviour
         agent.acceleration = inimigoData.aceleracao;
         vida = inimigoData.vida;
         intervaloEntreAtaques = inimigoData.tempoEntreAtaques;        
+        visaoRange = inimigoData.alcanceVisao;
+        ataqueRange = inimigoData.distanciaAtaque;
     }
 
     private void Update()
