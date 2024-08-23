@@ -5,11 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/OutdoorsScene.unity
-    guid: 8124e5870f4fd4c779e7a5f994e84ad1
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/fase 1.unity
+=======
+    path: Assets/Scenes/TesteFilipe.unity
+>>>>>>> Tiro
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/MenuPrincipal.unity

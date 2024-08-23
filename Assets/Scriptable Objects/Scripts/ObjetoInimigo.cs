@@ -6,13 +6,12 @@ using UnityEngine.Rendering;
 [CreateAssetMenu(fileName = "Inimigo", menuName = "Inimigo/Criar Inimigo")]
 public class ObjetoInimigo : ScriptableObject
 {
-    //states
     public string nome;
     public float vida;
     public float velocidade;
-    public string tipoInimigo;
+    public float aceleracao;
 
-    //attack
+    // Ataque
     public float tempoEntreAtaques;
     public float dano;
     public string tipoAtaque;
@@ -22,5 +21,5 @@ public class ObjetoInimigo : ScriptableObject
 
 public class InimigoLongoAlcance : ObjetoInimigo
 {
-    public GameObject projetil;
+    public ObjetoTiro tiroData;
 }

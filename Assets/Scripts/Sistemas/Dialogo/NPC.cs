@@ -15,7 +15,7 @@ public class NPC : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") == true)
+        if (other.gameObject.CompareTag("Player"))
         {
             icone.SetActive(true);
             icone.transform.localScale = Vector3.zero;
@@ -25,7 +25,7 @@ public class NPC : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && icone.activeSelf == true && dialogoAtivado == false)
+        if (Input.GetKeyDown(KeyCode.F) && icone.activeSelf && !dialogoAtivado)
         {
             icone.transform.LeanScale(Vector3.zero, 0.2f);
             trigger.IniciarDialogo();
@@ -36,7 +36,7 @@ public class NPC : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") == true)
+        if (other.gameObject.CompareTag("Player"))
         {
             icone.transform.LeanScale(Vector3.zero, 0.2f);
             if (dialogoAtivado)

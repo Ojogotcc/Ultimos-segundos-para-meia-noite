@@ -18,7 +18,13 @@ MonoBehaviour:
   icons:
     enabled: 1
     aligned: 0
-    pairs: []
+    pairs:
+    - iconToDraw: {fileID: 2800000, guid: 60ae32c0c9aef0847919c06420cc16d1, type: 3}
+      targetClasses:
+      - {fileID: 11500000, guid: b4baeebc86b9b0042a633222013abf8d, type: 3}
+    - iconToDraw: {fileID: 2800000, guid: bd76695c565fddd4da477a0d12c20d22, type: 3}
+      targetClasses:
+      - {fileID: 11500000, guid: d3651e7405f11b746b008af9f07ddabf, type: 3}
   prefabsData:
     enabled: 1
     prefabs: []
@@ -28,7 +34,7 @@ MonoBehaviour:
   separator:
     enabled: 1
     startString: =
-    color: {r: 0, g: 1, b: 1, a: 1}
+    color: {r: 0, g: 1, b: 0.98154783, a: 1}
   tree:
     enabled: 1
     drawOverlayOnColoredPrefabs: 1

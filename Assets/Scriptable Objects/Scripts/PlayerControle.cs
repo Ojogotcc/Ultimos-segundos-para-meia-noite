@@ -1,50 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 
 public class PlayerControle : MonoBehaviour
 {   
-    public static PlayerControle instance;
-
-    private Rigidbody RB; // Referencia ao componente Rigidbody do player
+    [Header("Movimentacao")]
     public float velocidade; // Velocidade de movimento do player
-    private Vector2 moverInput; // Armazena o input de movimento do player
-
-    // Gravidade
-    private float gravidade_total; // Armazena o valor total da gravidade aplicada ao player
     public float multiplicador_gravidade = 5.0f; // Multiplicador da gravidade para ajustar a intensidade
     public float gravidade_valor = -10; // Valor da gravidade
     public bool estaNoChao = false; // Indica se o player esta no chao
+<<<<<<< HEAD:Assets/Scriptable Objects/Scripts/PlayerControle.cs
     float checkChaoDistancia = 8f; // Distancia para verificar se o player est� no chao
     private bool podePular;
+=======
+    private Rigidbody RB; // Referencia ao componente Rigidbody do player    
+    private Vector2 moverInput; // Armazena o input de movimento do player
+    private float gravidade_total; // Armazena o valor total da gravidade aplicada ao player    
+    private float checkChaoDistancia = 8f; // Distancia para verificar se o player esta no chao
+    private bool podePular = true;
+>>>>>>> Tiro:Assets/Scripts/PlayerControle.cs
 
+    [Header("Ataque")]
+    public GameObject playerTiro; // Prefab do tiro
+    public GameObject playerTiroPos; // Posicao de onde ira sair o tiro
+    public float fireRate; // Intervalo de tiros (quanto menor mais rapido)
+    private bool podeAtirar = true; // Verifica se pode atirar
+    private bool estaMirando = false; // Verifica se esta com a mira acionada    
+    private float miraInput, atirarInput; // Inputs de mira e tiro
+    private Vector3 destinoTiro;
+
+    [Header("Animacao")]
     public Animator animator; // Referancia ao componente Animator do player
-    private string animacaoAtual; // Armazena o estado atual da animacao do player
-
-    // Mira
-    public bool canShot; // verifica se pode atirar
-    public float inputShot, fireRate, inputAim; //cria o botao de tiro, o espaco entre eles e a mira
-    public GameObject playerShot; // cria um gameobject para atirar
-    public bool IsAim;
-    public GameObject cameraMira;
-    public GameObject mira;
-
+    private string animacaoAtual = "Player_frente_idle"; // Armazena o estado atual da animacao do player
     
+    [Header("FPS")]
+    public GameObject GOPrimeiraCamera;
+    public float mouseSensibilidadeX;
+    public float mouseSensibilidadeY;
+    public GameObject miraCanvas;
+    private float mouseX;
+    private float mouseY;
+    private float verticalLookRotation;
+
+    [Header("Cameras")]
+    public CinemachineVirtualCamera cameraTerceiraPessoa;
+    public CinemachineVirtualCamera cameraPrimeiraPessoa;
+
+    private void OnEnable()
+    {
+        TrocarCameras.AdicionarCamera(cameraTerceiraPessoa);
+        TrocarCameras.AdicionarCamera(cameraPrimeiraPessoa);
+    }
+
+    private void OnDisable() {
+        TrocarCameras.RemoverCamera(cameraTerceiraPessoa);
+        TrocarCameras.RemoverCamera(cameraPrimeiraPessoa);
+    }
+
     void Start()
     {
-        RB = GetComponent<Rigidbody>();
-
-        cameraMira.SetActive(false);
-        mira.SetActive(false);
+        RB = GetComponent<Rigidbody>();        
     }
 
     void Update()
     {
         CheckChao(); // Verifica se o player esta no chao
         InputPlayer(); // Recebe os inputs do player
-        MoverPlayer(moverInput); // Move o player com base nos inputs
-        ChecarMira(); // recebe o input de mirar
-        Animacoes(moverInput); // Atualiza as animacoes com base nos inputs     
+        MoverPlayer(); // Move o player com base nos inputs
+        ChecarMiraTiro(); // recebe o input de mirar
+        Animacoes(); // Atualiza as animacoes com base nos inputs     
     }
 
     public void DesabilitarPulo()
@@ -75,41 +102,85 @@ public class PlayerControle : MonoBehaviour
         {
             estaNoChao = false;
         }
-    }
+    }   
 
     private void InputPlayer()
     {
         moverInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         moverInput.Normalize(); // Normaliza os inputs para garantir movimento consistente
-        inputAim = Input.GetAxis("Fire2");
+        atirarInput = Input.GetAxis("Fire1");
+        miraInput = Input.GetAxis("Fire2");      
+        mouseX = Input.GetAxis("Mouse X");
+        mouseY = Input.GetAxis("Mouse Y");
     }
 
-    private void ChecarMira() // Verifica se o personagem está mirando
+    private void ChecarMiraTiro() // Verifica se o personagem está mirando
     {   
-        if(inputAim != 0)
+        if(miraInput != 0)
         {
-            IsAim = true;
-            Mirar();
+            if (TrocarCameras.estaCameraAtiva(cameraTerceiraPessoa)) TrocarCameras.TrocarCamera(cameraPrimeiraPessoa);
             
+            estaMirando = true;
+            MirarFPS();
+
+            if (podeAtirar && atirarInput != 0)
+            {
+                podeAtirar = false;
+                AtirarRaio();
+                Invoke(nameof(ResetarTiro), fireRate);
+            }            
         }
         else
         {
-            IsAim = false;
-            cameraMira.SetActive(false);
-            mira.SetActive(false);
-        }
+            estaMirando = false;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            miraCanvas.SetActive(false);
+
+            TrocarCameras.TrocarCamera(cameraTerceiraPessoa);
+            transform.localEulerAngles = Vector3.zero;
+        }        
     }
 
-    private void Mirar()
+    private void MirarFPS()
     {
-        if(IsAim)
-        {
-            cameraMira.SetActive(true);
-            mira.SetActive(true);
-        }
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        miraCanvas.SetActive(true);
+
+        transform.Rotate(Vector3.up * mouseX* mouseSensibilidadeX);
+        verticalLookRotation += mouseY * mouseSensibilidadeY;
+        verticalLookRotation = Mathf.Clamp(verticalLookRotation, -60, 60);
+        GOPrimeiraCamera.transform.localEulerAngles = Vector3.left * verticalLookRotation;
+
+        playerTiroPos.transform.Rotate(Vector3.up * mouseX* mouseSensibilidadeX);
+        playerTiroPos.transform.localEulerAngles = Vector3.left * verticalLookRotation;
     }
 
-    private void MoverPlayer(Vector2 moverInput) // Movimentacao do player
+    private void ResetarTiro()
+    {
+        podeAtirar = true;
+    }
+
+    private void AtirarRaio()
+    {
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            destinoTiro = hit.point;
+        }
+        else
+        {
+            destinoTiro = ray.GetPoint(200);
+        }
+
+        GameObject tiro = Instantiate (playerTiro, playerTiroPos.transform.position, playerTiroPos.transform.rotation);
+        tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * playerTiro.GetComponent<TiroProjetil>().tiroData.velocidade;
+    }
+
+    private void MoverPlayer() // Movimentacao do player
     {
         if (!estaNoChao)
         {
@@ -125,36 +196,28 @@ public class PlayerControle : MonoBehaviour
             }
         }
 
-        RB.velocity = new Vector3(moverInput.x * velocidade, gravidade_total, moverInput.y * velocidade);
+        Vector3 movimento = transform.TransformDirection(new Vector3(moverInput.x * velocidade, 0, moverInput.y * velocidade));
+        RB.velocity = new Vector3(movimento.x, gravidade_total, movimento.z);
     }
 
-    private void Animacoes(Vector2 moverInput) // Animacoes do player
+    private void Animacoes() // Animacoes do player
     {    
-        if(IsAim == true) 
+        if(estaMirando == true) 
         {
-            if (moverInput.x == 0 && moverInput.y == 0)
-            {
-                MudarEstadoAnimacao("Player_costa_idle_aim");        
-            }
-            if (moverInput.x == 0 && moverInput.y > 0)
-            {
-                MudarEstadoAnimacao("Player_costa_run_aim");
-            }
-            if (moverInput.x == 0 && moverInput.y < 0)
-            {
-                MudarEstadoAnimacao("Player_costa_run_aim");
-            }
-            if (moverInput.x > 0 && moverInput.y == 0)
-            {
-                MudarEstadoAnimacao("Player_costa_run_aim"); // Altera para animacao de corrida direita
-            }
-            if (moverInput.x < 0 && moverInput.y == 0)
-            {
-                MudarEstadoAnimacao("Player_costa_run_aim"); // Altera para animacao de corrida esquerda
-            }
+            // if (moverInput.x == 0 && moverInput.y == 0)
+            // {
+            //     MudarEstadoAnimacao("Player_costa_idle_aim");        
+            // }
+            // else
+            // {
+            //     MudarEstadoAnimacao("Player_costa_run_aim"); // Altera para animacao de corrida esquerda
+            // }
+
+            MudarEstadoAnimacao("Player_costa_idle_aim");
         }
         else 
         {
+<<<<<<< HEAD:Assets/Scriptable Objects/Scripts/PlayerControle.cs
             if (moverInput.x == 0 && moverInput.y == 0) // Verifica se esta parado
             {
                 if (animacaoAtual == "Player_frente_run" || animacaoAtual == "Player_costa_run_aim")
@@ -176,6 +239,11 @@ public class PlayerControle : MonoBehaviour
             }
 
 
+=======
+            // Se ficar parado troca a animacao atual para idle
+            if (moverInput.x == 0 && moverInput.y == 0 && animacaoAtual.Contains("run")) MudarEstadoAnimacao(animacaoAtual.Replace("run", "idle"));
+            
+>>>>>>> Tiro:Assets/Scripts/PlayerControle.cs
             // Animacao Direita; Frente diagonal direita; Costas diagonal direita
             if ((moverInput.x > 0 && moverInput.y == 0) || (moverInput.x > 0 && moverInput.y < 0) || (moverInput.x > 0 && moverInput.y > 0))
             {
