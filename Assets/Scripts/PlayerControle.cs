@@ -39,6 +39,7 @@ public class PlayerControle : MonoBehaviour
     private float mouseX;
     private float mouseY;
     private float verticalLookRotation;
+    public GameObject arma;
 
     [Header("Cameras")]
     public CinemachineVirtualCamera cameraTerceiraPessoa;
@@ -131,6 +132,7 @@ public class PlayerControle : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             miraCanvas.SetActive(false);
+            arma.SetActive(false);
 
             TrocarCameras.TrocarCamera(cameraTerceiraPessoa);
             transform.localEulerAngles = Vector3.zero;
@@ -142,6 +144,7 @@ public class PlayerControle : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         miraCanvas.SetActive(true);
+        arma.SetActive(true);
 
         transform.Rotate(Vector3.up * mouseX* mouseSensibilidadeX);
         verticalLookRotation += mouseY * mouseSensibilidadeY;
