@@ -6,8 +6,8 @@ using UnityEngine.UIElements;
 
 public class GameplayManager : MonoBehaviour
 {
-    [SerializeField] public Scene fase;
-    [SerializeField] public Scene menuPrincipal;
+    [SerializeField] public string fase;
+    [SerializeField] public string menuPrincipal;
 
     public GameObject menuConfig;
     public GameObject menuPausa;
@@ -27,7 +27,7 @@ public class GameplayManager : MonoBehaviour
     public void Despausar()
     {
         menuPausa.SetActive(false);
-        gameplayAtivada=true;
+        gameplayAtivada = true;
         Time.timeScale = 1;
     }
 
