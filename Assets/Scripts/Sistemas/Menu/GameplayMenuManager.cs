@@ -27,7 +27,7 @@ public class GameplayManager : MonoBehaviour
     public void Despausar()
     {
         menuPausa.SetActive(false);
-        gameplayAtivada=true;
+        gameplayAtivada = true;
         Time.timeScale = 1;
     }
 
