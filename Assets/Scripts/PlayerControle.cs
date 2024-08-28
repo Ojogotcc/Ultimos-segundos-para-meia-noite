@@ -44,21 +44,29 @@ public class PlayerControle : MonoBehaviour
     [Header("Cameras")]
     public CinemachineVirtualCamera cameraTerceiraPessoa;
     public CinemachineVirtualCamera cameraPrimeiraPessoa;
-
+    public CinemachineVirtualCamera cameraAnimada;
+    public float duracaoAnimacao;
+    
     private void OnEnable()
     {
         TrocarCameras.AdicionarCamera(cameraTerceiraPessoa);
         TrocarCameras.AdicionarCamera(cameraPrimeiraPessoa);
+        TrocarCameras.AdicionarCamera(cameraAnimada);
     }
 
     private void OnDisable() {
         TrocarCameras.RemoverCamera(cameraTerceiraPessoa);
         TrocarCameras.RemoverCamera(cameraPrimeiraPessoa);
+        TrocarCameras.RemoverCamera(cameraAnimada);
     }
 
     void Start()
     {
-        RB = GetComponent<Rigidbody>();        
+        RB = GetComponent<Rigidbody>();  
+
+        TrocarCameras.estaCameraAtiva(cameraAnimada);    
+
+        StartCoroutine(Animacao());  
     }
 
     void Update()
@@ -239,6 +247,12 @@ public class PlayerControle : MonoBehaviour
                 MudarEstadoAnimacao("Player_costa_run"); // Altera para animacao de corrida para tras
             }
         }
+    }
+
+    public IEnumerator Animacao()
+    {
+        yield return new WaitForSeconds(duracaoAnimacao);
+        TrocarCameras.TrocarCamera(cameraTerceiraPessoa);
     }
 
     private void MudarEstadoAnimacao(string animacaoNova) // Funcao para alternar as animacoes do player
