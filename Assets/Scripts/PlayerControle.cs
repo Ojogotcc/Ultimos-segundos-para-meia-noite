@@ -40,6 +40,8 @@ public class PlayerControle : MonoBehaviour
     private float mouseY;
     private float verticalLookRotation;
     public GameObject arma;
+    public AudioSource tiroBox;
+    public AudioClip tiroAudio;
 
     [Header("Cameras")]
     public CinemachineVirtualCamera cameraTerceiraPessoa;
@@ -184,6 +186,7 @@ public class PlayerControle : MonoBehaviour
 
         GameObject tiro = Instantiate (playerTiro, playerTiroPos.transform.position, playerTiroPos.transform.rotation);
         tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * playerTiro.GetComponent<TiroProjetil>().tiroData.velocidade;
+        tiroBox.PlayOneShot(tiroAudio);
     }
 
     private void MoverPlayer() // Movimentacao do player
