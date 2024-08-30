@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class InimgoControle : MonoBehaviour
+public class InimigoControle : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask chaoLayer, playerLayer;
 
+    // CAracteristicas
     public float vida;
 
     // Patrulha
@@ -29,12 +30,7 @@ public class InimgoControle : MonoBehaviour
     public float offsetAnimacao = 20.0f;
 
     public ObjetoInimigo inimigoData;
-
-    public void OnValidate()
-    {
-        visaoRange = inimigoData.alcanceVisao;
-        ataqueRange = inimigoData.distanciaAtaque;
-    }
+    public GameObject efeitoMorte;
 
     private void Awake()
     {
@@ -44,6 +40,8 @@ public class InimgoControle : MonoBehaviour
         agent.acceleration = inimigoData.aceleracao;
         vida = inimigoData.vida;
         intervaloEntreAtaques = inimigoData.tempoEntreAtaques;        
+        visaoRange = inimigoData.alcanceVisao;
+        ataqueRange = inimigoData.distanciaAtaque;
     }
 
     private void Update()
@@ -61,12 +59,8 @@ public class InimgoControle : MonoBehaviour
         direcao = agent.desiredVelocity;
 
         // Se ficar parado troca a animacao atual para idle
-        if (direcao.x == 0 && direcao.y == 0 && animacaoAtual.Contains("run"))
-        {
-            string novaAnimacao = animacaoAtual.Replace("run", "idle");
-            MudarEstadoAnimacao(novaAnimacao);
-        }
-        
+        if (direcao.x == 0 && direcao.y == 0 && animacaoAtual.Contains("run")) MudarEstadoAnimacao(animacaoAtual.Replace("run", "idle"));
+            
         // Animacao Frente
         if (-offsetAnimacao <= direcao.x && direcao.x <= offsetAnimacao && direcao.z < 0)
         {
@@ -104,7 +98,6 @@ public class InimgoControle : MonoBehaviour
     }
     private void SearchWalkPoint()
     {
-        //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
@@ -139,11 +132,13 @@ public class InimgoControle : MonoBehaviour
     public void TomarDano(int dano)
     {
         vida -= dano;
+        MudarEstadoAnimacao("IA_frente_hit");
 
         if (vida <= 0) Invoke(nameof(DestruirInimigo), 0.5f);
     }
     private void DestruirInimigo()
     {
+        Instantiate(efeitoMorte, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

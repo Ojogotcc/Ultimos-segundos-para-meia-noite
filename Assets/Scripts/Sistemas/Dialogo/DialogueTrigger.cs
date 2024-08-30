@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public Mensagem[] mensagens; // Array de mensagens do diálogo
-    public Char[] chars; // Array de personagens do diálogo
+    public Mensagem[] mensagens; // Array de mensagens do dialogo
+    public Char[] chars; // Array de personagens do dialogo
 
-    public void IniciarDialogo() // Método para iniciar o diálogo
+    public void IniciarDialogo() // Metodo para iniciar o dialogo
     {
-        // Encontra um objeto do tipo DialogueManager e chama o método AbrirDialogo
+        // Encontra um objeto do tipo DialogueManager e chama o metodo AbrirDialogo
         FindAnyObjectByType<DialogueManager>().AbrirDialogo(mensagens, chars);
     }
 
-    public void FinalizarDialogo() // Método para finalizar o diálogo
+    public void FinalizarDialogo() // Metodo para finalizar o dialogo
     {
-        // Encontra um objeto do tipo DialogueManager e chama o método FecharDialogo
+        // Encontra um objeto do tipo DialogueManager e chama o Metodo FecharDialogo
         FindAnyObjectByType<DialogueManager>().FecharDialogo();
     }
 }
 
 [System.Serializable]
-public class Mensagem // Classe que representa uma mensagem no diálogo
+public class Mensagem // Classe que representa uma mensagem no dialogo
 {
-    public int charID; // ID do personagem que está falando
+    public int charID; // ID do personagem que esta falando
     [TextArea(3, 10)]
-    public string mensagem; // Texto da mensagem, com uma área de texto ajustável no inspector
+    public string mensagem; // Texto da mensagem, com uma area de texto ajustavel no inspector
 }
 
 [System.Serializable]
-public class Char // Classe que representa um personagem no diálogo
+public class Char // Classe que representa um personagem no dialogo
 {
     public string charName; // Nome do personagem
     public Sprite sprite; // Sprite do personagem

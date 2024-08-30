@@ -19,10 +19,10 @@ MonoBehaviour:
     enabled: 1
     aligned: 0
     pairs:
-    - iconToDraw: {fileID: 2800000, guid: 60ae32c0c9aef0847919c06420cc16d1, type: 3}
+    - iconToDraw: {fileID: 2800000, guid: 9d82222f37151e949a61147b3e31dcb7, type: 3}
       targetClasses:
       - {fileID: 11500000, guid: b4baeebc86b9b0042a633222013abf8d, type: 3}
-    - iconToDraw: {fileID: 2800000, guid: bd76695c565fddd4da477a0d12c20d22, type: 3}
+    - iconToDraw: {fileID: 2800000, guid: d45a84e0148980a4ca2c4a543daed147, type: 3}
       targetClasses:
       - {fileID: 11500000, guid: d3651e7405f11b746b008af9f07ddabf, type: 3}
   prefabsData:

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Chao
   - Inimigo
+  - MenuPausa
+  - Menu Config
   layers:
   - Default
   - TransparentFX
@@ -13,11 +15,11 @@ TagManager:
   - 
   - Water
   - UI
+  - MenuPausa
+  - 
   - WhatIsGround
   - WhatIsPlayer
-  - 
-  - 
-  - 
+  - Chao
   - 
   - 
   - 
