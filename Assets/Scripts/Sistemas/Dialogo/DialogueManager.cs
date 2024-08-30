@@ -2,104 +2,201 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Timeline;
 using UnityEngine.UI;
+using Ink.Runtime;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Image charImage0; // Refer�ncia � imagem do personagem 0
-    public Image charImage1; // Refer�ncia � imagem do personagem 1
-    public TextMeshProUGUI charNome; // Refer�ncia ao componente TextMeshProUGUI para o nome do personagem
-    public TextMeshProUGUI mensagemTexto; // Refer�ncia ao componente TextMeshProUGUI para o texto da mensagem
-    public RectTransform background; // Refer�ncia ao fundo do di�logo
+    public Image charImage0;
+    public Image charImage1;
+    public TextMeshProUGUI charNome;
+    public TextMeshProUGUI mensagemTexto;
+    public RectTransform background;
 
-    Mensagem[] mensagemAtual; // Armazena as mensagens do di�logo atual
-    Char[] charAtual; // Armazena os personagens do di�logo atual
-    int mensagemAtiva = 0; // �ndice da mensagem ativa
-    public static bool estaAtivo = false; // Indica se o di�logo est� ativo
-    public float delayDigitar = 0.01f; // Delay entre cada caractere digitado
+    public GameObject FundoEscolhas;
+    public GameObject[] escolhas;
+    public TextMeshProUGUI[] escolhasTextos;
 
-    public void AbrirDialogo(Mensagem[] mensagens, Char[] chars) // Abre o di�logo com as mensagens e personagens fornecidos
+    public static bool estaAtivo = false;
+    public static bool estaEscolhendo = false;
+    public float delayDigitar = 0.01f;
+
+    private Story historiaAtual;
+    private string ultimoPersonagemFalante;
+
+    public static DialogueManager instance;
+
+    private void Awake()
     {
-        mensagemAtual = mensagens; // Armazena as mensagens
-        charAtual = chars; // Armazena os personagens
-        mensagemAtiva = 0; // Reseta o �ndice da mensagem ativa
-        estaAtivo = true; // Define que o di�logo est� ativo
-        Debug.Log("Iniciou dialogo com: " + chars[0].charName + " e " + chars[1].charName); // Loga os nomes dos personagens no console
-        MostrarMensagem(); // Mostra a primeira mensagem
-        background.LeanScale(Vector3.one, 0.3f); // Anima a escala do fundo do di�logo para aparecer
-    }
-
-    public void FecharDialogo() // Fecha o di�logo
-    {
-        estaAtivo = false; // Define que o di�logo n�o est� ativo
-        Debug.Log("Dialogo foi fechado"); // Loga no console que o di�logo foi fechado
-        background.LeanScale(Vector3.zero, 0.2f); // Anima a escala do fundo do di�logo para desaparecer
-        mensagemAtiva = 0; // Reseta o �ndice da mensagem ativa
-    }
-
-    void MostrarMensagem() // Mostra a mensagem atual junto com o personagem falante e seu nome, depois inicia a digita��o
-    {
-        StopAllCoroutines(); // Para todas as corrotinas em execu��o
-        Mensagem mensagemParaMostrar = mensagemAtual[mensagemAtiva]; // Obt�m a mensagem atual
-        Char charParaMostrar = charAtual[mensagemParaMostrar.charID]; // Obt�m o personagem correspondente � mensagem
-        charNome.text = charParaMostrar.charName; // Define o nome do personagem no UI
-        charImage0.sprite = charAtual[0].sprite; // Define a imagem do personagem 0 no UI
-        charImage1.sprite = charAtual[1].sprite; // Define a imagem do personagem 1 no UI
-
-        // Anima a escala das imagens dos personagens para indicar quem est� falando
-        if (mensagemParaMostrar.charID == 0)
+        if (instance != null)
         {
-            charImage0.transform.LeanScale(new Vector3(1.2f, 1.2f, 1.2f), 0.2f); // Aumenta a escala do personagem 0
-            charImage1.transform.LeanScale(new Vector3(0.9f, 0.9f, 0.9f), 0.2f); // Diminui a escala do personagem 1
+            Debug.LogWarning("Existe mais de um DialogueManager em cena!");
+            return;
         }
-        else
+        instance = this;
+    }
+
+    public void AbrirDialogo(TextAsset inkJSON)
+    {
+        if (estaAtivo)
         {
-            charImage1.transform.LeanScale(new Vector3(1.2f, 1.2f, 1.2f), 0.2f); // Aumenta a escala do personagem 1
-            charImage0.transform.LeanScale(new Vector3(0.9f, 0.9f, 0.9f), 0.2f); // Diminui a escala do personagem 0
+            Debug.LogWarning("Um diálogo já está ativo.");
+            return;
         }
 
-        StartCoroutine(DigitarFrase(mensagemParaMostrar.mensagem)); // Inicia a corrotina para digitar a mensagem
+        historiaAtual = new Story(inkJSON.text);
+        estaAtivo = true;
+        estaEscolhendo = false;
+        ultimoPersonagemFalante = null;
+        background.localScale = Vector3.zero;
+        ProximaMensagem();
+        background.LeanScale(new Vector3(1.94f, 1.94f, 1.94f), 0.3f);
     }
 
-    IEnumerator DigitarFrase(string frase) // Deixa vis�vel letra a letra (efeito de "digitar") com um pequeno delay
+    public void FecharDialogo()
     {
-        mensagemTexto.text = frase; // Define o texto completo da mensagem
-        mensagemTexto.maxVisibleCharacters = 0; // Define o n�mero de caracteres vis�veis como zero
+        estaAtivo = false;
+        estaEscolhendo = false;
+        Debug.Log("Diálogo foi fechado");
+        background.LeanScale(Vector3.zero, 0.2f);
+
+        FundoEscolhas.SetActive(false);
+        foreach (GameObject escolha in escolhas)
+        {
+            escolha.SetActive(false);
+        }
+    }
+
+    void MostrarMensagem()
+    {
+        StopAllCoroutines();
+
+        // Atualiza o personagem falante baseado nas tags do Ink
+        AtualizarPersonagem(historiaAtual.currentTags);
+
+        StartCoroutine(DigitarFrase(historiaAtual.Continue()));
+    }
+
+    void AtualizarPersonagem(List<string> tags)
+    {
+        // Verifica as tags para atualizar a UI do personagem falante
+        foreach (string tag in tags)
+        {
+            if (tag == "Personagem(A)" && ultimoPersonagemFalante != "A")
+            {
+                charNome.text = "Andróide";
+                charImage0.transform.LeanScale(new Vector3(1.2f, 1.2f, 1.2f), 0.2f);
+                charImage1.transform.LeanScale(new Vector3(0.9f, 0.9f, 0.9f), 0.2f);
+                ultimoPersonagemFalante = "A";
+            }
+            else if (tag == "Personagem(B)" && ultimoPersonagemFalante != "B")
+            {
+                charNome.text = "Militar";
+                charImage0.transform.LeanScale(new Vector3(0.9f, 0.9f, 0.9f), 0.2f);
+                charImage1.transform.LeanScale(new Vector3(1.2f, 1.2f, 1.2f), 0.2f);
+                ultimoPersonagemFalante = "B";
+            }
+        }
+    }
+
+    IEnumerator DigitarFrase(string frase)
+    {
+        Debug.Log(frase);
+        mensagemTexto.text = "";
+        mensagemTexto.maxVisibleCharacters = 0;
+        mensagemTexto.text = frase;
+
         for (int i = 0; i <= frase.Length; i++)
         {
-            mensagemTexto.maxVisibleCharacters = i; // Incrementa o n�mero de caracteres vis�veis
-            yield return new WaitForSeconds(delayDigitar); // Espera o delay definido antes de mostrar o pr�ximo caractere
+            mensagemTexto.maxVisibleCharacters = i;
+            yield return new WaitForSeconds(delayDigitar);
         }
+
+        MostrarEscolhas();
     }
 
-    public void ProximaMensagem() // Inicia a pr�xima parte do di�logo, se houver, caso contr�rio, desativa o di�logo
+    public void ProximaMensagem()
     {
-        mensagemAtiva++; // Incrementa o �ndice da mensagem ativa
-        if (mensagemAtiva < mensagemAtual.Length)
+        if (historiaAtual.canContinue)
         {
-            MostrarMensagem(); // Mostra a pr�xima mensagem
+            MostrarMensagem();
         }
         else
         {
-            FecharDialogo(); // Fecha o di�logo se n�o houver mais mensagens
+            FecharDialogo();
         }
     }
 
-    void Start() // Esconde o canvas do di�logo ao iniciar
+    void Start()
     {
-        background.transform.localScale = Vector3.zero; // Define a escala do fundo do di�logo como zero
+        background.transform.localScale = Vector3.zero;
+
+        escolhasTextos = new TextMeshProUGUI[escolhas.Length];
+        int index = 0;
+        foreach (GameObject escolha in escolhas)
+        {
+            escolhasTextos[index] = escolha.GetComponentInChildren<TextMeshProUGUI>();
+            escolha.SetActive(false);
+            index++;
+        }
+        FundoEscolhas.SetActive(false);
+    }
+
+    void MostrarEscolhas()
+    {
+        List<Choice> escolhasAtuais = historiaAtual.currentChoices;
+
+        if (escolhasAtuais.Count == 0)
+        {
+            FundoEscolhas.SetActive(false);
+            return;
+        }
+
+        estaEscolhendo = true;
+        FundoEscolhas.SetActive(true);
+
+        if (escolhasAtuais.Count > escolhas.Length)
+        {
+            Debug.LogWarning("Mais escolhas do que o UI suporta. Número de escolhas: " + escolhasAtuais.Count);
+            return;
+        }
+
+        int index = 0;
+        foreach (Choice escolha in escolhasAtuais)
+        {
+            escolhas[index].SetActive(true);
+            escolhasTextos[index].text = escolha.text;
+            index++;
+        }
+
+        for (int i = index; i < escolhas.Length; i++)
+        {
+            escolhas[i].SetActive(false);
+        }
+    }
+
+    public void TomarEscolha(int indexEscolha)
+    {
+        if (indexEscolha >= 0 && indexEscolha < historiaAtual.currentChoices.Count)
+        {
+            historiaAtual.ChooseChoiceIndex(indexEscolha);
+            estaEscolhendo = false;
+            ProximaMensagem();
+        }
+        else
+        {
+            Debug.LogWarning("Índice de escolha fora do intervalo: " + indexEscolha);
+        }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && estaAtivo == true) // Avan�a para a pr�xima mensagem se a tecla Espa�o for pressionada e o di�logo estiver ativo
+        if (Input.GetKeyDown(KeyCode.Space) && estaAtivo && !estaEscolhendo)
         {
             ProximaMensagem();
         }
-        if (Input.GetKeyUp(KeyCode.Escape) && estaAtivo == true) // Fecha o di�logo se a tecla Esc for pressionada e o di�logo estiver ativo
+        if (Input.GetKeyUp(KeyCode.Escape) && estaAtivo)
         {
             FecharDialogo();
         }
