@@ -7,7 +7,7 @@ using UnityEngine;
 [System.Serializable]
 public class NPC : MonoBehaviour
 {
-    public DialogueTrigger trigger;
+    public TextAsset dialogo; 
     public GameObject icone;
     public static bool dialogoAtivado = false;
 
@@ -28,7 +28,7 @@ public class NPC : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && icone.activeSelf && !dialogoAtivado)
         {
             icone.transform.LeanScale(Vector3.zero, 0.2f);
-            trigger.IniciarDialogo();
+            FindAnyObjectByType<DialogueManager>().AbrirDialogo(dialogo);
             dialogoAtivado = true;
             player.GetComponent<PlayerControle>().DesabilitarPulo();
         }
@@ -41,7 +41,7 @@ public class NPC : MonoBehaviour
             icone.transform.LeanScale(Vector3.zero, 0.2f);
             if (dialogoAtivado)
             {
-                trigger.FinalizarDialogo();
+                FindAnyObjectByType<DialogueManager>().FecharDialogo();
                 dialogoAtivado = false;
                 player.GetComponent<PlayerControle>().HabilitarPulo();
             }

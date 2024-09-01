@@ -1,29 +1,37 @@
+VAR Avatar0Inicial = "Protagonista"
+VAR Avatar0AparenciaInicial = "serio"
+VAR Avatar1Inicial = "Militar"
+VAR Avatar1AparenciaInicial = "sem_mascara"
+
 -> inicio
 
 === inicio ===
-# Personagem(B)
-Olá Jovem Robô
+# AparenciaL1: com_mascara
+Militar: Olá Jovem Robô. 
+    
+# AparenciaL0: sorrindo
+Protagonista: Opa, Bom? 
 
-# Personagem(A)
-Opa, Bom?
+Protagonista: Mascara legal.
 
-# Personagem(B)
-Qual digimon você escolhe?
-    + [Agumon]
+Militar: Curtiu? O problema que não dá pra enxergar sem.
+
+Militar: Qual digimon você escolhe?
+    * [Agumon]
         -> escolha("Agumon")
-    + [Gabumon]
+    * [Gabumon]
         -> escolha("Gabumon")
-    + [Korumon]
+    * [Korumon]
         -> escolha("Korumon")
 === escolha(digimon) ===
-Você escolheu o {digimon}! # Personagem(B)
+Militar: Você escolheu o {digimon}!
 
-# Personagem(B)
-Tome muito cuidado nessa terras, há uma lenda que o ET bilu anda por aí
+# AparenciaL1: com_mascara
+Militar: Tome muito cuidado nessa terras, há uma lenda que o ET bilu anda por aí
 
-# Personagem(B)
-E também o mario foi visto recentemente aqui
+# AparenciaL1: com_mascara
+Militar: E também o mario foi visto recentemente aqui
 
-# Personagem(A)
-Que mario??
+# Aparencia(sorrindo)
+Protagonista: Que mario??
 -> END
