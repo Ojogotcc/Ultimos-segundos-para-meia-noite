@@ -28,7 +28,7 @@ public class InimigoControle : MonoBehaviour
     private string animacaoAtual = "IA_frente_idle";
     public Vector3 direcao;
     public float offsetAnimacao = 20.0f;
-
+    private Vector3 destinoTiro;
     public ObjetoInimigo inimigoData;
     public GameObject efeitoMorte;
 
@@ -114,13 +114,27 @@ public class InimigoControle : MonoBehaviour
 
     private void AtacarPlayer()
     {
-        //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
         transform.LookAt(player);
 
         if (!jaAtacou)
         {
             jaAtacou = true;
+
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                destinoTiro = hit.point;
+            }
+            else
+            {
+                destinoTiro = ray.GetPoint(200);
+            }
+
+            GameObject tiro = Instantiate (projectile, transform.position, transform.rotation);
+            tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * projectile.GetComponent<TiroProjetil>().tiroData.velocidade;
             Invoke(nameof(ResetarAtaque), intervaloEntreAtaques);
         }
     }

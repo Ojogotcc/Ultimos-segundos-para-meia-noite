@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.UI;
 
 public class PlayerControle : MonoBehaviour
 {   
@@ -40,6 +39,11 @@ public class PlayerControle : MonoBehaviour
     private float mouseY;
     private float verticalLookRotation;
     public GameObject arma;
+
+    [Header("UI")]
+    public Slider vida;
+    public int vidaMaxima = 100;
+    private int vidaAtual;
 
     [Header("Cameras")]
     public CinemachineVirtualCamera cameraTerceiraPessoa;
@@ -247,5 +251,16 @@ public class PlayerControle : MonoBehaviour
 
         animator.Play(animacaoNova); // Reproduz a nova animacao
         animacaoAtual = animacaoNova; // Atualiza o estado atual
+    }
+
+    public void TomarDano(int dano)
+    {
+        vidaAtual -= dano;
+        vida.value = vidaAtual;
+
+        if (vidaAtual <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
