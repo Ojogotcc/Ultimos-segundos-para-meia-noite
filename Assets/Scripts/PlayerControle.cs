@@ -41,9 +41,10 @@ public class PlayerControle : MonoBehaviour
     public GameObject arma;
 
     [Header("UI")]
-    public Slider vida;
+
     public int vidaMaxima = 100;
     private int vidaAtual;
+    [SerializeField] public Image vida;
 
     [Header("Cameras")]
     public CinemachineVirtualCamera cameraTerceiraPessoa;
@@ -256,7 +257,8 @@ public class PlayerControle : MonoBehaviour
     public void TomarDano(int dano)
     {
         vidaAtual -= dano;
-        vida.value = vidaAtual;
+
+        vida.fillAmount = (float) vidaAtual / vidaMaxima;
 
         if (vidaAtual <= 0)
         {
