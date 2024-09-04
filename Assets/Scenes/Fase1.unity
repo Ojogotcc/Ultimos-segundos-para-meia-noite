@@ -188,9 +188,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
+      propertyPath: vida
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 541737361}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1892891964061884874, guid: dc3eb677ab87f014cb7ec200302dee1a,
+        type: 3}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
       propertyPath: chaoLayer.m_Bits
@@ -200,6 +216,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerLayer.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -391,9 +412,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
+      propertyPath: vida
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 541737361}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1892891964061884874, guid: dc3eb677ab87f014cb7ec200302dee1a,
+        type: 3}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
       propertyPath: chaoLayer.m_Bits
@@ -403,6 +440,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerLayer.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -492,9 +534,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
+      propertyPath: vida
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 541737361}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1892891964061884874, guid: dc3eb677ab87f014cb7ec200302dee1a,
+        type: 3}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
       propertyPath: chaoLayer.m_Bits
@@ -504,6 +562,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerLayer.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -882,7 +945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab0fea4217e9064d95dab9997a9ed12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 50
+  velocidade: 30
   multiplicador_gravidade: 3.09
   gravidade_valor: -10
   estaNoChao: 0
@@ -896,7 +959,7 @@ MonoBehaviour:
   mouseSensibilidadeY: 1
   miraCanvas: {fileID: 1684119104}
   arma: {fileID: 0}
-  vida: {fileID: 1420783071}
+  vida: {fileID: 1420783072}
   vidaMaxima: 100
   cameraTerceiraPessoa: {fileID: 1097454258}
   cameraPrimeiraPessoa: {fileID: 1897437412}
@@ -1347,9 +1410,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
+      propertyPath: vida
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 541737361}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1892891964061884874, guid: dc3eb677ab87f014cb7ec200302dee1a,
+        type: 3}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
       propertyPath: chaoLayer.m_Bits
@@ -1359,6 +1438,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerLayer.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1430,9 +1514,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
+      propertyPath: vida
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 541737361}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1892891964061884874, guid: dc3eb677ab87f014cb7ec200302dee1a,
+        type: 3}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
       propertyPath: chaoLayer.m_Bits
@@ -1442,6 +1542,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerLayer.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1549,9 +1654,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
+      propertyPath: vida
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 541737361}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1892891964061884874, guid: dc3eb677ab87f014cb7ec200302dee1a,
+        type: 3}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
       propertyPath: chaoLayer.m_Bits
@@ -1561,6 +1682,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerLayer.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4478,9 +4604,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
+      propertyPath: vida
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 541737361}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1892891964061884874, guid: dc3eb677ab87f014cb7ec200302dee1a,
+        type: 3}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
       propertyPath: chaoLayer.m_Bits
@@ -4490,6 +4632,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerLayer.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4703,9 +4850,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
+      propertyPath: vida
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 541737361}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1892891964061884874, guid: dc3eb677ab87f014cb7ec200302dee1a,
+        type: 3}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
       propertyPath: chaoLayer.m_Bits
@@ -4715,6 +4878,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerLayer.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5430,6 +5598,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
+      propertyPath: vida
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 541737361}
@@ -5441,6 +5614,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
         type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
       propertyPath: chaoLayer.m_Bits
       value: 256
       objectReference: {fileID: 0}
@@ -5448,6 +5626,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerLayer.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
