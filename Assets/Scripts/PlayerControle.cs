@@ -31,43 +31,52 @@ public class PlayerControle : MonoBehaviour
     private string animacaoAtual = "Player_frente_idle"; // Armazena o estado atual da animacao do player
     
     [Header("FPS")]
-    public GameObject GOPrimeiraCamera;
+    public GameObject GOMiraCamera;
     public float mouseSensibilidadeX;
     public float mouseSensibilidadeY;
     public GameObject miraCanvas;
     private float mouseX;
     private float mouseY;
     private float verticalLookRotation;
-    public GameObject arma;
 
     [Header("UI")]
 
-    public int vidaMaxima = 100;
-    private int vidaAtual;
+    public float vidaMaxima = 100;
+    public float vidaAtual;
+    public float energiaMaxima = 100;
+    public float energiaAtual;
+    public int gastoportiro = 5;
+    [SerializeField] public Image vidadelay;
     [SerializeField] public Image vida;
+    [SerializeField] public Image energia;
+    [SerializeField] public Image energiadelay;
 
     [Header("Cameras")]
     public CinemachineVirtualCamera cameraTerceiraPessoa;
-    public CinemachineVirtualCamera cameraPrimeiraPessoa;
+    public CinemachineVirtualCamera cameraMiraPessoa;
 
     private void OnEnable()
     {
         TrocarCameras.AdicionarCamera(cameraTerceiraPessoa);
-        TrocarCameras.AdicionarCamera(cameraPrimeiraPessoa);
+        TrocarCameras.AdicionarCamera(cameraMiraPessoa);
     }
 
     private void OnDisable() {
         TrocarCameras.RemoverCamera(cameraTerceiraPessoa);
-        TrocarCameras.RemoverCamera(cameraPrimeiraPessoa);
+        TrocarCameras.RemoverCamera(cameraMiraPessoa);
     }
 
     void Start()
     {
         RB = GetComponent<Rigidbody>();        
+        vidaAtual = vidaMaxima;
+        energiaAtual = energiaMaxima;
     }
 
     void Update()
     {
+        
+        
         CheckChao(); // Verifica se o player esta no chao
         InputPlayer(); // Recebe os inputs do player
         MoverPlayer(); // Move o player com base nos inputs
@@ -119,12 +128,12 @@ public class PlayerControle : MonoBehaviour
     {   
         if(miraInput != 0)
         {
-            if (TrocarCameras.estaCameraAtiva(cameraTerceiraPessoa)) TrocarCameras.TrocarCamera(cameraPrimeiraPessoa);
+            if (TrocarCameras.estaCameraAtiva(cameraTerceiraPessoa)) TrocarCameras.TrocarCamera(cameraMiraPessoa);
             
             estaMirando = true;
             MirarFPS();
 
-            if (podeAtirar && atirarInput != 0)
+            if (podeAtirar && atirarInput != 0 && energiaAtual > gastoportiro)
             {
                 podeAtirar = false;
                 AtirarRaio();
@@ -137,7 +146,6 @@ public class PlayerControle : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             miraCanvas.SetActive(false);
-            arma.SetActive(false);
 
             TrocarCameras.TrocarCamera(cameraTerceiraPessoa);
             transform.localEulerAngles = Vector3.zero;
@@ -149,12 +157,11 @@ public class PlayerControle : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         miraCanvas.SetActive(true);
-        arma.SetActive(true);
 
         transform.Rotate(Vector3.up * mouseX* mouseSensibilidadeX);
         verticalLookRotation += mouseY * mouseSensibilidadeY;
         verticalLookRotation = Mathf.Clamp(verticalLookRotation, -60, 60);
-        GOPrimeiraCamera.transform.localEulerAngles = Vector3.left * verticalLookRotation;
+        GOMiraCamera.transform.localEulerAngles = Vector3.left * verticalLookRotation;
 
         playerTiroPos.transform.Rotate(Vector3.up * mouseX* mouseSensibilidadeX);
         playerTiroPos.transform.localEulerAngles = Vector3.left * verticalLookRotation;
@@ -181,6 +188,10 @@ public class PlayerControle : MonoBehaviour
 
         GameObject tiro = Instantiate (playerTiro, playerTiroPos.transform.position, playerTiroPos.transform.rotation);
         tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * playerTiro.GetComponent<TiroProjetil>().tiroData.velocidade;
+        
+        energiaAtual -= gastoportiro;        
+        energia.fillAmount = (energiaAtual / energiaMaxima);
+        StartCoroutine(DelayBarras(energiadelay, energia, 1f));
     }
 
     private void MoverPlayer() // Movimentacao do player
@@ -207,15 +218,6 @@ public class PlayerControle : MonoBehaviour
     {    
         if(estaMirando == true) 
         {
-            // if (moverInput.x == 0 && moverInput.y == 0)
-            // {
-            //     MudarEstadoAnimacao("Player_costa_idle_aim");        
-            // }
-            // else
-            // {
-            //     MudarEstadoAnimacao("Player_costa_run_aim"); // Altera para animacao de corrida esquerda
-            // }
-
             MudarEstadoAnimacao("Player_costa_idle_aim");
         }
         else 
@@ -256,13 +258,25 @@ public class PlayerControle : MonoBehaviour
 
     public void TomarDano(int dano)
     {
-        vidaAtual -= dano;
+        vidaAtual -= dano;        
 
-        vida.fillAmount = (float) vidaAtual / vidaMaxima;
+        vida.fillAmount = (vidaAtual / vidaMaxima);
+
+        StartCoroutine(DelayBarras(vidadelay, vida, 1f));
 
         if (vidaAtual <= 0)
         {
             Destroy(gameObject);
         }
     }
+
+    private IEnumerator DelayBarras(Image delay, Image normal, float delayTime)
+{
+    yield return new WaitForSeconds(delayTime);
+
+    LeanTween.value(delay.fillAmount, normal.fillAmount, 0.5f).setOnUpdate((float val) =>
+    {
+        delay.fillAmount = val;
+    });
+}
 }

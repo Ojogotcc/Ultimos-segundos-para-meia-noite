@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerTiro
   m_EditorClassIdentifier: 
   velocidade: 200
-  dano: 1
+  dano: 15
   duracao: 20
   sprite: {fileID: 0}

@@ -12,7 +12,7 @@ public class GameplayManager : MonoBehaviour
     public GameObject menuConfig;
     public GameObject menuPausa;
 
-    private bool gameplayAtivada;
+    // private bool gameplayAtivada;
 
     private void Pausar()
     {
@@ -20,14 +20,14 @@ public class GameplayManager : MonoBehaviour
         {
             menuPausa.SetActive(true);
             Time.timeScale = 0f;
-            gameplayAtivada = false;
+            // gameplayAtivada = false;
         }
     }
 
     public void Despausar()
     {
         menuPausa.SetActive(false);
-        gameplayAtivada = true;
+        // gameplayAtivada = true;
         Time.timeScale = 1;
     }
 
@@ -58,7 +58,7 @@ public class GameplayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameplayAtivada = true;
+        // gameplayAtivada = true;
     }
 
     // Update is called once per frame
