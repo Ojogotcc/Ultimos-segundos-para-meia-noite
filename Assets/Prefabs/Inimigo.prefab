@@ -128,10 +128,10 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  vida: 0
+  vida: 50
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
-  intervaloEntreAtaques: 0
+  walkPointRange: 10
+  intervaloEntreAtaques: 2
   projectile: {fileID: 1892891964061884874, guid: 3b5644cdb2488b14295fec81c9edf8f0,
     type: 3}
   visaoRange: 100

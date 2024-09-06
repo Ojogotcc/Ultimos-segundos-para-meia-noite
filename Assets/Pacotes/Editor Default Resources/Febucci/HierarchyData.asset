@@ -33,7 +33,7 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 0.08}
   separator:
     enabled: 1
-    startString: ===
+    startString: === Gerenciadores ===
     color: {r: 0, g: 1, b: 1, a: 1}
   tree:
     enabled: 1

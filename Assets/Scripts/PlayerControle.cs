@@ -8,13 +8,14 @@ public class PlayerControle : MonoBehaviour
 {   
     [Header("Movimentacao")]
     public float velocidade; // Velocidade de movimento do player
-    public float multiplicador_gravidade = 5.0f; // Multiplicador da gravidade para ajustar a intensidade
+    public float multiplicador_gravidade = 5f; // Multiplicador da gravidade para ajustar a intensidade
+    public float forca_pulo = 3f;
     public float gravidade_valor = -10; // Valor da gravidade
     public bool estaNoChao = false; // Indica se o player esta no chao
     private Rigidbody RB; // Referencia ao componente Rigidbody do player    
     private Vector2 moverInput; // Armazena o input de movimento do player
     private float gravidade_total; // Armazena o valor total da gravidade aplicada ao player    
-    private float checkChaoDistancia = 8f; // Distancia para verificar se o player esta no chao
+    public float checkChaoDistancia = 8f; // Distancia para verificar se o player esta no chao
     private bool podePular = true;
 
     [Header("Ataque")]
@@ -74,9 +75,7 @@ public class PlayerControle : MonoBehaviour
     }
 
     void Update()
-    {
-        
-        
+    {             
         CheckChao(); // Verifica se o player esta no chao
         InputPlayer(); // Recebe os inputs do player
         MoverPlayer(); // Move o player com base nos inputs
@@ -206,7 +205,7 @@ public class PlayerControle : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space) && podePular == true)
             {
-                gravidade_total += 50; // Aplica impulso para pular
+                gravidade_total += forca_pulo; // Aplica impulso para pular
             }
         }
 

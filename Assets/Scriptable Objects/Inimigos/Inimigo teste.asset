@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: Inimigo teste
   vida: 100
-  velocidade: 32
+  velocidade: 25
   aceleracao: 200
   tempoEntreAtaques: 1
   dano: 1
   tipoAtaque: Normal
-  distanciaAtaque: 10
+  distanciaAtaque: 20
   alcanceVisao: 100

@@ -332,6 +332,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -689,6 +699,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -999,8 +1019,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidade: 30
   multiplicador_gravidade: 3.09
+  forca_pulo: 3
   gravidade_valor: -10
   estaNoChao: 0
+  checkChaoDistancia: 8
   playerTiro: {fileID: 1892891964061884874, guid: dc3eb677ab87f014cb7ec200302dee1a,
     type: 3}
   playerTiroPos: {fileID: 1568388483}
@@ -1106,6 +1128,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2018,6 +2050,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2342,6 +2384,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2935,6 +2987,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3761,6 +3823,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3828,6 +3900,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4233,6 +4315,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4346,6 +4438,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4489,6 +4591,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5163,6 +5275,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5342,6 +5464,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: ataqueRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776845444255126578, guid: 55ba52fb24899304c91e0cb4eee6402c,
+        type: 3}
+      propertyPath: intervaloEntreAtaques
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5643,8 +5775,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 97db5c4242a5c884dadbb9da728a4489, type: 2}
-  m_sharedMaterial: {fileID: -90414187927503906, guid: 97db5c4242a5c884dadbb9da728a4489,
+  m_fontAsset: {fileID: 11400000, guid: 681b30e2b6c665e458e60dd91eea1ad8, type: 2}
+  m_sharedMaterial: {fileID: 213375929513685160, guid: 681b30e2b6c665e458e60dd91eea1ad8,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5679,7 +5811,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -15
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
