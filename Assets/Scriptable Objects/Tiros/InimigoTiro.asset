@@ -15,4 +15,4 @@ MonoBehaviour:
   velocidade: 300
   dano: 10
   duracao: 20
-  sprite: {fileID: 0}
+  atirador: Inimigo

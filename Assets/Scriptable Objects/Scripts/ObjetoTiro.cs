@@ -5,6 +5,6 @@ public class ObjetoTiro : ScriptableObject
 {
     public float velocidade;
     public int dano;
-    public float duracao;
-    public Sprite sprite;
+    public int duracao;
+    public string atirador;
 }

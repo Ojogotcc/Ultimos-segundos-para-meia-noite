@@ -3,19 +3,20 @@ using UnityEngine.AI;
 
 public class InimigoControle : MonoBehaviour
 {
+    [Header("Agentes")]
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask chaoLayer, playerLayer;
 
-    // CAracteristicas
+    // Caracteristicas
     public float vida;
 
-    // Patrulha
+    [Header("Patrulha")]
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
-    // Ataque
+    [Header("Ataque")]
     public float intervaloEntreAtaques;
     bool jaAtacou;
     public GameObject projectile;
@@ -23,7 +24,7 @@ public class InimigoControle : MonoBehaviour
     public float visaoRange, ataqueRange;
     public bool playerEmVisaoRange, playerEmAtaqueRange;
 
-    // Animacao
+    [Header("Animacao")]
     public Animator animator;
     private string animacaoAtual = "IA_frente_idle";
     public Vector3 direcao;
@@ -36,19 +37,19 @@ public class InimigoControle : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = inimigoData.velocidade;
-        agent.acceleration = inimigoData.aceleracao;
-        vida = inimigoData.vida;
-        intervaloEntreAtaques = inimigoData.tempoEntreAtaques;        
-        visaoRange = inimigoData.alcanceVisao;
-        ataqueRange = inimigoData.distanciaAtaque;
+        // agent.speed = inimigoData.velocidade;
+        // agent.acceleration = inimigoData.aceleracao;
+        // vida = inimigoData.vida;
+        // intervaloEntreAtaques = inimigoData.tempoEntreAtaques;        
+        // visaoRange = inimigoData.alcanceVisao;
+        // ataqueRange = inimigoData.distanciaAtaque;
     }
 
     private void Update()
     {
         playerEmVisaoRange = Physics.CheckSphere(transform.position, visaoRange, playerLayer);
         playerEmAtaqueRange = Physics.CheckSphere(transform.position, ataqueRange, playerLayer);
-
+                
         if (!playerEmVisaoRange && !playerEmAtaqueRange) Patrulhar();
         if (playerEmVisaoRange && !playerEmAtaqueRange) PerseguirPlayer();
         if (playerEmAtaqueRange && playerEmVisaoRange) AtacarPlayer();
@@ -118,27 +119,34 @@ public class InimigoControle : MonoBehaviour
         
         Vector3 direcaoParaPlayer = (player.position - transform.position).normalized;
         Quaternion olharRotacao = Quaternion.LookRotation(new Vector3(direcaoParaPlayer.x, 0, direcaoParaPlayer.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, olharRotacao, Time.deltaTime * 5f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, olharRotacao, Time.deltaTime * 5f);       
 
         if (!jaAtacou)
         {
-            jaAtacou = true;
+            MudarEstadoAnimacao("IA_frente_charge");
 
-            Ray ray = new Ray(transform.position, (player.position - transform.position).normalized);
-            RaycastHit hit;
+            AnimatorStateInfo estadoAnimacao = animator.GetCurrentAnimatorStateInfo(0);
 
-            if (Physics.Raycast(ray, out hit))
+            if (estadoAnimacao.normalizedTime >= 1f)
             {
-                destinoTiro = hit.point;
-            }
-            else
-            {
-                destinoTiro = player.position;
-            }
+                jaAtacou = true;
 
-            GameObject tiro = Instantiate (projectile, transform.position, transform.rotation);
-            tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * projectile.GetComponent<TiroProjetil>().tiroData.velocidade;
-            Invoke(nameof(ResetarAtaque), intervaloEntreAtaques);
+                Ray ray = new Ray(transform.position, (player.position - transform.position).normalized);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    destinoTiro = hit.point;
+                }
+                else
+                {
+                    destinoTiro = player.position;
+                }
+
+                GameObject tiro = Instantiate (projectile, transform.position, transform.rotation);
+                tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * projectile.GetComponent<TiroProjetil>().tiroData.velocidade;
+                Invoke(nameof(ResetarAtaque), intervaloEntreAtaques);
+            }            
         }
     }
     private void ResetarAtaque()

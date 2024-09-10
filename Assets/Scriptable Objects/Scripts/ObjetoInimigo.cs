@@ -10,11 +10,7 @@ public class ObjetoInimigo : ScriptableObject
     public float vida;
     public float velocidade;
     public float aceleracao;
-
-    // Ataque
     public float tempoEntreAtaques;
-    public float dano;
-    public string tipoAtaque;
     public float distanciaAtaque;
     public float alcanceVisao;
 }
