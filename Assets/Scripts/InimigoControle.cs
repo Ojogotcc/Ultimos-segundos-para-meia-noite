@@ -115,13 +115,16 @@ public class InimigoControle : MonoBehaviour
     private void AtacarPlayer()
     {
         agent.SetDestination(transform.position);
-        transform.LookAt(player);
+        
+        Vector3 direcaoParaPlayer = (player.position - transform.position).normalized;
+        Quaternion olharRotacao = Quaternion.LookRotation(new Vector3(direcaoParaPlayer.x, 0, direcaoParaPlayer.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, olharRotacao, Time.deltaTime * 5f);
 
         if (!jaAtacou)
         {
             jaAtacou = true;
 
-            Ray ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0));
+            Ray ray = new Ray(transform.position, (player.position - transform.position).normalized);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit))
@@ -130,7 +133,7 @@ public class InimigoControle : MonoBehaviour
             }
             else
             {
-                destinoTiro = ray.GetPoint(200);
+                destinoTiro = player.position;
             }
 
             GameObject tiro = Instantiate (projectile, transform.position, transform.rotation);

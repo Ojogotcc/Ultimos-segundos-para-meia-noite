@@ -333,14 +333,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   skyType:
-    m_OverrideState: 0
-    m_Value: 4
+    m_OverrideState: 1
+    m_Value: 3
   cloudType:
     m_OverrideState: 1
     m_Value: 1
   skyAmbientMode:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 1
   windOrientation:
     m_OverrideState: 0
     m_Value: 0
@@ -575,10 +575,10 @@ MonoBehaviour:
   m_Name: Global Volume Profile 2
   m_EditorClassIdentifier: 
   components:
+  - {fileID: -7888053668791254898}
   - {fileID: -3687550936250745404}
   - {fileID: -2656082102031421240}
   - {fileID: -2469105506848727805}
-  - {fileID: -7888053668791254898}
   - {fileID: -7640076132508593789}
   - {fileID: 8713344689852672905}
   - {fileID: -6985054212592195288}
