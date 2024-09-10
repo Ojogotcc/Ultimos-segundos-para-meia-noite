@@ -15,4 +15,4 @@ MonoBehaviour:
   velocidade: 200
   dano: 15
   duracao: 20
-  sprite: {fileID: 0}
+  atirador: Player

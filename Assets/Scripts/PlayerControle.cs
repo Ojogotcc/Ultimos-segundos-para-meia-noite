@@ -9,13 +9,13 @@ public class PlayerControle : MonoBehaviour
     [Header("Movimentacao")]
     public float velocidade; // Velocidade de movimento do player
     public float multiplicador_gravidade = 5f; // Multiplicador da gravidade para ajustar a intensidade
-    public float forca_pulo = 3f;
+    public float forca_pulo = 20f;
     public float gravidade_valor = -10; // Valor da gravidade
     public bool estaNoChao = false; // Indica se o player esta no chao
     private Rigidbody RB; // Referencia ao componente Rigidbody do player    
     private Vector2 moverInput; // Armazena o input de movimento do player
     private float gravidade_total; // Armazena o valor total da gravidade aplicada ao player    
-    public float checkChaoDistancia = 8f; // Distancia para verificar se o player esta no chao
+    public float checkChaoDistancia = 7f; // Distancia para verificar se o player esta no chao
     private bool podePular = true;
 
     [Header("Ataque")]
@@ -32,6 +32,7 @@ public class PlayerControle : MonoBehaviour
     private string animacaoAtual = "Player_frente_idle"; // Armazena o estado atual da animacao do player
     
     [Header("FPS")]
+    public GameObject GOTerceiraCamera;
     public GameObject GOMiraCamera;
     public float mouseSensibilidadeX;
     public float mouseSensibilidadeY;
@@ -72,14 +73,19 @@ public class PlayerControle : MonoBehaviour
         RB = GetComponent<Rigidbody>();        
         vidaAtual = vidaMaxima;
         energiaAtual = energiaMaxima;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {             
+
         CheckChao(); // Verifica se o player esta no chao
         InputPlayer(); // Recebe os inputs do player
         MoverPlayer(); // Move o player com base nos inputs
         ChecarMiraTiro(); // recebe o input de mirar
+        MovimentacaoCamera();
         Animacoes(); // Atualiza as animacoes com base nos inputs     
     }
 
@@ -130,7 +136,7 @@ public class PlayerControle : MonoBehaviour
             if (TrocarCameras.estaCameraAtiva(cameraTerceiraPessoa)) TrocarCameras.TrocarCamera(cameraMiraPessoa);
             
             estaMirando = true;
-            MirarFPS();
+            miraCanvas.SetActive(true);
 
             if (podeAtirar && atirarInput != 0 && energiaAtual > gastoportiro)
             {
@@ -142,28 +148,32 @@ public class PlayerControle : MonoBehaviour
         else
         {
             estaMirando = false;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            // Cursor.visible = true;
+            // Cursor.lockState = CursorLockMode.None;
             miraCanvas.SetActive(false);
 
             TrocarCameras.TrocarCamera(cameraTerceiraPessoa);
-            transform.localEulerAngles = Vector3.zero;
+            // transform.localEulerAngles = Vector3.zero;
         }        
     }
 
-    private void MirarFPS()
+    private void MovimentacaoCamera()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        miraCanvas.SetActive(true);
-
         transform.Rotate(Vector3.up * mouseX* mouseSensibilidadeX);
         verticalLookRotation += mouseY * mouseSensibilidadeY;
         verticalLookRotation = Mathf.Clamp(verticalLookRotation, -60, 60);
-        GOMiraCamera.transform.localEulerAngles = Vector3.left * verticalLookRotation;
 
-        playerTiroPos.transform.Rotate(Vector3.up * mouseX* mouseSensibilidadeX);
-        playerTiroPos.transform.localEulerAngles = Vector3.left * verticalLookRotation;
+        if (estaMirando)
+        {
+            GOMiraCamera.transform.localEulerAngles = Vector3.left * verticalLookRotation;
+
+            playerTiroPos.transform.Rotate(Vector3.up * mouseX* mouseSensibilidadeX);
+            playerTiroPos.transform.localEulerAngles = Vector3.left * verticalLookRotation;
+        }
+        else
+        {
+            GOTerceiraCamera.transform.localEulerAngles = Vector3.left * verticalLookRotation;
+        }
     }
 
     private void ResetarTiro()
@@ -188,7 +198,7 @@ public class PlayerControle : MonoBehaviour
         GameObject tiro = Instantiate (playerTiro, playerTiroPos.transform.position, playerTiroPos.transform.rotation);
         tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * playerTiro.GetComponent<TiroProjetil>().tiroData.velocidade;
         
-        energiaAtual -= gastoportiro;        
+        energiaAtual -= gastoportiro;   
         energia.fillAmount = (energiaAtual / energiaMaxima);
         StartCoroutine(DelayBarras(energiadelay, energia, 1f));
     }
@@ -215,35 +225,28 @@ public class PlayerControle : MonoBehaviour
 
     private void Animacoes() // Animacoes do player
     {    
-        if(estaMirando == true) 
+        // Se ficar parado troca a animacao atual para idle
+        if (moverInput.x == 0 && moverInput.y == 0 && animacaoAtual.Contains("run")) MudarEstadoAnimacao(animacaoAtual.Replace("run", "idle"));
+        
+        // Animacao Direita; Frente diagonal direita; Costas diagonal direita
+        if ((moverInput.x > 0 && moverInput.y == 0) || (moverInput.x > 0 && moverInput.y < 0) || (moverInput.x > 0 && moverInput.y > 0))
         {
-            MudarEstadoAnimacao("Player_costa_idle_aim");
+            MudarEstadoAnimacao("Player_direita_run"); // Altera para animacao de corrida direita
         }
-        else 
+        // Animacao Esquerda; Frente diagonal esquerda; Costas diagonal esquerda
+        if ((moverInput.x < 0 && moverInput.y == 0) || (moverInput.x < 0 && moverInput.y < 0) || (moverInput.x < 0 && moverInput.y > 0))
         {
-            // Se ficar parado troca a animacao atual para idle
-            if (moverInput.x == 0 && moverInput.y == 0 && animacaoAtual.Contains("run")) MudarEstadoAnimacao(animacaoAtual.Replace("run", "idle"));
-            
-            // Animacao Direita; Frente diagonal direita; Costas diagonal direita
-            if ((moverInput.x > 0 && moverInput.y == 0) || (moverInput.x > 0 && moverInput.y < 0) || (moverInput.x > 0 && moverInput.y > 0))
-            {
-                MudarEstadoAnimacao("Player_direita_run"); // Altera para animacao de corrida direita
-            }
-            // Animacao Esquerda; Frente diagonal esquerda; Costas diagonal esquerda
-            if ((moverInput.x < 0 && moverInput.y == 0) || (moverInput.x < 0 && moverInput.y < 0) || (moverInput.x < 0 && moverInput.y > 0))
-            {
-                MudarEstadoAnimacao("Player_esquerda_run"); // Altera para animacao de corrida esquerda
-            }
-            // Animacao Frente
-            if (moverInput.x == 0 && moverInput.y < 0)
-            {
-                MudarEstadoAnimacao("Player_frente_run"); // Altera para animacao de corrida para frente
-            }
-            // Animacao Costas
-            if (moverInput.x == 0 && moverInput.y > 0)
-            {
-                MudarEstadoAnimacao("Player_costa_run"); // Altera para animacao de corrida para tras
-            }
+            MudarEstadoAnimacao("Player_esquerda_run"); // Altera para animacao de corrida esquerda
+        }
+        // Animacao Frente
+        if (moverInput.x == 0 && moverInput.y < 0)
+        {
+            MudarEstadoAnimacao("Player_frente_run"); // Altera para animacao de corrida para frente
+        }
+        // Animacao Costas
+        if (moverInput.x == 0 && moverInput.y > 0)
+        {
+            MudarEstadoAnimacao("Player_costa_run"); // Altera para animacao de corrida para tras
         }
     }
 
@@ -257,10 +260,9 @@ public class PlayerControle : MonoBehaviour
 
     public void TomarDano(int dano)
     {
-        vidaAtual -= dano;        
+        vidaAtual -= dano;      
 
         vida.fillAmount = (vidaAtual / vidaMaxima);
-
         StartCoroutine(DelayBarras(vidadelay, vida, 1f));
 
         if (vidaAtual <= 0)
@@ -270,12 +272,12 @@ public class PlayerControle : MonoBehaviour
     }
 
     private IEnumerator DelayBarras(Image delay, Image normal, float delayTime)
-{
-    yield return new WaitForSeconds(delayTime);
-
-    LeanTween.value(delay.fillAmount, normal.fillAmount, 0.5f).setOnUpdate((float val) =>
     {
-        delay.fillAmount = val;
-    });
-}
+        yield return new WaitForSeconds(delayTime);
+
+        LeanTween.value(delay.fillAmount, normal.fillAmount, 0.5f).setOnUpdate((float val) =>
+        {
+            delay.fillAmount = val;
+        });
+    }
 }

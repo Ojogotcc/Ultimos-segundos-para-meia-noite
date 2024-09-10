@@ -8,17 +8,15 @@ public class TiroProjetil : MonoBehaviour
     {
         if (other == null) return;
 
-        if (other.gameObject.CompareTag("Inimigo"))
+        Destroy(gameObject);
+
+        if (other.gameObject.CompareTag("Inimigo") && tiroData.atirador == "Player")
         {
             other.GetComponent<InimigoControle>().TomarDano(tiroData.dano);
         }
-        else if (other.gameObject.CompareTag("Player"))
+        else if (other.gameObject.CompareTag("Player") && tiroData.atirador == "Inimigo")
         {
             other.GetComponent<PlayerControle>().TomarDano(tiroData.dano);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 }
