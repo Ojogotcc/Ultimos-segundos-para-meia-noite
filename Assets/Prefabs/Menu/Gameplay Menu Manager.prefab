@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d36dde758bfe39749b13c9e4af5b6b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fase: fase 1
+  fase: fase demo
   menuPrincipal: MenuPrincipal
   menuConfig: {fileID: 0}
   menuPausa: {fileID: 0}

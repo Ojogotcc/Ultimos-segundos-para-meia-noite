@@ -1087,8 +1087,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1857bebd82cb4147b454286186caa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fase: Fase1
-  menuPrincipal: {fileID: 0}
+  fase: fase-demo
+  menuPrincipal: {fileID: 1869569120}
   menuOpcoes: {fileID: 0}
   menuCreditos: {fileID: 0}
   menuPesquisa: {fileID: 0}
