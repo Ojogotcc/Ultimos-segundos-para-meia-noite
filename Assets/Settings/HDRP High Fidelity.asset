@@ -64,7 +64,7 @@ MonoBehaviour:
     supportedRayTracingMode: 3
     lightLoopSettings:
       cookieAtlasSize: 2048
-      cookieFormat: 74
+      cookieFormat: 48
       cookieAtlasLastValidMip: 0
       cookieTexArraySize: 16
       planarReflectionAtlasSize: 2048

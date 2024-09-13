@@ -64,7 +64,7 @@ MonoBehaviour:
     supportedRayTracingMode: 3
     lightLoopSettings:
       cookieAtlasSize: 2048
-      cookieFormat: 74
+      cookieFormat: 48
       cookieAtlasLastValidMip: 0
       cookieTexArraySize: 16
       planarReflectionAtlasSize: 1024
@@ -152,6 +152,8 @@ MonoBehaviour:
       forcedPercentage: 100
       lowResTransparencyMinimumThreshold: 0
       rayTracingHalfResThreshold: 50
+      lowResSSGIMinimumThreshold: 0
+      lowResVolumetricCloudsMinimumThreshold: 50
     lowresTransparentSettings:
       enabled: 1
       checkerboardDepthBuffer: 1

@@ -491,7 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
   m_Name: CinemachineShot
   m_EditorClassIdentifier: 
-  DisplayName: 
+  DisplayName: Intro
   VirtualCamera:
     exposedName: b1b7cb373fd670241913847f3cf0aa5d
     defaultValue: {fileID: 0}
@@ -542,7 +542,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: -1717708506571088561}
-    m_Duration: 29.566666666666666
+    m_Duration: 25.45
     m_TimeScale: 1
     m_ParentTrack: {fileID: 522904366985005761}
     m_EaseInDuration: 0
@@ -606,7 +606,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Virtual Camera
+    m_DisplayName: Intro
   m_Markers:
     m_Objects: []
 --- !u!114 &725863062621291280
@@ -623,7 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 3
   m_AnimClip: {fileID: 0}
-  m_Locked: 0
+  m_Locked: 1
   m_Muted: 0
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
