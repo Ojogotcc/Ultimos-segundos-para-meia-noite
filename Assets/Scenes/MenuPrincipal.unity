@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 201682867}
   - component: {fileID: 201682866}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Jogar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,10 +155,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1869569121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.7032917, y: 0.38729632}
-  m_AnchorMax: {x: 0.8262292, y: 0.45737037}
-  m_AnchoredPosition: {x: 1, y: -0.5}
-  m_SizeDelta: {x: 0, y: -2}
+  m_AnchorMin: {x: 0.7944999, y: 0.39562967}
+  m_AnchorMax: {x: 0.9168334, y: 0.46285188}
+  m_AnchoredPosition: {x: 6.3200073, y: 1.5}
+  m_SizeDelta: {x: 0, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &201682866
 MonoBehaviour:
@@ -203,7 +203,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 201682867}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1255455964}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: AbrirJogo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &201682867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +267,7 @@ GameObject:
   - component: {fileID: 546365884}
   - component: {fileID: 546365883}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Creditos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,10 +287,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1869569121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.71052086, y: 0.0738889}
-  m_AnchorMax: {x: 0.8741043, y: 0.13374072}
-  m_AnchoredPosition: {x: -4.5, y: -4}
-  m_SizeDelta: {x: 17, y: 10}
+  m_AnchorMin: {x: 0.749, y: 0.073555574}
+  m_AnchorMax: {x: 0.9168334, y: 0.13370372}
+  m_AnchoredPosition: {x: 3.3999634, y: 0}
+  m_SizeDelta: {x: 8, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &546365883
 MonoBehaviour:
@@ -323,7 +335,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 546365884}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1255455964}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: AbrirCreditos
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &546365884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +399,7 @@ GameObject:
   - component: {fileID: 707838186}
   - component: {fileID: 707838185}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Pesquisa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -395,10 +419,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1869569121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.71052086, y: 0.17274073}
-  m_AnchorMax: {x: 0.89175016, y: 0.238}
-  m_AnchoredPosition: {x: -6.999878, y: 3}
-  m_SizeDelta: {x: 12, y: 4}
+  m_AnchorMin: {x: 0.735, y: 0.16900001}
+  m_AnchorMax: {x: 0.9168334, y: 0.24540743}
+  m_AnchoredPosition: {x: 2.0199585, y: 0}
+  m_SizeDelta: {x: 11, y: -8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &707838185
 MonoBehaviour:
@@ -443,7 +467,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 707838186}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1255455964}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: AbrirPesquisa
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &707838186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,11 +547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1857bebd82cb4147b454286186caa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fase: fase-demo
-  menuPrincipal: {fileID: 1869569120}
-  menuOpcoes: {fileID: 0}
-  menuCreditos: {fileID: 0}
-  menuPesquisa: {fileID: 0}
+  Fase1: Fase1
 --- !u!4 &1255455965
 Transform:
   m_ObjectHideFlags: 0
@@ -913,7 +945,7 @@ GameObject:
   - component: {fileID: 1966703331}
   - component: {fileID: 1966703330}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Configs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -981,7 +1013,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1966703331}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1255455964}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: AbrirOpcoes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1966703331
 MonoBehaviour:
   m_ObjectHideFlags: 0
