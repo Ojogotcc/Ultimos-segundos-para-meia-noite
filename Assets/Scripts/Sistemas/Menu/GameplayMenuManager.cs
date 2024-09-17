@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class GameplayManager : MonoBehaviour
     public GameObject menuConfig;
     public GameObject menuPausa;
 
-    // private bool gameplayAtivada;
+    
 
     private void Pausar()
     {
@@ -20,14 +20,16 @@ public class GameplayManager : MonoBehaviour
         {
             menuPausa.SetActive(true);
             Time.timeScale = 0f;
-            // gameplayAtivada = false;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
     public void Despausar()
     {
         menuPausa.SetActive(false);
-        // gameplayAtivada = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
     }
 
@@ -55,13 +57,6 @@ public class GameplayManager : MonoBehaviour
         Application.Quit();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // gameplayAtivada = true;
-    }
-
-    // Update is called once per frame
     void Update()
     {
         Pausar();
