@@ -5,7 +5,7 @@ public class InimigoControle : MonoBehaviour
 {
     [Header("Agentes")]
     public NavMeshAgent agent;
-    public Transform player;
+    private Transform player;
     public LayerMask chaoLayer, playerLayer;
     public float vida;
 
@@ -26,21 +26,16 @@ public class InimigoControle : MonoBehaviour
     public Animator animator;
     private string animacaoAtual = "IA_frente_idle";
     public Vector3 direcao;
-    public float offsetAnimacao = 20.0f;
+    public float offsetAnimacao = 30.0f;
     private Vector3 destinoTiro;
-    public ObjetoInimigo inimigoData;
+    // public ObjetoInimigo inimigoData;
     public GameObject efeitoMorte;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        // agent.speed = inimigoData.velocidade;
-        // agent.acceleration = inimigoData.aceleracao;
-        // vida = inimigoData.vida;
-        // intervaloEntreAtaques = inimigoData.tempoEntreAtaques;        
-        // visaoRange = inimigoData.alcanceVisao;
-        // ataqueRange = inimigoData.distanciaAtaque;
+        agent.stoppingDistance = ataqueRange;
     }
 
     private void Update()
@@ -58,28 +53,28 @@ public class InimigoControle : MonoBehaviour
         direcao = agent.desiredVelocity;
 
         // Se ficar parado troca a animacao atual para idle
-        //if (direcao.x == 0 && direcao.y == 0 && animacaoAtual.Contains("run")) MudarEstadoAnimacao(animacaoAtual.Replace("run", "idle"));
+        if (direcao.x == 0 && direcao.y == 0 && animacaoAtual.Contains("run")) MudarEstadoAnimacao(animacaoAtual.Replace("run", "idle"));
             
-        // // Animacao Frente
-        // if (-offsetAnimacao <= direcao.x && direcao.x <= offsetAnimacao && direcao.z < 0)
-        // {
-        //     MudarEstadoAnimacao("IA_frente_run"); // Altera para animacao de corrida para frente
-        // }
-        // // Animacao Costas
-        // else if (-offsetAnimacao <= direcao.x && direcao.x <= offsetAnimacao && direcao.z > 0)
-        // {
-        //     MudarEstadoAnimacao("IA_costa_run"); // Altera para animacao de corrida para tras
-        // }
-        // // Animacao Direita
-        // else if (direcao.x > offsetAnimacao)
-        // {
-        //     MudarEstadoAnimacao("IA_direita_run"); // Altera para animacao de corrida direita
-        // }
-        // // Animacao Esquerda
-        // else if (direcao.x < -offsetAnimacao)
-        // {
-        //     MudarEstadoAnimacao("IA_esquerda_run"); // Altera para animacao de corrida esquerda
-        // }        
+        // Animacao Frente
+        if (-offsetAnimacao <= direcao.x && direcao.x <= offsetAnimacao && direcao.z > 0)
+        {
+            MudarEstadoAnimacao("IA_frente_run"); // Altera para animacao de corrida para frente
+        }
+        // Animacao Costas
+        else if (-offsetAnimacao <= direcao.x && direcao.x <= offsetAnimacao && direcao.z < 0)
+        {
+            MudarEstadoAnimacao("IA_costa_run"); // Altera para animacao de corrida para tras
+        }
+        // Animacao Direita
+        else if (direcao.x > offsetAnimacao)
+        {
+            MudarEstadoAnimacao("IA_esquerda_run"); // Altera para animacao de corrida direita
+        }
+        // Animacao Esquerda
+        else if (direcao.x < -offsetAnimacao)
+        {
+            MudarEstadoAnimacao("IA_direita_run"); // Altera para animacao de corrida esquerda
+        }        
     }
 
     private void Patrulhar()
@@ -112,7 +107,7 @@ public class InimigoControle : MonoBehaviour
 
     private void AtacarPlayer()
     {
-        agent.SetDestination(transform.position);
+        //agent.SetDestination(transform.position);
         
         Vector3 direcaoParaPlayer = (player.position - transform.position).normalized;
         Quaternion olharRotacao = Quaternion.LookRotation(new Vector3(direcaoParaPlayer.x, 0, direcaoParaPlayer.z));
@@ -120,12 +115,12 @@ public class InimigoControle : MonoBehaviour
 
         if (!jaAtacou)
         {
-            // MudarEstadoAnimacao("IA_frente_charge");
+            MudarEstadoAnimacao("IA_frente_charge");
 
-            // AnimatorStateInfo estadoAnimacao = animator.GetCurrentAnimatorStateInfo(0);
+            AnimatorStateInfo estadoAnimacao = animator.GetCurrentAnimatorStateInfo(0);
 
-            // if (estadoAnimacao.normalizedTime >= 1f)
-            // {
+            if (estadoAnimacao.normalizedTime >= 1f)
+            {
                 jaAtacou = true;
 
                 Ray ray = new Ray(transform.position, (player.position - transform.position).normalized);
@@ -143,7 +138,7 @@ public class InimigoControle : MonoBehaviour
                 GameObject tiro = Instantiate (projectile, transform.position, transform.rotation);
                 tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * projectile.GetComponent<TiroProjetil>().tiroData.velocidade;
                 Invoke(nameof(ResetarAtaque), intervaloEntreAtaques);
-            // }            
+            }            
         }
     }
     private void ResetarAtaque()
@@ -154,7 +149,7 @@ public class InimigoControle : MonoBehaviour
     public void TomarDano(int dano)
     {
         vida -= dano;
-        //MudarEstadoAnimacao("IA_frente_hit");
+        MudarEstadoAnimacao("IA_frente_hit");
 
         if (vida <= 0) Invoke(nameof(DestruirInimigo), 0.5f);
     }
