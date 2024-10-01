@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidade: 300
   dano: 10
-  duracao: 20
+  duracao: 5
   atirador: Inimigo

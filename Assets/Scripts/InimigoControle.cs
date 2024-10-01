@@ -31,6 +31,10 @@ public class InimigoControle : MonoBehaviour
     // public ObjetoInimigo inimigoData;
     public GameObject efeitoMorte;
 
+    [Header("Efeitos")]
+    public AudioClip hitClip;
+    public AudioClip ataqueClip;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -115,7 +119,7 @@ public class InimigoControle : MonoBehaviour
 
         if (!jaAtacou)
         {
-            MudarEstadoAnimacao("IA_frente_charge");
+            //MudarEstadoAnimacao("IA_frente_charge");
 
             AnimatorStateInfo estadoAnimacao = animator.GetCurrentAnimatorStateInfo(0);
 
@@ -136,6 +140,7 @@ public class InimigoControle : MonoBehaviour
                 }
 
                 GameObject tiro = Instantiate (projectile, transform.position, transform.rotation);
+                EfeitoManager.instance.PlayEfeitoNoLocal(ataqueClip, transform, 0.5f);
                 tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * projectile.GetComponent<TiroProjetil>().tiroData.velocidade;
                 Invoke(nameof(ResetarAtaque), intervaloEntreAtaques);
             }            
@@ -150,6 +155,8 @@ public class InimigoControle : MonoBehaviour
     {
         vida -= dano;
         MudarEstadoAnimacao("IA_frente_hit");
+
+        EfeitoManager.instance.PlayEfeitoNoLocal(hitClip, transform, 1f);
 
         if (vida <= 0) Invoke(nameof(DestruirInimigo), 0.5f);
     }

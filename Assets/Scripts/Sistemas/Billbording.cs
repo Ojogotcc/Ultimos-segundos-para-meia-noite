@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Billbording : MonoBehaviour
 {
-
     [SerializeField] bool freezeXZ;
+    
     void Update()
     {
         if(freezeXZ)

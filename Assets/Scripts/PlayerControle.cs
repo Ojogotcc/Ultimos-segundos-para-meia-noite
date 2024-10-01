@@ -26,6 +26,7 @@ public class PlayerControle : MonoBehaviour
     public GameObject playerTiroPos; // Posicao de onde ira sair o tiro
     public float fireRate; // Intervalo de tiros (quanto menor mais rapido)
     private bool podeAtirar = true; // Verifica se pode atirar
+    public bool podeMover = true; // Verifica se pode atirar
     private bool estaMirando = false; // Verifica se esta com a mira acionada    
     private float miraInput, atirarInput; // Inputs de mira e tiro
     private Vector3 destinoTiro;
@@ -45,7 +46,6 @@ public class PlayerControle : MonoBehaviour
     private float verticalLookRotation;
 
     [Header("UI")]
-
     public float vidaMaxima = 100;
     public float vidaAtual;
     public float energiaMaxima = 100;
@@ -60,13 +60,20 @@ public class PlayerControle : MonoBehaviour
     public CinemachineVirtualCamera cameraTerceiraPessoa;
     public CinemachineVirtualCamera cameraMiraPessoa;
 
+    public bool estaAtivadoMenu = false;
+
+    [Header("Efeitos")]
+    public AudioClip hitClip;
+    public AudioClip ataqueClip;
+
     private void OnEnable()
     {
         TrocarCameras.AdicionarCamera(cameraTerceiraPessoa);
         TrocarCameras.AdicionarCamera(cameraMiraPessoa);
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         TrocarCameras.RemoverCamera(cameraTerceiraPessoa);
         TrocarCameras.RemoverCamera(cameraMiraPessoa);
     }
@@ -83,7 +90,6 @@ public class PlayerControle : MonoBehaviour
 
     void Update()
     {             
-
         CheckChao(); // Verifica se o player esta no chao
         InputPlayer(); // Recebe os inputs do player
         MoverPlayer(); // Move o player com base nos inputs
@@ -100,6 +106,16 @@ public class PlayerControle : MonoBehaviour
     public void HabilitarPulo()
     {
         podePular = true;
+    }
+
+    public void DesabilitarMovimento()
+    {
+        podeMover = false;
+    }
+
+    public void HabilitarMovimento()
+    {
+        podeMover = true;
     }
 
     private void CheckChao() // Verifica se o player esta no chao
@@ -129,7 +145,7 @@ public class PlayerControle : MonoBehaviour
         atirarInput = Input.GetAxis("Fire1");
         miraInput = Input.GetAxis("Fire2");      
         mouseX = Input.GetAxis("Mouse X");
-        mouseY = Input.GetAxis("Mouse Y");
+        mouseY = Input.GetAxis("Mouse Y");        
     }
 
     private void ChecarMiraTiro() // Verifica se o personagem está mirando
@@ -162,21 +178,26 @@ public class PlayerControle : MonoBehaviour
 
     private void MovimentacaoCamera()
     {
-        transform.Rotate(Vector3.up * mouseX* mouseSensibilidadeX);
-        verticalLookRotation += mouseY * mouseSensibilidadeY;
-        verticalLookRotation = Mathf.Clamp(verticalLookRotation, -60, 60);
-
-        if (estaMirando)
+        if (!estaAtivadoMenu)
         {
-            GOMiraCamera.transform.localEulerAngles = Vector3.left * verticalLookRotation;
+            transform.Rotate(Vector3.up * mouseX * mouseSensibilidadeX);
+            
+            if (estaMirando)
+            {
+                verticalLookRotation += mouseY * mouseSensibilidadeY;
+                verticalLookRotation = Mathf.Clamp(verticalLookRotation, -30, 45);
 
-            playerTiroPos.transform.Rotate(Vector3.up * mouseX* mouseSensibilidadeX);
-            playerTiroPos.transform.localEulerAngles = Vector3.left * verticalLookRotation;
-        }
-        else
-        {
-            GOTerceiraCamera.transform.localEulerAngles = Vector3.left * verticalLookRotation;
-        }
+
+                GOMiraCamera.transform.localEulerAngles = Vector3.left * verticalLookRotation;
+
+                playerTiroPos.transform.Rotate(Vector3.up * mouseX* mouseSensibilidadeX);
+                playerTiroPos.transform.localEulerAngles = Vector3.left * verticalLookRotation;
+            }
+            else
+            {
+                GOTerceiraCamera.transform.localEulerAngles = Vector3.left * verticalLookRotation;
+            }
+        }       
     }
 
     private void ResetarTiro()
@@ -199,6 +220,7 @@ public class PlayerControle : MonoBehaviour
         }
 
         GameObject tiro = Instantiate (playerTiro, playerTiroPos.transform.position, playerTiroPos.transform.rotation);
+        EfeitoManager.instance.PlayEfeitoNoLocal(ataqueClip, transform, 0.5f);
         tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * playerTiro.GetComponent<TiroProjetil>().tiroData.velocidade;
         
         energiaAtual -= gastoportiro;   
@@ -208,30 +230,33 @@ public class PlayerControle : MonoBehaviour
 
     private void MoverPlayer() // Movimentacao do player
     {
-        if (!estaNoChao)
+        if (podeMover)
         {
-            gravidade_total += gravidade_valor * multiplicador_gravidade * Time.deltaTime; // Aplica a gravidade se nao estiver no chao
-        }
-        else
-        {
-            gravidade_total = 0.0f; // Reseta a gravidade quando esta no chao
-
-            if (Input.GetKeyDown(KeyCode.Space) && podePular == true)
+            if (!estaNoChao)
             {
-                gravidade_total += forca_pulo; // Aplica impulso para pular
+                gravidade_total += gravidade_valor * multiplicador_gravidade * Time.deltaTime; // Aplica a gravidade se nao estiver no chao
             }
-        }
+            else
+            {
+                gravidade_total = 0.0f; // Reseta a gravidade quando esta no chao
 
-        if (estaMirando) velocidade_atual = velocidade_mirando; else velocidade_atual = velocidade_andando;
-        Vector3 movimento = transform.TransformDirection(new Vector3(moverInput.x * velocidade_atual, 0, moverInput.y * velocidade_atual));
-        RB.velocity = new Vector3(movimento.x, gravidade_total, movimento.z);
+                if (Input.GetKeyDown(KeyCode.Space) && podePular == true)
+                {
+                    gravidade_total += forca_pulo; // Aplica impulso para pular
+                }
+            }
+
+            if (estaMirando) velocidade_atual = velocidade_mirando; else velocidade_atual = velocidade_andando;
+            Vector3 movimento = transform.TransformDirection(new Vector3(moverInput.x * velocidade_atual, 0, moverInput.y * velocidade_atual));
+            RB.velocity = new Vector3(movimento.x, gravidade_total, movimento.z);
+        }
     }
 
     private void Animacoes() // Animacoes do player
     {    
         if (estaMirando)
         {
-            if (moverInput.x == 0 && moverInput.y == 0) MudarEstadoAnimacao("Player_costas_idle"); else MudarEstadoAnimacao("Player_costas_run");
+            if (moverInput.x == 0 && moverInput.y == 0) MudarEstadoAnimacao("Player_costa_idle_aim"); else if (moverInput.x != 0 && moverInput.y != 0) MudarEstadoAnimacao("Player_costa_run_aim"); 
         }
         else
         {
@@ -271,7 +296,9 @@ public class PlayerControle : MonoBehaviour
 
     public void TomarDano(int dano)
     {
-        vidaAtual -= dano;      
+        vidaAtual -= dano;
+
+        EfeitoManager.instance.PlayEfeitoNoLocal(hitClip, transform, 1f);
 
         vida.fillAmount = (vidaAtual / vidaMaxima);
         StartCoroutine(DelayBarras(vidadelay, vida, 1f));

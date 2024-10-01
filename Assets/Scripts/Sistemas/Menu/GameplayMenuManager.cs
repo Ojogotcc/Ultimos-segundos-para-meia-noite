@@ -11,13 +11,17 @@ public class GameplayManager : MonoBehaviour
 
     public GameObject menuConfig;
     public GameObject menuPausa;
+    public PlayerControle player;
 
-    
+    private void Awake() {
+        player = GameObject.Find("Player").GetComponent<PlayerControle>();
+    }
 
     private void Pausar()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            player.estaAtivadoMenu = true;
             menuPausa.SetActive(true);
             Time.timeScale = 0f;
             Cursor.visible = true;
@@ -27,6 +31,7 @@ public class GameplayManager : MonoBehaviour
 
     public void Despausar()
     {
+        player.estaAtivadoMenu = false;
         menuPausa.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
