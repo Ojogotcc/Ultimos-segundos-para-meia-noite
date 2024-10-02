@@ -18,23 +18,25 @@ public class EfeitoManager : MonoBehaviour
         if (instance == null) instance = this;
     }
 
-    public void PlayEfeitoNoLocal(AudioClip clip, Transform local, float volume)
+    public void PlayEfeito(AudioClip clip, Transform local, float volume, float spatial)
     {
         AudioSource audioSource = Instantiate(audioSourcePrefab, local.position, Quaternion.identity);
         audioSource.clip = clip;
         audioSource.volume = volume;
+        audioSource.spatialBlend = spatial;
         audioSource.Play();
 
         float duracao = audioSource.clip.length;
         Destroy(audioSource.gameObject, duracao);
     }
 
-    public void PlayEfeitosNoLocal(AudioClip[] clips, Transform local, float volume)
+    public void PlayEfeitos(AudioClip[] clips, Transform local, float volume, float spatial)
     {
         int escolha = Random.Range(0, clips.Length);
         AudioSource audioSource = Instantiate(audioSourcePrefab, local.position, Quaternion.identity);
         audioSource.clip = clips[escolha];
         audioSource.volume = volume;
+        audioSource.spatialBlend = spatial;
         audioSource.Play();
 
         float duracao = audioSource.clip.length;

@@ -140,7 +140,7 @@ public class InimigoControle : MonoBehaviour
                 }
 
                 GameObject tiro = Instantiate (projectile, transform.position, transform.rotation);
-                EfeitoManager.instance.PlayEfeitoNoLocal(ataqueClip, transform, 0.5f);
+                EfeitoManager.instance.PlayEfeito(ataqueClip, transform, .5f, .5f);
                 tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * projectile.GetComponent<TiroProjetil>().tiroData.velocidade;
                 Invoke(nameof(ResetarAtaque), intervaloEntreAtaques);
             }            
@@ -156,9 +156,9 @@ public class InimigoControle : MonoBehaviour
         vida -= dano;
         MudarEstadoAnimacao("IA_frente_hit");
 
-        EfeitoManager.instance.PlayEfeitoNoLocal(hitClip, transform, 1f);
+        EfeitoManager.instance.PlayEfeito(hitClip, transform, 1f, .5f);
 
-        if (vida <= 0) Invoke(nameof(DestruirInimigo), 0.5f);
+        if (vida <= 0) Invoke(nameof(DestruirInimigo), .5f);
     }
     private void DestruirInimigo()
     {

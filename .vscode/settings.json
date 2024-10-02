@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Ultimos-segundos-para-meia-noite.sln"
+    "dotnet.defaultSolution": "Ultimos-segundos-para-meia-noite.sln",
+    "dotnet.preferCSharpExtension": true
 }

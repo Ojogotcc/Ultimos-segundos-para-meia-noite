@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerControle : MonoBehaviour
@@ -65,6 +66,7 @@ public class PlayerControle : MonoBehaviour
     [Header("Efeitos")]
     public AudioClip hitClip;
     public AudioClip ataqueClip;
+    public GameObject efeitodanotela;
 
     private void OnEnable()
     {
@@ -220,7 +222,7 @@ public class PlayerControle : MonoBehaviour
         }
 
         GameObject tiro = Instantiate (playerTiro, playerTiroPos.transform.position, playerTiroPos.transform.rotation);
-        EfeitoManager.instance.PlayEfeitoNoLocal(ataqueClip, transform, 0.5f);
+        EfeitoManager.instance.PlayEfeito(ataqueClip, transform, .25f, 0f);
         tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * playerTiro.GetComponent<TiroProjetil>().tiroData.velocidade;
         
         energiaAtual -= gastoportiro;   
@@ -298,14 +300,17 @@ public class PlayerControle : MonoBehaviour
     {
         vidaAtual -= dano;
 
-        EfeitoManager.instance.PlayEfeitoNoLocal(hitClip, transform, 1f);
+        EfeitoManager.instance.PlayEfeito(hitClip, transform, 1f, 0f);
 
         vida.fillAmount = (vidaAtual / vidaMaxima);
         StartCoroutine(DelayBarras(vidadelay, vida, 1f));
 
+        if (vidaAtual < 30f) efeitodanotela.SetActive(true); else efeitodanotela.SetActive(false);
+
         if (vidaAtual <= 0)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene("Fase1");
+            // Destroy(gameObject);
         }
     }
 
@@ -313,7 +318,7 @@ public class PlayerControle : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime);
 
-        LeanTween.value(delay.fillAmount, normal.fillAmount, 0.5f).setOnUpdate((float val) =>
+        LeanTween.value(delay.fillAmount, normal.fillAmount, .5f).setOnUpdate((float val) =>
         {
             delay.fillAmount = val;
         });
