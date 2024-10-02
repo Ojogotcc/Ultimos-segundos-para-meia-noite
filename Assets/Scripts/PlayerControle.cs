@@ -97,6 +97,48 @@ public class PlayerControle : MonoBehaviour
         MovimentacaoCamera();
         Animacoes(); // Atualiza as animacoes com base nos inputs     
     }
+    public void MudarSensibilidadeCamera(float value)
+    {
+        mouseSensibilidadeY = value;
+        mouseSensibilidadeX = value;
+    }
+
+    public void MudarSensibilidadeMovimento(float value)
+    {
+        velocidade_atual = velocidade_atual * value;
+        mouseSensibilidadeY = 1;
+        mouseSensibilidadeX = 1;
+    }
+
+    private void MoverPlayer() // Movimentacao do player
+    {
+        if (podeMover)
+        {
+            if (!estaNoChao)
+            {
+                gravidade_total += gravidade_valor * multiplicador_gravidade * Time.deltaTime; // Aplica a gravidade se nao estiver no chao
+            }
+            else
+            {
+                gravidade_total = 0.0f; // Reseta a gravidade quando esta no chao
+
+                if (Input.GetKeyDown(KeyCode.Space) && podePular == true)
+                {
+                    gravidade_total += forca_pulo; // Aplica impulso para pular
+                }
+            }
+
+            if (estaMirando)
+                velocidade_atual = velocidade_mirando;
+
+            else
+                velocidade_atual = velocidade_andando;
+
+            Vector3 movimento = transform.TransformDirection(new Vector3(moverInput.x * velocidade_atual, 0, moverInput.y * velocidade_atual));
+
+            RB.velocity = new Vector3(movimento.x, gravidade_total, movimento.z);
+        }
+    }
 
     public void DesabilitarPulo()
     {
@@ -226,30 +268,6 @@ public class PlayerControle : MonoBehaviour
         energiaAtual -= gastoportiro;   
         energia.fillAmount = (energiaAtual / energiaMaxima);
         StartCoroutine(DelayBarras(energiadelay, energia, 1f));
-    }
-
-    private void MoverPlayer() // Movimentacao do player
-    {
-        if (podeMover)
-        {
-            if (!estaNoChao)
-            {
-                gravidade_total += gravidade_valor * multiplicador_gravidade * Time.deltaTime; // Aplica a gravidade se nao estiver no chao
-            }
-            else
-            {
-                gravidade_total = 0.0f; // Reseta a gravidade quando esta no chao
-
-                if (Input.GetKeyDown(KeyCode.Space) && podePular == true)
-                {
-                    gravidade_total += forca_pulo; // Aplica impulso para pular
-                }
-            }
-
-            if (estaMirando) velocidade_atual = velocidade_mirando; else velocidade_atual = velocidade_andando;
-            Vector3 movimento = transform.TransformDirection(new Vector3(moverInput.x * velocidade_atual, 0, moverInput.y * velocidade_atual));
-            RB.velocity = new Vector3(movimento.x, gravidade_total, movimento.z);
-        }
     }
 
     private void Animacoes() // Animacoes do player
