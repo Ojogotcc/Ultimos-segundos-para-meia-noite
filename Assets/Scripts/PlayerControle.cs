@@ -225,7 +225,7 @@ public class PlayerControle : MonoBehaviour
         }
 
         GameObject tiro = Instantiate (playerTiro, playerTiroPos.transform.position, playerTiroPos.transform.rotation);
-        EfeitoManager.instance.PlayEfeito(ataqueClip, transform, .25f, 0f);
+        EfeitoManager.instance.PlayEfeito(ataqueClip, transform, .25f, 0f, .3f);
         tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * playerTiro.GetComponent<TiroProjetil>().tiroData.velocidade;
 
         StartCoroutine(DelayArmas(arma1, fireRate));
@@ -305,7 +305,7 @@ public class PlayerControle : MonoBehaviour
     {
         vidaAtual -= dano;
 
-        EfeitoManager.instance.PlayEfeito(hitClip, transform, 1f, 0f);
+        EfeitoManager.instance.PlayEfeito(hitClip, transform, 1f, 0f, .1f);
 
         vida.fillAmount = (vidaAtual / vidaMaxima);
         StartCoroutine(DelayBarras(vidadelay, vida, 1f));

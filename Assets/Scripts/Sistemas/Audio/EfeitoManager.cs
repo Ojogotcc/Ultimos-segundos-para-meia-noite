@@ -18,12 +18,13 @@ public class EfeitoManager : MonoBehaviour
         if (instance == null) instance = this;
     }
 
-    public void PlayEfeito(AudioClip clip, Transform local, float volume, float spatial)
+    public void PlayEfeito(AudioClip clip, Transform local, float volume, float spatial, float pitchrandom)
     {
         AudioSource audioSource = Instantiate(audioSourcePrefab, local.position, Quaternion.identity);
         audioSource.clip = clip;
         audioSource.volume = volume;
         audioSource.spatialBlend = spatial;
+        if (pitchrandom != 0f) audioSource.pitch = 1f + Random.Range(-pitchrandom, pitchrandom);
         audioSource.Play();
 
         float duracao = audioSource.clip.length;
