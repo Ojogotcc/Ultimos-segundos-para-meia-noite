@@ -11,16 +11,20 @@ public class TiroProjetil : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == null) return;                
+        if (other == null) return;                   
 
-        if (other.gameObject.CompareTag("Inimigo") && tiroData.atirador == "Player")
-        {            
-            Destroy(gameObject);
-            other.GetComponent<InimigoControle>().TomarDano(tiroData.dano);
-        }
-        else if (other.gameObject.CompareTag("Player") && tiroData.atirador == "Inimigo")
+        if (tiroData.atirador == "Player")
         {
             Destroy(gameObject);
+            if (tiroData.efeitoImpacto) Instantiate(tiroData.efeitoImpacto, transform.position, Quaternion.identity);
+
+            if (other.gameObject.CompareTag("Inimigo"))
+            {                       
+                other.GetComponent<InimigoControle>().TomarDano(tiroData.dano);
+            }
+        }
+        if (other.gameObject.CompareTag("Player") && tiroData.atirador == "Inimigo")
+        {
             other.GetComponent<PlayerControle>().TomarDano(tiroData.dano);            
         }
     }

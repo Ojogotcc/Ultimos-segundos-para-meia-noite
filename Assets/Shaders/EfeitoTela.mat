@@ -50,7 +50,7 @@ Material:
     - _Fullscreen_DstColorBlend: 10
     - _Fullscreen_SrcAlphaBlend: 1
     - _Fullscreen_SrcColorBlend: 5
-    - _Intensidade: 0.7515533
+    - _Intensidade: 0.82998824
     - _Intensidade2: 0.5
     - _IntensidadeVinheta: 113.75
     - _Noise: 0
@@ -58,6 +58,6 @@ Material:
     - _Teste: 1
     m_Colors:
     - _Color: {r: 1.9999999, g: 0, b: 0, a: 0}
-    - _Tamanho: {r: 1.5, g: 1.5, b: 0, a: 0}
+    - _Tamanho: {r: 1.7, g: 1, b: 0, a: 0}
     - _Velocidade: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

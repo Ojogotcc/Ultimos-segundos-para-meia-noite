@@ -122,12 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &751384923 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3066092326109189067, guid: e9942419f6660c54eab6ae7fd36a8496,
-    type: 3}
-  m_PrefabInstance: {fileID: 1188069947}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1188069947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,6 +250,21 @@ PrefabInstance:
       propertyPath: m_PixelsPerUnitMultiplier
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1323587227965106823, guid: e9942419f6660c54eab6ae7fd36a8496,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323587227965106823, guid: e9942419f6660c54eab6ae7fd36a8496,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323587227965106823, guid: e9942419f6660c54eab6ae7fd36a8496,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2146590867122067072, guid: e9942419f6660c54eab6ae7fd36a8496,
         type: 3}
       propertyPath: m_Value
@@ -285,6 +294,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319553023252199760, guid: e9942419f6660c54eab6ae7fd36a8496,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319553023252199760, guid: e9942419f6660c54eab6ae7fd36a8496,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2432688338632768840, guid: e9942419f6660c54eab6ae7fd36a8496,
         type: 3}
@@ -421,6 +440,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3561084981145955763, guid: e9942419f6660c54eab6ae7fd36a8496,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3561084981145955763, guid: e9942419f6660c54eab6ae7fd36a8496,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3654600038475509496, guid: e9942419f6660c54eab6ae7fd36a8496,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -476,6 +505,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4925610983510757390, guid: e9942419f6660c54eab6ae7fd36a8496,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5221036637579542912, guid: e9942419f6660c54eab6ae7fd36a8496,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -519,6 +553,21 @@ PrefabInstance:
     - target: {fileID: 6192383519030523869, guid: e9942419f6660c54eab6ae7fd36a8496,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309374273530169674, guid: e9942419f6660c54eab6ae7fd36a8496,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309374273530169674, guid: e9942419f6660c54eab6ae7fd36a8496,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309374273530169674, guid: e9942419f6660c54eab6ae7fd36a8496,
+        type: 3}
+      propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6937160625524691644, guid: e9942419f6660c54eab6ae7fd36a8496,
@@ -636,6 +685,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9942419f6660c54eab6ae7fd36a8496, type: 3}
+--- !u!224 &1188069948 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7142542899042310217, guid: e9942419f6660c54eab6ae7fd36a8496,
+    type: 3}
+  m_PrefabInstance: {fileID: 1188069947}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1255455963
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,8 +721,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fase1: Fase1
+  JaJogou: 0
   menuPrincipal: {fileID: 1869569120}
-  menuOpcoes: {fileID: 751384923}
+  menuOpcoes: {fileID: 0}
   menuCreditos: {fileID: 0}
   menuPesquisa: {fileID: 0}
 --- !u!4 &1255455965
@@ -975,12 +1031,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!224 &1728767145 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2432688338632768840, guid: e9942419f6660c54eab6ae7fd36a8496,
-    type: 3}
-  m_PrefabInstance: {fileID: 1188069947}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1869569120 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8674768270276487236, guid: 7b3e9d04a5c7da5428083653be8a9d0d,
@@ -1088,7 +1138,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1869569121}
-  - {fileID: 1728767145}
+  - {fileID: 1188069948}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1109,6 +1159,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1255455964}
+    - target: {fileID: 1904521087635660744, guid: 7b3e9d04a5c7da5428083653be8a9d0d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917712954730325670, guid: 7b3e9d04a5c7da5428083653be8a9d0d,
+        type: 3}
+      propertyPath: m_text
+      value: Jogar
+      objectReference: {fileID: 0}
     - target: {fileID: 4297090117102912454, guid: 7b3e9d04a5c7da5428083653be8a9d0d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

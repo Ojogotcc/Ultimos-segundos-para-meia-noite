@@ -7,14 +7,19 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] public string Fase1;
 
+    public bool JaJogou = false;
     public GameObject menuPrincipal;
     public GameObject menuOpcoes;
     public GameObject menuCreditos;
     public GameObject menuPesquisa;
 
+    private void Start() {
+        if (PlayerPrefs.HasKey("JaJogou")) JaJogou = true;
+    }
+
     public void AbrirJogo()
     {
-        SceneManager.LoadScene(Fase1);
+        if (!JaJogou) SceneManager.LoadScene(Fase1);
     }
 
     public void FecharJogo()

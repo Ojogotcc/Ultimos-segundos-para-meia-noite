@@ -63,6 +63,7 @@ public class PlayerControle : MonoBehaviour
     [Header("Cameras")]
     public CinemachineVirtualCamera cameraTerceiraPessoa;
     public CinemachineVirtualCamera cameraMiraPessoa;
+    public CinemachineImpulseSource  cameraImpulsoShake;
 
     public bool estaAtivadoMenu = false;
 
@@ -232,7 +233,7 @@ public class PlayerControle : MonoBehaviour
             if (estaMirando)
             {
                 verticalLookRotation += mouseY * mouseSensibilidadeY;
-                verticalLookRotation = Mathf.Clamp(verticalLookRotation, -30, 45);
+                verticalLookRotation = Mathf.Clamp(verticalLookRotation, -20, 45);
 
 
                 GOMiraCamera.transform.localEulerAngles = Vector3.left * verticalLookRotation;
@@ -322,13 +323,12 @@ public class PlayerControle : MonoBehaviour
     public void TomarDano(int dano)
     {
         vidaAtual -= dano;
-
-        EfeitoManager.instance.PlayEfeito(hitClip, transform, 1f, 0f, .1f);
-
         vida.fillAmount = (vidaAtual / vidaMaxima);
-        StartCoroutine(DelayBarras(vidadelay, vida, 1f));
+        StartCoroutine(DelayBarras(vidadelay, vida, 1f)); // Muda a barra da vida
 
-        if (vidaAtual < 30f) efeitodanotela.SetActive(true); else efeitodanotela.SetActive(false);
+        EfeitoManager.instance.PlayEfeito(hitClip, transform, 1f, 0f, .1f); // Toca o sfx de dano
+        cameraImpulsoShake.GenerateImpulse(); // Shake a camera
+        if (vidaAtual < 30f) efeitodanotela.SetActive(true); else efeitodanotela.SetActive(false); // Coloca o efeito de vidabaixa
 
         if (vidaAtual <= 0)
         {

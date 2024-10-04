@@ -7,4 +7,5 @@ public class ObjetoTiro : ScriptableObject
     public int dano;
     public int duracao;
     public string atirador;
+    public GameObject efeitoImpacto;
 }

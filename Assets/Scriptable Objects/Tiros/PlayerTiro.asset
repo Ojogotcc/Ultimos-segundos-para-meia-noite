@@ -16,3 +16,5 @@ MonoBehaviour:
   dano: 15
   duracao: 5
   atirador: Player
+  efeitoImpacto: {fileID: 75256558067702818, guid: 15e6416457541fe46a496487f1d9be5e,
+    type: 3}
