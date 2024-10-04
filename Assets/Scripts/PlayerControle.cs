@@ -32,6 +32,9 @@ public class PlayerControle : MonoBehaviour
     private float miraInput, atirarInput; // Inputs de mira e tiro
     private Vector3 destinoTiro;
 
+    [Header("Armas")]
+    public Image arma1;
+
     [Header("Animacao")]
     public Animator animator; // Referancia ao componente Animator do player
     private string animacaoAtual = "Player_frente_idle"; // Armazena o estado atual da animacao do player
@@ -264,9 +267,11 @@ public class PlayerControle : MonoBehaviour
         }
 
         GameObject tiro = Instantiate (playerTiro, playerTiroPos.transform.position, playerTiroPos.transform.rotation);
-        EfeitoManager.instance.PlayEfeito(ataqueClip, transform, .25f, 0f);
+        EfeitoManager.instance.PlayEfeito(ataqueClip, transform, .25f, 0f, .3f);
         tiro.GetComponent<Rigidbody>().velocity = (destinoTiro - transform.position).normalized * playerTiro.GetComponent<TiroProjetil>().tiroData.velocidade;
-        
+
+        StartCoroutine(DelayArmas(arma1, fireRate));
+
         energiaAtual -= gastoportiro;   
         energia.fillAmount = (energiaAtual / energiaMaxima);
         StartCoroutine(DelayBarras(energiadelay, energia, 1f));
@@ -276,7 +281,7 @@ public class PlayerControle : MonoBehaviour
     {    
         if (estaMirando)
         {
-            if (moverInput.x == 0 && moverInput.y == 0) MudarEstadoAnimacao("Player_costa_idle_aim"); else if (moverInput.x != 0 && moverInput.y != 0) MudarEstadoAnimacao("Player_costa_run_aim"); 
+            if (moverInput.x == 0 && moverInput.y == 0) MudarEstadoAnimacao("Player_costa_idle_aim"); else if (moverInput.x != 0 || moverInput.y != 0) MudarEstadoAnimacao("Player_costa_run_aim"); 
         }
         else
         {
@@ -318,7 +323,7 @@ public class PlayerControle : MonoBehaviour
     {
         vidaAtual -= dano;
 
-        EfeitoManager.instance.PlayEfeito(hitClip, transform, 1f, 0f);
+        EfeitoManager.instance.PlayEfeito(hitClip, transform, 1f, 0f, .1f);
 
         vida.fillAmount = (vidaAtual / vidaMaxima);
         StartCoroutine(DelayBarras(vidadelay, vida, 1f));
@@ -336,9 +341,21 @@ public class PlayerControle : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime);
 
-        LeanTween.value(delay.fillAmount, normal.fillAmount, .5f).setOnUpdate((float val) =>
+        LeanTween.value(delay.fillAmount, normal.fillAmount, .2f).setOnUpdate((float val) =>
         {
             delay.fillAmount = val;
         });
+    }
+
+    private IEnumerator DelayArmas(Image image, float delayTime)
+    {
+        image.fillAmount = 1f;        
+
+        LeanTween.value(gameObject, 1f, 0f, delayTime).setOnUpdate((float val) =>
+        {
+            image.fillAmount = val;
+        });
+
+        yield return new WaitForSeconds(delayTime);
     }
 }
