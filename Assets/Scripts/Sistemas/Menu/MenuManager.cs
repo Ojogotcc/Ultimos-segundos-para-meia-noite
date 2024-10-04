@@ -8,13 +8,17 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public string Fase1;
 
     public bool JaJogou = false;
-    public GameObject menuPrincipal;
+    private int painelAberto = -1;
     public GameObject menuOpcoes;
-    public GameObject menuCreditos;
     public GameObject menuPesquisa;
+    public GameObject menuCreditos;    
+    public GameObject[] paineis;
+
+    public float delay = 1f;
 
     private void Start() {
         if (PlayerPrefs.HasKey("JaJogou")) JaJogou = true;
+        paineis = new GameObject[] { menuOpcoes, menuPesquisa, menuCreditos };
     }
 
     public void AbrirJogo()
@@ -27,39 +31,23 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void AbrirOpcoes()
+    public void AbrirPainel(int painel_id)
     {
-        menuPrincipal.SetActive(true);
-        menuOpcoes.SetActive(true);
+        GameObject painelAtual = paineis[painel_id];
+        painelAberto = painel_id;
+        painelAtual.transform.localScale = Vector3.zero;
+        painelAtual.SetActive(true);
+        painelAtual.transform.LeanScale(Vector3.one, delay);
     }
 
-    public void FecharOpcoes()
+    public void FecharPainelAtual()
     {
-        menuOpcoes.SetActive(false);
-        menuPrincipal.SetActive(true);
-    }
+        if (painelAberto == -1) return;
 
-    public void AbrirCreditos()
-    {
-        menuPrincipal.SetActive(false);
-        menuCreditos.SetActive(true);
-    }
-
-    public void FecharCreditos()
-    {
-        menuCreditos.SetActive(false);
-        menuPrincipal.SetActive(true);
-    }
-
-    public void AbrirPesquisa()
-    {
-        menuPrincipal.SetActive(false);
-        menuPesquisa.SetActive(true);
-    }
-
-    public void FecharPesquisa()
-    {
-        menuPesquisa.SetActive(false);
-        menuPrincipal.SetActive(true);
+        GameObject painelAtual = paineis[painelAberto];
+        painelAberto = -1;
+        painelAtual.transform.LeanScale(Vector3.zero, delay).setOnComplete(() => {
+            painelAtual.SetActive(false);
+        });
     }
 }
