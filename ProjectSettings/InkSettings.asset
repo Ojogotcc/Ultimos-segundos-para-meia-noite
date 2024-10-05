@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983af1b6602bf416b9928d40b37a38bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  templateFile: {fileID: 0}
+  templateFile: {fileID: 102900000, guid: e17983673d5440b419a450b578d686a5, type: 3}
   defaultJsonAssetPath: {fileID: 102900000, guid: e17983673d5440b419a450b578d686a5,
     type: 3}
   compileAllFilesAutomatically: 1

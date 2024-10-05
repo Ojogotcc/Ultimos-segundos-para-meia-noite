@@ -19,7 +19,7 @@ public class InimigoControle : MonoBehaviour
     bool jaAtacou;
     public GameObject projectile;
 
-    public float visaoRange, ataqueRange;
+    public float visaoRange, ataqueRange, pararRange;
     public bool playerEmVisaoRange, playerEmAtaqueRange;
 
     [Header("Animacao")]
@@ -39,7 +39,7 @@ public class InimigoControle : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = ataqueRange;
+        agent.stoppingDistance = pararRange;
     }
 
     private void Update()

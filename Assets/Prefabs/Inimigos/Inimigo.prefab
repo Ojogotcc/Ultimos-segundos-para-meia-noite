@@ -134,7 +134,8 @@ MonoBehaviour:
   projectile: {fileID: 1892891964061884874, guid: 3b5644cdb2488b14295fec81c9edf8f0,
     type: 3}
   visaoRange: 100
-  ataqueRange: 30
+  ataqueRange: 50
+  pararRange: 20
   playerEmVisaoRange: 0
   playerEmAtaqueRange: 0
   animator: {fileID: 1890850384274560032}
@@ -195,10 +196,10 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 257
+  m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 801e826f421a6974b94df94967cbef50, type: 3}
+  - {fileID: 2100000, guid: cb08c9f6eb4e48f4dbde035db42d9818, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -218,7 +219,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 17167eb49c5469242be5a1a6416855de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

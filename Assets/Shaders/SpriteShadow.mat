@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShaderSpriteShadow Variant
+  m_Name: SpriteShadow
   m_Shader: {fileID: -6465566751694194690, guid: 801e826f421a6974b94df94967cbef50,
     type: 3}
   m_Parent: {fileID: -876546973899608171, guid: 801e826f421a6974b94df94967cbef50,
@@ -28,6 +28,7 @@ Material:
   - TransparentDepthPrepass
   - TransparentDepthPostpass
   - TransparentBackface
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -37,6 +38,8 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _CullMode: 0
     - _CullModeForward: 0
+    - _DoubleSidedEnable: 1
+    - _DoubleSidedGIMode: 0
     - _UseShadowThreshold: 0
     - _ZTestDepthEqualForOpaque: 3
     m_Colors: []

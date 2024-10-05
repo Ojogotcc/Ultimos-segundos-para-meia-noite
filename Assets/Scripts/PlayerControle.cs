@@ -332,7 +332,9 @@ public class PlayerControle : MonoBehaviour
 
         if (vidaAtual <= 0)
         {
-            SceneManager.LoadScene("Fase1");
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene("MenuPrincipal");
             // Destroy(gameObject);
         }
     }
