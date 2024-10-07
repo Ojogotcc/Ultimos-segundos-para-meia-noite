@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
     private int painelAberto = -1;
     private Image fundoImage;
     public bool JaJogou = false;    
-    public GameObject fundoGO;
+    public CanvasGroup fundo;
     public GameObject menuOpcoes;
     public GameObject menuPesquisa;
     public GameObject menuCreditos;    
@@ -25,11 +25,11 @@ public class MenuManager : MonoBehaviour
     public GameObject videoGO;
     public VideoPlayer videoPlayer;
     public GameObject pularBotao;
+    public GameObject MusicaGO;
 
     private void Start() {
         if (PlayerPrefs.HasKey("JaJogou")) JaJogou = true;
         paineis = new GameObject[] { menuOpcoes, menuPesquisa, menuCreditos };
-        fundoImage = fundoGO.GetComponent<Image>();
     }
 
     void Update()
@@ -45,12 +45,14 @@ public class MenuManager : MonoBehaviour
 
     public void AbrirJogo()
     {
+        EfeitoManager.instance.PlayEfeito(abrirClip, transform, 1f, 0f, 0f);
         if (JaJogou)
         {
             SceneManager.LoadScene(Fase1);
         }
         else
         {
+            MusicaGO.SetActive(false);
             videoGO.SetActive(true);
             videoPlayer.Play();
             videoPlayer.loopPointReached += VideoAcabou;
@@ -65,6 +67,7 @@ public class MenuManager : MonoBehaviour
 
     public void FecharJogo()
     {
+        EfeitoManager.instance.PlayEfeito(fecharClip, transform, 1f, 0f, 0f);
         Application.Quit();
     }
 
@@ -76,15 +79,11 @@ public class MenuManager : MonoBehaviour
         painelAtual.transform.localScale = Vector3.zero;
         painelAtual.SetActive(true);
 
-        Color color = fundoImage.color;
-        color.a = 0f;
-        fundoImage.color = color;
-        fundoGO.SetActive(true);
+        fundo.alpha = 0f;
+        fundo.gameObject.SetActive(true);
 
-        LeanTween.value(gameObject, 0f, .941176f, .5f).setOnUpdate((float val) => {
-            Color newColor = fundoImage.color;
-            newColor.a = val;
-            fundoImage.color = newColor;
+        LeanTween.value(gameObject, 0f, 1f, .5f).setOnUpdate((float val) => {
+            fundo.alpha = val;
         });
 
         painelAtual.transform.LeanScale(new Vector3(1f, .05f, 0f), delay).setOnComplete(() => {
@@ -106,10 +105,8 @@ public class MenuManager : MonoBehaviour
                 painelAtual.SetActive(false);
 
                 LeanTween.value(gameObject, 1f, 0f, .5f).setOnUpdate((float val) => {
-                    Color newColor = fundoImage.color;
-                    newColor.a = val;
-                    fundoImage.color = newColor;
-                }).setOnComplete(() => {fundoGO.SetActive(false);});
+                    fundo.alpha = val;
+                }).setOnComplete(() => {fundo.gameObject.SetActive(false);});
             });
         });        
     }
