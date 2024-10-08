@@ -3,7 +3,6 @@ using UnityEngine;
 public class ParallaxCanvas : MonoBehaviour
 {
     public Camera mainCamera;
-
     [Range(0.1f, 50f)]
     public float followSpeed = 0.1f;
     [Range(0.1f, 50f)]
@@ -13,8 +12,7 @@ public class ParallaxCanvas : MonoBehaviour
     [Range(0.1f, 50f)]
     public float returnSpeed = 0.5f;
     private Vector3 initialPosition;
-    private Vector3 lastCameraRotation; 
-
+    private Vector3 lastCameraRotation;
 
     void Start()
     {

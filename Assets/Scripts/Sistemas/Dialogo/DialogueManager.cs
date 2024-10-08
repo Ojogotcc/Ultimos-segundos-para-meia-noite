@@ -41,12 +41,16 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance == null)
         {
-            Debug.LogWarning("Existe mais de um DialogueManager em cena!");
-            return;
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        instance = this;
+        else
+        {
+            Debug.LogWarning("Existe mais de um DialogoManager em cena!");
+            Destroy(gameObject);
+        }
     }
 
     public void AbrirDialogo(TextAsset inkJSON)

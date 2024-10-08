@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -334,7 +333,7 @@ public class PlayerControle : MonoBehaviour
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene("MenuPrincipal");
+            LoadingManager.instance.CarregarCena("MenuPrincipal");
             // Destroy(gameObject);
         }
     }

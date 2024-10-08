@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
@@ -40,7 +38,7 @@ public class MenuManager : MonoBehaviour
     public void AcabarCutscene()
     {
         PlayerPrefs.SetInt("JaJogou", 1);
-        SceneManager.LoadScene(Fase1);  
+        LoadingManager.instance.CarregarCena("Fase1");  
     }
 
     public void AbrirJogo()
@@ -48,7 +46,7 @@ public class MenuManager : MonoBehaviour
         EfeitoManager.instance.PlayEfeito(abrirClip, transform, 1f, 0f, 0f);
         if (JaJogou)
         {
-            SceneManager.LoadScene(Fase1);
+            LoadingManager.instance.CarregarCena("Fase1");
         }
         else
         {
@@ -62,7 +60,7 @@ public class MenuManager : MonoBehaviour
     void VideoAcabou(VideoPlayer vp)
     {
         PlayerPrefs.SetInt("JaJogou", 1);
-        SceneManager.LoadScene(Fase1);        
+        LoadingManager.instance.CarregarCena("Fase1");        
     }
 
     public void FecharJogo()

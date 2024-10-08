@@ -1,21 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EfeitoManager : MonoBehaviour
 {
     public static EfeitoManager instance;
-
     public AudioSource audioSourcePrefab;
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
         {
             Debug.LogWarning("Existe mais de um EfeitoManager em cena!");
-            return;
+            Destroy(gameObject);
         }
-        if (instance == null) instance = this;
     }
 
     public void PlayEfeito(AudioClip clip, Transform local, float volume, float spatial, float pitchrandom)
