@@ -25,12 +25,12 @@ MonoBehaviour:
     - iconToDraw: {fileID: 2800000, guid: d45a84e0148980a4ca2c4a543daed147, type: 3}
       targetClasses:
       - {fileID: 11500000, guid: d3651e7405f11b746b008af9f07ddabf, type: 3}
+    - iconToDraw: {fileID: 2800000, guid: 41a2c562aac791e4582545328f74e2cf, type: 3}
+      targetClasses:
+      - {fileID: 11500000, guid: dab0fea4217e9064d95dab9997a9ed12, type: 3}
   prefabsData:
     enabled: 1
-    prefabs:
-    - gameObject: {fileID: 789036744186978364, guid: 55ba52fb24899304c91e0cb4eee6402c,
-        type: 3}
-      color: {r: 1, g: 0, b: 0, a: 0.09803922}
+    prefabs: []
   alternatingBackground:
     enabled: 1
     color: {r: 0, g: 0, b: 0, a: 0.08}

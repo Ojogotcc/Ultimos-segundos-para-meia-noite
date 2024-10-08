@@ -264,8 +264,8 @@ Material:
     - _UVEmissive: 0
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
-    - _VelocidadeX: 0.02
-    - _VelocidadeY: -0.03
+    - _VelocidadeX: 0.0012
+    - _VelocidadeY: -0.0003
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4

@@ -11,7 +11,7 @@ public class LoadingManager : MonoBehaviour
     public GameObject CanvasLoading;
     public Image barraProgresso;
     private float porcentagemProgesso;
-    
+    private AsyncOperation cena;
     private void Awake()
     {
         if (instance == null)
@@ -26,9 +26,13 @@ public class LoadingManager : MonoBehaviour
         }
     }
 
+    private void Start() {
+        CanvasLoading.SetActive(false);
+    }
+
     public async void CarregarCena(string nomeCena)
     {
-        var cena = SceneManager.LoadSceneAsync(nomeCena);
+        cena = SceneManager.LoadSceneAsync(nomeCena);
         cena.allowSceneActivation = false;
         barraProgresso.fillAmount = 0f;
         loadingGrupo.alpha = 0f;
@@ -51,14 +55,19 @@ public class LoadingManager : MonoBehaviour
             loadingGrupo.alpha = val;
         }).setOnComplete(() => {
             CanvasLoading.SetActive(false);
+            cena = null;
+            // Destroy(gameObject);
         });       
     }
 
     void Update()
     {
-        LeanTween.value(gameObject, barraProgresso.fillAmount, porcentagemProgesso, 1f)
-        .setOnUpdate((float val) => {
-            barraProgresso.fillAmount = val;
-        });
+        if (cena != null)
+        {
+            LeanTween.value(gameObject, barraProgresso.fillAmount, porcentagemProgesso+.1f, .5f)
+            .setOnUpdate((float val) => {
+                barraProgresso.fillAmount = val;
+            });
+        }
     }
 }

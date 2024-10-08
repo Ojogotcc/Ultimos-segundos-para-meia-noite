@@ -20,6 +20,7 @@ public class PlayerControle : MonoBehaviour
     private float gravidade_total; // Armazena o valor total da gravidade aplicada ao player    
     public float checkChaoDistancia = 8f; // Distancia para verificar se o player esta no chao
     private bool podePular = true;
+    private bool estaMorto = false;
 
     [Header("Ataque")]
     public GameObject playerTiro; // Prefab do tiro
@@ -102,18 +103,18 @@ public class PlayerControle : MonoBehaviour
         MovimentacaoCamera();
         Animacoes(); // Atualiza as animacoes com base nos inputs     
     }
-    public void MudarSensibilidadeCamera(float value)
-    {
-        mouseSensibilidadeY = value;
-        mouseSensibilidadeX = value;
-    }
+    // public void MudarSensibilidadeCamera(float value)
+    // {
+    //     mouseSensibilidadeY = value;
+    //     mouseSensibilidadeX = value;
+    // }
 
-    public void MudarSensibilidadeMovimento(float value)
-    {
-        velocidade_atual = velocidade_atual * value;
-        mouseSensibilidadeY = 1;
-        mouseSensibilidadeX = 1;
-    }
+    // public void MudarSensibilidadeMovimento(float value)
+    // {
+    //     velocidade_atual = velocidade_atual * value;
+    //     mouseSensibilidadeY = 1;
+    //     mouseSensibilidadeX = 1;
+    // }
 
     private void MoverPlayer() // Movimentacao do player
     {
@@ -127,7 +128,7 @@ public class PlayerControle : MonoBehaviour
             {
                 gravidade_total = 0.0f; // Reseta a gravidade quando esta no chao
 
-                if (Input.GetKeyDown(KeyCode.Space) && podePular == true)
+                if (Input.GetKeyDown(KeyCode.Space) && podePular)
                 {
                     gravidade_total += forca_pulo; // Aplica impulso para pular
                 }
@@ -217,7 +218,6 @@ public class PlayerControle : MonoBehaviour
             // Cursor.visible = true;
             // Cursor.lockState = CursorLockMode.None;
             miraCanvas.SetActive(false);
-
             TrocarCameras.TrocarCamera(cameraTerceiraPessoa);
             // transform.localEulerAngles = Vector3.zero;
         }        
@@ -329,8 +329,9 @@ public class PlayerControle : MonoBehaviour
         cameraImpulsoShake.GenerateImpulse(); // Shake a camera
         if (vidaAtual < 30f) efeitodanotela.SetActive(true); else efeitodanotela.SetActive(false); // Coloca o efeito de vidabaixa
 
-        if (vidaAtual <= 0)
+        if (vidaAtual <= 0 && !estaMorto)
         {
+            estaMorto = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             LoadingManager.instance.CarregarCena("MenuPrincipal");

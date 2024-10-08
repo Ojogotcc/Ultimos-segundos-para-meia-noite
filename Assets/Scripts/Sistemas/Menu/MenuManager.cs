@@ -2,12 +2,14 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
     public string Fase1;
     private int painelAberto = -1;
-    private Image fundoImage;
+    // private Image fundoImage;
+    public TMP_Text textoJogar;
     public bool JaJogou = false;    
     public CanvasGroup fundo;
     public GameObject menuOpcoes;
@@ -26,7 +28,11 @@ public class MenuManager : MonoBehaviour
     public GameObject MusicaGO;
 
     private void Start() {
-        if (PlayerPrefs.HasKey("JaJogou")) JaJogou = true;
+        if (PlayerPrefs.HasKey("JaJogou"))
+        {
+            JaJogou = true;
+            textoJogar.text = "Continuar";
+        }
         paineis = new GameObject[] { menuOpcoes, menuPesquisa, menuCreditos };
     }
 
@@ -38,7 +44,7 @@ public class MenuManager : MonoBehaviour
     public void AcabarCutscene()
     {
         PlayerPrefs.SetInt("JaJogou", 1);
-        LoadingManager.instance.CarregarCena("Fase1");  
+        LoadingManager.instance.CarregarCena(Fase1);  
     }
 
     public void AbrirJogo()
@@ -46,7 +52,7 @@ public class MenuManager : MonoBehaviour
         EfeitoManager.instance.PlayEfeito(abrirClip, transform, 1f, 0f, 0f);
         if (JaJogou)
         {
-            LoadingManager.instance.CarregarCena("Fase1");
+            LoadingManager.instance.CarregarCena(Fase1);
         }
         else
         {
@@ -60,7 +66,7 @@ public class MenuManager : MonoBehaviour
     void VideoAcabou(VideoPlayer vp)
     {
         PlayerPrefs.SetInt("JaJogou", 1);
-        LoadingManager.instance.CarregarCena("Fase1");        
+        LoadingManager.instance.CarregarCena(Fase1);        
     }
 
     public void FecharJogo()
