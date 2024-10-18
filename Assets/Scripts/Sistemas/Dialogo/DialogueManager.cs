@@ -34,6 +34,8 @@ public class DialogueManager : MonoBehaviour
     private string Avatar1Inicial = null;
     private string Avatar0AparenciaInicial = null;
     private string Avatar1AparenciaInicial = null;
+    [Header("UI")]
+    public GameObject Parallax_GO;
 
     private string ultimoPersonagemFalante;
 
@@ -66,12 +68,14 @@ public class DialogueManager : MonoBehaviour
         estaEscolhendo = false;
         estaDigitando = false;
 
+        Parallax_GO.SetActive(false);
+
         background.localScale = Vector3.zero;
 
         DefinirConfiguracoesIniciais();
 
         ProximaMensagem();
-        background.LeanScale(new Vector3(1.94f, 1.94f, 1.94f), 0.3f);
+        background.LeanScale(new Vector3(1f, 1f, 1f), 0.3f);
     }
 
     void DefinirConfiguracoesIniciais()
@@ -273,6 +277,7 @@ public class DialogueManager : MonoBehaviour
     {
         estaAtivo = false;
         estaEscolhendo = false;
+        Parallax_GO.SetActive(true);
         Debug.Log("Diálogo foi fechado");
         background.LeanScale(Vector3.zero, 0.2f);
 

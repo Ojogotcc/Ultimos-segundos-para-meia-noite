@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 487ff16c01579714689bcb8b75d3e519
+guid: 7af8aae329e470d459531cca20fc01ba
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: 1
+    aniso: 3
     mipBias: 0
     wrapU: 1
     wrapV: 1
@@ -119,30 +119,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "os \xFAltimos2_0"
+      name: dialogo_0
       rect:
         serializedVersion: 2
-        x: 178
-        y: 327
-        width: 236
-        height: 74
+        x: 1
+        y: 46
+        width: 63
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,62 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcc2a595f7103594397e833631172c13
-      internalID: 1142208960
+      spriteID: 94a9de34c12d2104e80cc7786e0bb2d9
+      internalID: 1394861369
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "os \xFAltimos2_1"
+      name: dialogo_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 219
-        width: 414
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 93c5c58f987ee514199af3f57d53d5f1
-      internalID: 1236096990
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "os \xFAltimos2_2"
-      rect:
-        serializedVersion: 2
-        x: 53
-        y: 110
-        width: 361
-        height: 75
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c50844aa71f764c4f9a4c4d03f13d2ad
-      internalID: -1366447853
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "os \xFAltimos2_3"
-      rect:
-        serializedVersion: 2
-        x: 83
+        x: 1
         y: 1
-        width: 331
-        height: 75
+        width: 155
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff542a06b1c987f41b0030ee3d35b989
-      internalID: -2117604106
+      spriteID: 04e198e8123ef4941b9b3517ddededcf
+      internalID: -1802445583
       vertices: []
       indices: 
       edges: []
@@ -230,10 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "os \xFAltimos2_0": 1142208960
-      "os \xFAltimos2_1": 1236096990
-      "os \xFAltimos2_2": -1366447853
-      "os \xFAltimos2_3": -2117604106
+      dialogo_0: 1394861369
+      dialogo_1: -1802445583
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
