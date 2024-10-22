@@ -1,30 +1,74 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class VolumeController : MonoBehaviour
 {
     [Header("Objetos")]
-    public GameObject musicManager;
-    float volumeMaster;
+    [SerializeField] private AudioMixer Main;
+    [SerializeField] private Slider VolumeSlider;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        LoadVolumeMasterValue();
+        LoadVolumeSFXValue();
+        LoadVolumeMusicaValue();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetVolumeMaster(float sliderValue)
     {
-        
+        Main.SetFloat("VolumeMaster", sliderValue);
+        SaveVolumeMaster();
     }
 
-    public void VolumeMaster(float volume)
+    public void SetVolumeSFX(float sliderValue)
     {
-        volumeMaster = volume;
-        AudioListener.volume = volumeMaster;
+        Main.SetFloat("VolumeSFX", sliderValue);
+        SaveVolumeSFX();
+    }
 
-        musicManager.GetComponent<AudioSource>().volume = volume;
+    public void SetVolumeMusica(float sliderValue)
+    {
+        Main.SetFloat("VolumeMusica", sliderValue);
+        SaveVolumeMusica();
+    }
+
+    public void SaveVolumeMaster()
+    {
+        float volume_master_value = VolumeSlider.value;
+        PlayerPrefs.SetFloat("MasterValue", volume_master_value);
+    }
+
+   public void SaveVolumeSFX()
+    {
+        float volume_sfx_value = VolumeSlider.value;
+        PlayerPrefs.SetFloat("SFXValue", volume_sfx_value);
+    }
+
+   public void SaveVolumeMusica()
+    {
+        float volume_musica_value = VolumeSlider.value;
+        PlayerPrefs.SetFloat("MusicaValue", volume_musica_value);
+    }
+
+    public void LoadVolumeMasterValue()
+    {
+        float volume_master_value = PlayerPrefs.GetFloat("MasterValue");
+        VolumeSlider.value = volume_master_value;
+        SetVolumeMaster(volume_master_value);
+    }
+
+    public void LoadVolumeSFXValue()
+    {
+        float volume_sfx_value = PlayerPrefs.GetFloat("SFXValue");
+        VolumeSlider.value = volume_sfx_value;
+        SetVolumeMaster(volume_sfx_value);
+    }
+
+    public void LoadVolumeMusicaValue()
+    {
+        float volume_musica_value = PlayerPrefs.GetFloat("MusicaValue");
+        VolumeSlider.value = volume_musica_value;
+        SetVolumeMaster(volume_musica_value);
     }
 }
