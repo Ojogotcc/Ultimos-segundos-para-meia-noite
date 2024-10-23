@@ -9,6 +9,7 @@ TagManager:
   - MenuPausa
   - Menu Config
   - Sound
+  - Capacitor
   layers:
   - Default
   - TransparentFX
