@@ -49,6 +49,7 @@ public class MenuManager : MonoBehaviour
 
     public void AbrirJogo()
     {
+        Debug.Log("Botão pressionado");
         EfeitoManager.instance.PlayEfeito(abrirClip, transform, 1f, 0f, 0f);
         if (JaJogou)
         {
@@ -61,6 +62,7 @@ public class MenuManager : MonoBehaviour
             videoPlayer.Play();
             videoPlayer.loopPointReached += VideoAcabou;
         }
+
     }
 
     void VideoAcabou(VideoPlayer vp)

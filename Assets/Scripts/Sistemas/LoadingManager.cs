@@ -12,12 +12,13 @@ public class LoadingManager : MonoBehaviour
     public Image barraProgresso;
     private float porcentagemProgesso;
     private AsyncOperation cena;
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(instance);
         }
         else
         {

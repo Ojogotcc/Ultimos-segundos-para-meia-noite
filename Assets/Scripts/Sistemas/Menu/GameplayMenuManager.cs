@@ -52,7 +52,8 @@ public class GameplayManager : MonoBehaviour
 
     public void IrParaMenuPrinc()
     {
-        SceneManager.LoadScene(menuPrincipal);
+        LoadingManager.instance.CarregarCena("MenuPrincipal");
+
         Time.timeScale = 1;
     }
 
