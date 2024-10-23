@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Cinemachine;
 using UnityEngine;
@@ -34,6 +35,7 @@ public class PlayerControle : MonoBehaviour
 
     [Header("Armas")]
     public Image arma1;
+    public GameObject capacitor;
 
     [Header("Animacao")]
     public Animator animator; // Referancia ao componente Animator do player
@@ -359,5 +361,22 @@ public class PlayerControle : MonoBehaviour
         });
 
         yield return new WaitForSeconds(delayTime);
+    }
+
+    public void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("Capacitor") )
+        {
+            Debug.Log("colidiu");
+            energiaAtual = energiaAtual + 50;
+            if(energiaAtual > energiaMaxima)
+            {
+                energiaAtual = energiaMaxima;
+            }
+            Destroy(capacitor, .5f);
+            
+            energia.fillAmount = (energiaAtual/energiaMaxima);
+
+
+        }
     }
 }
