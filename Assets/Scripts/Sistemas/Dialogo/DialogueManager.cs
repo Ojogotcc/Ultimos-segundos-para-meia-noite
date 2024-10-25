@@ -37,6 +37,16 @@ public class DialogueManager : MonoBehaviour
     [Header("UI")]
     public GameObject Parallax_GO;
 
+    [Header("Animação")]
+    public float delay1 = 1f;
+    public float delay2 = 1f;
+    public float delay3 = 1f;
+    public GameObject Vinheta;
+    public GameObject Avatar0;
+    public GameObject Avatar1;
+    public GameObject Nome;
+    public GameObject Texto;
+
     private string ultimoPersonagemFalante;
 
     public static DialogueManager instance;
@@ -69,13 +79,16 @@ public class DialogueManager : MonoBehaviour
         estaDigitando = false;
 
         Parallax_GO.SetActive(false);
-
-        background.localScale = Vector3.zero;
+        
+        background.transform.localScale = Vector3.one;
+        
+        Vinheta.transform.localScale = new Vector3(1f, 0f, 1f);
+        Vinheta.LeanScale(new Vector3(1f, 1f, 1f), 0.3f);
+        Texto.transform.position = new Vector3(0f, 0f, 0f);
 
         DefinirConfiguracoesIniciais();
 
-        ProximaMensagem();
-        background.LeanScale(new Vector3(1f, 1f, 1f), 0.3f);
+        ProximaMensagem();        
     }
 
     void DefinirConfiguracoesIniciais()
