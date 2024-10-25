@@ -36,16 +36,17 @@ public class DialogueManager : MonoBehaviour
     private string Avatar1AparenciaInicial = null;
     [Header("UI")]
     public GameObject Parallax_GO;
+    public GameObject Dialogo_GO;
 
     [Header("Animação")]
-    public float delay1 = 1f;
-    public float delay2 = 1f;
-    public float delay3 = 1f;
-    public GameObject Vinheta;
-    public GameObject Avatar0;
-    public GameObject Avatar1;
-    public GameObject Nome;
-    public GameObject Texto;
+    public float delayAvatares = 1f;
+    public float delayTexto = 1f;
+    public float delayNome = 1f;
+    public RectTransform Vinheta;
+    public RectTransform Avatar0;
+    public RectTransform Avatar1;
+    public RectTransform Nome;
+    public RectTransform Texto;
 
     private string ultimoPersonagemFalante;
 
@@ -73,18 +74,30 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         historiaAtual = new Story(inkJSON.text);
         estaAtivo = true;
         estaEscolhendo = false;
         estaDigitando = false;
 
         Parallax_GO.SetActive(false);
-        
-        background.transform.localScale = Vector3.one;
-        
-        Vinheta.transform.localScale = new Vector3(1f, 0f, 1f);
-        Vinheta.LeanScale(new Vector3(1f, 1f, 1f), 0.3f);
-        Texto.transform.position = new Vector3(0f, 0f, 0f);
+        Dialogo_GO.SetActive(true);
+
+        // Animacoes
+        Vinheta.localScale = new Vector3(1f, 0f, 1f);
+        Vinheta.LeanScale(new Vector3(1f, 1f, 1f), .2f);
+        Avatar0.localPosition = new Vector3(-1144f, -540f, -10f);
+        Avatar0.LeanMoveLocal(new Vector3(-790f, -540f, -10f), delayAvatares);
+        Avatar1.localPosition = new Vector3(1144f, -540f, 0f);
+        Avatar1.LeanMoveLocal(new Vector3(790f, -540f, 0f), delayAvatares);
+        Texto.localPosition = new Vector3(0f, -730f, 0f);
+        Texto.LeanMoveLocal(new Vector3(0f, -330f, 0f), delayTexto);
+        Nome.localScale = Vector3.zero;
+        Nome.LeanScale(new Vector3(1f, .05f, 0f), delayNome/2).setOnComplete(() => {
+            Nome.LeanScale(Vector3.one, delayNome/2);
+        });
 
         DefinirConfiguracoesIniciais();
 
@@ -224,7 +237,7 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        background.transform.localScale = Vector3.zero;
+        Dialogo_GO.SetActive(false);
 
         escolhasTextos = new TextMeshProUGUI[escolhas.Length];
         int index = 0;
@@ -248,7 +261,6 @@ public class DialogueManager : MonoBehaviour
             FundoEscolhas.SetActive(false);
             return;
         }
-
         estaEscolhendo = true;
         FundoEscolhas.SetActive(true);
 
@@ -288,17 +300,30 @@ public class DialogueManager : MonoBehaviour
 
     public void FecharDialogo()
     {
-        estaAtivo = false;
-        estaEscolhendo = false;
-        Parallax_GO.SetActive(true);
-        Debug.Log("Diálogo foi fechado");
-        background.LeanScale(Vector3.zero, 0.2f);
+        Nome.LeanScale(new Vector3(1f, .05f, 0f), delayNome/2).setOnComplete(() => {
+            Nome.LeanScale(Vector3.zero, delayNome/2);
+        });
+        Texto.LeanMoveLocal(new Vector3(0f, -730f, 0f), delayTexto);
+        Avatar0.LeanMoveLocal(new Vector3(-1144f, -540f, -10f), delayAvatares);
+        Avatar1.LeanMoveLocal(new Vector3(1144f, -540f, 0f), delayAvatares).setOnComplete(() => {
+            Vinheta.LeanScale(new Vector3(1f, 0f, 1f), .2f);
+            background.transform.localScale = Vector3.zero;
+        });        
 
         FundoEscolhas.SetActive(false);
         foreach (GameObject escolha in escolhas)
         {
             escolha.SetActive(false);
         }
+        
+        estaAtivo = false;
+        estaEscolhendo = false;
+        Parallax_GO.SetActive(true);
+        Dialogo_GO.SetActive(false);
+        Debug.Log("Diálogo foi fechado");  
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;        
     }
 
     void Update()
@@ -314,9 +339,9 @@ public class DialogueManager : MonoBehaviour
                 ProximaMensagem();
             }            
         }
-        if (Input.GetKeyUp(KeyCode.Escape) && estaAtivo)
-        {
-            FecharDialogo();
-        }
+        // if (Input.GetKeyUp(KeyCode.Escape) && estaAtivo)
+        // {
+        //     FecharDialogo();
+        // }
     }
 }

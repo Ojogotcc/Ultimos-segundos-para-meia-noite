@@ -147,13 +147,17 @@ public class PlayerControle : MonoBehaviour
         }
     }
 
-    public void DesabilitarPulo()
+    public void DesabilitarTodosMovimentos()
     {
+        estaAtivadoMenu = true;
+        podeMover = false;
         podePular = false;
     }
 
-    public void HabilitarPulo()
+    public void HabilitarTodosMovimentos()
     {
+        estaAtivadoMenu = false;
+        podeMover = true;
         podePular = true;
     }
 
