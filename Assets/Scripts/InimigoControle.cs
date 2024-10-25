@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -34,6 +35,9 @@ public class InimigoControle : MonoBehaviour
     [Header("Efeitos")]
     public AudioClip hitClip;
     public AudioClip ataqueClip;
+
+    [Header("Loot")]
+    public GameObject capacitor;
 
     private void Awake()
     {
@@ -163,7 +167,11 @@ public class InimigoControle : MonoBehaviour
     private void DestruirInimigo()
     {
         Instantiate(efeitoMorte, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        int randomG = Random.Range(0, 1);
+        if(randomG == 1)
+            capacitor = Instantiate(capacitor, transform.position, Quaternion.identity);
+        else
+            Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
