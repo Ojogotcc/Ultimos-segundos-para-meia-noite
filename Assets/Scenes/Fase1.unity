@@ -1293,7 +1293,7 @@ PrefabInstance:
     - target: {fileID: 1163389676599008185, guid: e1ee50e3dae12c74c97deff675633636,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1394891398802747363, guid: e1ee50e3dae12c74c97deff675633636,
         type: 3}
@@ -1358,7 +1358,7 @@ PrefabInstance:
     - target: {fileID: 7965009482502978583, guid: e1ee50e3dae12c74c97deff675633636,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 100
+      value: 9999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2624,6 +2624,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2114732172988480921, guid: cdef408c57d4ec741a2515f5e654d6b9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.040649414
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114732172988480921, guid: cdef408c57d4ec741a2515f5e654d6b9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.14660645
+      objectReference: {fileID: 0}
     - target: {fileID: 2228514930794789182, guid: cdef408c57d4ec741a2515f5e654d6b9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2659,6 +2669,16 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2505696496844019837, guid: cdef408c57d4ec741a2515f5e654d6b9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 2505696496844019837, guid: cdef408c57d4ec741a2515f5e654d6b9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.8999977
+      objectReference: {fileID: 0}
     - target: {fileID: 3498219036162818674, guid: cdef408c57d4ec741a2515f5e654d6b9,
         type: 3}
       propertyPath: m_Name
@@ -2674,6 +2694,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 888164725}
+    - target: {fileID: 3976601625865923949, guid: cdef408c57d4ec741a2515f5e654d6b9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.034606934
+      objectReference: {fileID: 0}
     - target: {fileID: 4515755705601372597, guid: cdef408c57d4ec741a2515f5e654d6b9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2693,6 +2718,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753466906536303827, guid: cdef408c57d4ec741a2515f5e654d6b9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753466906536303827, guid: cdef408c57d4ec741a2515f5e654d6b9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.8999977
       objectReference: {fileID: 0}
     - target: {fileID: 5680104001168097944, guid: cdef408c57d4ec741a2515f5e654d6b9,
         type: 3}
@@ -2728,6 +2763,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419269891205467477, guid: cdef408c57d4ec741a2515f5e654d6b9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.0149536
       objectReference: {fileID: 0}
     - target: {fileID: 7577106818573055347, guid: cdef408c57d4ec741a2515f5e654d6b9,
         type: 3}
@@ -8604,8 +8644,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.9925076, z: -0.122183256, w: 0}
-  m_LocalPosition: {x: 142.35535, y: -4.874485, z: 120.99536}
+  m_LocalRotation: {x: 0, y: 0.9954272, z: 0, w: -0.095524184}
+  m_LocalPosition: {x: 1510.2037, y: 358.57956, z: 3232.727}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -52,15 +52,8 @@ public class GameplayManager : MonoBehaviour
 
     public void IrParaMenuPrinc()
     {
-        LoadingManager.instance.CarregarCena("MenuPrincipal");
-
         Time.timeScale = 1;
-    }
-
-    public void SairJogo()
-    {
-        Debug.Log("Sair do jogo");
-        Application.Quit();
+        LoadingManager.instance.CarregarCena("MenuPrincipal");        
     }
 
     void Update()

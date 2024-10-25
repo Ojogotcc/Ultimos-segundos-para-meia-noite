@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerControle : MonoBehaviour

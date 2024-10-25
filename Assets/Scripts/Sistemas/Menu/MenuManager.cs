@@ -28,6 +28,8 @@ public class MenuManager : MonoBehaviour
     public GameObject MusicaGO;
 
     private void Start() {
+        Time.timeScale = 1f;
+        
         if (PlayerPrefs.HasKey("JaJogou"))
         {
             JaJogou = true;
@@ -49,7 +51,7 @@ public class MenuManager : MonoBehaviour
 
     public void AbrirJogo()
     {
-        Debug.Log("Botão pressionado");
+        Debug.Log("Botï¿½o pressionado");
         EfeitoManager.instance.PlayEfeito(abrirClip, transform, 1f, 0f, 0f);
         if (JaJogou)
         {

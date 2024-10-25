@@ -18,7 +18,7 @@ public class LoadingManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(instance);
+            DontDestroyOnLoad(gameObject); // Alteração: aplicar o DontDestroyOnLoad ao gameObject
         }
         else
         {
@@ -39,6 +39,7 @@ public class LoadingManager : MonoBehaviour
         loadingGrupo.alpha = 0f;
         CanvasLoading.SetActive(true);
 
+        // Animação para exibir a tela de loading
         LeanTween.value(gameObject, 0f, 1f, .5f).setOnUpdate((float val) => {
             loadingGrupo.alpha = val;
         });
@@ -52,20 +53,24 @@ public class LoadingManager : MonoBehaviour
         await Task.Delay(1000);
         cena.allowSceneActivation = true;
 
-        LeanTween.value(gameObject, 1f, 0f, 1f).setOnUpdate((float val) => {
-            loadingGrupo.alpha = val;
-        }).setOnComplete(() => {
-            CanvasLoading.SetActive(false);
-            cena = null;
-            // Destroy(gameObject);
-        });       
+        // Animação para ocultar a tela de loading
+        if (CanvasLoading.activeSelf) // Alteração: Verificar se CanvasLoading está ativo
+        {
+            LeanTween.value(gameObject, 1f, 0f, 1f).setOnUpdate((float val) => {
+                loadingGrupo.alpha = val;
+            }).setOnComplete(() => {
+                CanvasLoading.SetActive(false);
+                cena = null;
+            });
+        }
     }
 
     void Update()
     {
         if (cena != null)
         {
-            LeanTween.value(gameObject, barraProgresso.fillAmount, porcentagemProgesso+.1f, .5f)
+            // Alteração: Limitar o valor máximo da barra para 1f
+            LeanTween.value(gameObject, barraProgresso.fillAmount, Mathf.Min(porcentagemProgesso + 0.1f, 1f), .5f)
             .setOnUpdate((float val) => {
                 barraProgresso.fillAmount = val;
             });
