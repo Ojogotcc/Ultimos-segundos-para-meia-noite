@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2618629094429711410
+--- !u!1001 &8042723882918723346
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b48aabbe521fd2a4c83272d827d01736,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.41
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b48aabbe521fd2a4c83272d827d01736,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.41
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b48aabbe521fd2a4c83272d827d01736,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.41
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b48aabbe521fd2a4c83272d827d01736,
         type: 3}
@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b48aabbe521fd2a4c83272d827d01736,
         type: 3}
       propertyPath: m_Name
-      value: capacitor
+      value: capacitor 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b48aabbe521fd2a4c83272d827d01736,
         type: 3}
@@ -96,21 +96,25 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b48aabbe521fd2a4c83272d827d01736,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3588440199557733305}
+      addedObject: {fileID: 5111223313153132012}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b48aabbe521fd2a4c83272d827d01736,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 296959815408744486}
   m_SourcePrefab: {fileID: 100100000, guid: b48aabbe521fd2a4c83272d827d01736, type: 3}
---- !u!1 &2924618021713568099 stripped
+--- !u!1 &7159622880264094275 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b48aabbe521fd2a4c83272d827d01736,
     type: 3}
-  m_PrefabInstance: {fileID: 2618629094429711410}
+  m_PrefabInstance: {fileID: 8042723882918723346}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &3588440199557733305
-MeshCollider:
+--- !u!136 &5111223313153132012
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2924618021713568099}
+  m_GameObject: {fileID: 7159622880264094275}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -122,7 +126,35 @@ MeshCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.02
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.84, z: 0}
+--- !u!54 &296959815408744486
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7159622880264094275}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0

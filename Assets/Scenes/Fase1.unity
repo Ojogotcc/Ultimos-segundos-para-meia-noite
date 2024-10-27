@@ -137,6 +137,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (87)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -239,6 +245,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -553,6 +565,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (61)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -733,6 +751,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (55)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -875,6 +899,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (88)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1258,6 +1288,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (86)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1332,6 +1368,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1539,6 +1581,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (81)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1709,6 +1757,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (67)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1783,6 +1837,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (54)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1947,6 +2007,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (72)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2027,6 +2093,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (77)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2101,6 +2173,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2279,6 +2357,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (89)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2971,6 +3055,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3095,6 +3185,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (63)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3169,6 +3265,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3243,6 +3345,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3617,6 +3725,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (83)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4002,6 +4116,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (84)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4219,6 +4339,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4305,6 +4431,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (70)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4379,6 +4511,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (76)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4615,7 +4753,8 @@ MonoBehaviour:
   podeMover: 1
   podeMirar: 1
   arma1: {fileID: 940271612}
-  capacitor: {fileID: 863835731}
+  capacitor: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+    type: 3}
   animator: {fileID: 65884242}
   GOTerceiraCamera: {fileID: 1097454257}
   GOMiraCamera: {fileID: 1897437410}
@@ -5018,6 +5157,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (79)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5092,6 +5237,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5381,6 +5532,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (50)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5455,6 +5612,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (57)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5770,6 +5933,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5928,6 +6097,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6002,6 +6177,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6256,6 +6437,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (56)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6358,6 +6545,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (80)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6460,6 +6653,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (45)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6590,6 +6789,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6685,6 +6890,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7056,6 +7267,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7158,6 +7375,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (59)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7260,6 +7483,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7368,6 +7597,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (43)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7442,6 +7677,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (75)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7628,6 +7869,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7711,35 +7958,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3936673123885724336, guid: eea3fe2893a4f7c428a404d5a3ac54e7, type: 3}
---- !u!1 &863835731 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2924618021713568099, guid: b0e74ca2c1ea63e42b066e2a867adb15,
-    type: 3}
-  m_PrefabInstance: {fileID: 4771266040810426031}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &863835734
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863835731}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2.02
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.84, z: 0}
 --- !u!1001 &864361026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7753,6 +7971,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7855,6 +8079,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8150,6 +8380,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (82)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8641,6 +8877,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (90)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8771,6 +9013,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (64)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9103,6 +9351,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9570,6 +9824,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9734,6 +9994,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9802,6 +10068,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9926,6 +10198,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9994,6 +10272,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (71)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10233,6 +10517,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10734,6 +11024,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (74)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10808,6 +11104,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11177,6 +11479,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13830,6 +14138,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (44)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13960,6 +14274,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (47)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14243,6 +14563,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (49)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14516,6 +14842,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14590,6 +14922,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (66)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14823,6 +15161,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15196,6 +15540,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15292,6 +15642,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (69)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15366,6 +15722,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (51)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15468,6 +15830,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (68)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15717,6 +16085,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15791,6 +16165,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15943,6 +16323,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (73)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16051,6 +16437,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16119,6 +16511,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16193,6 +16591,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (58)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16491,6 +16895,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (48)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16739,6 +17149,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (60)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16897,6 +17313,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (91)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17912,6 +18334,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (65)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18060,6 +18488,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18264,6 +18698,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18338,6 +18778,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18412,6 +18858,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18480,6 +18932,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (53)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18582,6 +19040,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (46)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18868,6 +19332,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (62)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19148,6 +19618,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19324,6 +19800,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19398,6 +19880,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19596,6 +20084,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (85)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19805,6 +20299,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (78)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20042,6 +20542,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (52)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20116,6 +20622,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20268,6 +20780,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20798,6 +21316,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inimigo
       objectReference: {fileID: 0}
+    - target: {fileID: 2555281561724156552, guid: aab0a65c811ceda4f85310351211b4a2,
+        type: 3}
+      propertyPath: capacitor
+      value: 
+      objectReference: {fileID: 7159622880264094275, guid: 35bbe69d25b424e4c860c3bdad6584f3,
+        type: 3}
     - target: {fileID: 9110415905069506988, guid: aab0a65c811ceda4f85310351211b4a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21059,79 +21583,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005801727347331635}
   m_CullTransparentMesh: 1
---- !u!1001 &4771266040810426031
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2584367124168391641, guid: b0e74ca2c1ea63e42b066e2a867adb15,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2042.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2584367124168391641, guid: b0e74ca2c1ea63e42b066e2a867adb15,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 15.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2584367124168391641, guid: b0e74ca2c1ea63e42b066e2a867adb15,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1807.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2584367124168391641, guid: b0e74ca2c1ea63e42b066e2a867adb15,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2584367124168391641, guid: b0e74ca2c1ea63e42b066e2a867adb15,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2584367124168391641, guid: b0e74ca2c1ea63e42b066e2a867adb15,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2584367124168391641, guid: b0e74ca2c1ea63e42b066e2a867adb15,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2584367124168391641, guid: b0e74ca2c1ea63e42b066e2a867adb15,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2584367124168391641, guid: b0e74ca2c1ea63e42b066e2a867adb15,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2584367124168391641, guid: b0e74ca2c1ea63e42b066e2a867adb15,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2924618021713568099, guid: b0e74ca2c1ea63e42b066e2a867adb15,
-        type: 3}
-      propertyPath: m_Name
-      value: capacitor
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3588440199557733305, guid: b0e74ca2c1ea63e42b066e2a867adb15, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2924618021713568099, guid: b0e74ca2c1ea63e42b066e2a867adb15,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 863835734}
-  m_SourcePrefab: {fileID: 100100000, guid: b0e74ca2c1ea63e42b066e2a867adb15, type: 3}
 --- !u!1001 &5226248208219216304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21541,4 +21992,3 @@ SceneRoots:
   - {fileID: 1269361145}
   - {fileID: 360694591}
   - {fileID: 442923528}
-  - {fileID: 4771266040810426031}
