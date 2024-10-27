@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerControle : MonoBehaviour
 {   
+    public static PlayerControle instance;
+
     [Header("Movimentacao")]
     public float velocidade_andando; // Velocidade de movimento do player
     public float velocidade_correndo; // Velocidade de movimento do player
@@ -26,8 +28,10 @@ public class PlayerControle : MonoBehaviour
     public GameObject playerTiro; // Prefab do tiro
     public GameObject playerTiroPos; // Posicao de onde ira sair o tiro
     public float fireRate; // Intervalo de tiros (quanto menor mais rapido)
+    [Header("Condições")]
     private bool podeAtirar = true; // Verifica se pode atirar
     public bool podeMover = true; // Verifica se pode atirar
+    public bool podeMirar = true; // Verifica se pode atirar
     private bool estaMirando = false; // Verifica se esta com a mira acionada    
     private float miraInput, atirarInput; // Inputs de mira e tiro
     private Vector3 destinoTiro;
@@ -85,6 +89,11 @@ public class PlayerControle : MonoBehaviour
         TrocarCameras.RemoverCamera(cameraMiraPessoa);
     }
 
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         RB = GetComponent<Rigidbody>();        
@@ -98,11 +107,11 @@ public class PlayerControle : MonoBehaviour
     void Update()
     {             
         CheckChao(); // Verifica se o player esta no chao
-        InputPlayer(); // Recebe os inputs do player
-        MoverPlayer(); // Move o player com base nos inputs
-        ChecarMiraTiro(); // recebe o input de mirar
-        MovimentacaoCamera();
-        Animacoes(); // Atualiza as animacoes com base nos inputs     
+        if (podeMover) InputPlayer(); // Recebe os inputs do player
+        if (podeMover) MoverPlayer(); // Move o player com base nos inputs
+        if (podeMirar) ChecarMiraTiro(); // recebe o input de mirar
+        if (podeMover) MovimentacaoCamera();
+        if (podeMover) Animacoes(); // Atualiza as animacoes com base nos inputs     
     }
     // public void MudarSensibilidadeCamera(float value)
     // {
@@ -119,38 +128,37 @@ public class PlayerControle : MonoBehaviour
 
     private void MoverPlayer() // Movimentacao do player
     {
-        if (podeMover)
+        if (!estaNoChao)
         {
-            if (!estaNoChao)
-            {
-                gravidade_total += gravidade_valor * multiplicador_gravidade * Time.deltaTime; // Aplica a gravidade se nao estiver no chao
-            }
-            else
-            {
-                gravidade_total = 0.0f; // Reseta a gravidade quando esta no chao
-
-                if (Input.GetKeyDown(KeyCode.Space) && podePular)
-                {
-                    gravidade_total += forca_pulo; // Aplica impulso para pular
-                }
-            }
-
-            if (estaMirando)
-                velocidade_atual = velocidade_mirando;
-
-            else
-                velocidade_atual = velocidade_andando;
-
-            Vector3 movimento = transform.TransformDirection(new Vector3(moverInput.x * velocidade_atual, 0, moverInput.y * velocidade_atual));
-
-            RB.velocity = new Vector3(movimento.x, gravidade_total, movimento.z);
+            gravidade_total += gravidade_valor * multiplicador_gravidade * Time.deltaTime; // Aplica a gravidade se nao estiver no chao
         }
+        else
+        {
+            gravidade_total = 0.0f; // Reseta a gravidade quando esta no chao
+
+            if (Input.GetKeyDown(KeyCode.Space) && podePular)
+            {
+                gravidade_total += forca_pulo; // Aplica impulso para pular
+            }
+        }
+
+        if (estaMirando)
+            velocidade_atual = velocidade_mirando;
+
+        else
+            velocidade_atual = velocidade_andando;
+
+        Vector3 movimento = transform.TransformDirection(new Vector3(moverInput.x * velocidade_atual, 0, moverInput.y * velocidade_atual));
+
+        RB.velocity = new Vector3(movimento.x, gravidade_total, movimento.z);
     }
 
     public void DesabilitarTodosMovimentos()
     {
         estaAtivadoMenu = true;
+        RB.velocity = new Vector3(0f, 0f, 0f);
         podeMover = false;
+        podeMirar = false;
         podePular = false;
     }
 
@@ -158,7 +166,8 @@ public class PlayerControle : MonoBehaviour
     {
         estaAtivadoMenu = false;
         podeMover = true;
-        podePular = true;
+        podeMirar = true;
+        podePular = true;        
     }
 
     public void DesabilitarMovimento()
@@ -316,7 +325,7 @@ public class PlayerControle : MonoBehaviour
         }        
     }
 
-    private void MudarEstadoAnimacao(string animacaoNova) // Funcao para alternar as animacoes do player
+    public void MudarEstadoAnimacao(string animacaoNova) // Funcao para alternar as animacoes do player
     {
         if (animacaoAtual == animacaoNova) return; // Se o estado atual == o novo estado, mantem o msm
 
@@ -339,8 +348,7 @@ public class PlayerControle : MonoBehaviour
             estaMorto = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            LoadingManager.instance.CarregarCena("MenuPrincipal");
-            // Destroy(gameObject);
+            LoadingManager.instance.CarregarCena("MenuPrincipal"); // tem q colocar o menu GameOver
         }
     }
 
@@ -378,8 +386,6 @@ public class PlayerControle : MonoBehaviour
             Destroy(capacitor, .5f);
             
             energia.fillAmount = (energiaAtual/energiaMaxima);
-
-
         }
     }
 }

@@ -11,7 +11,7 @@ public class NPC : MonoBehaviour
     public GameObject icone;
     public static bool dialogoAtivado = false;
 
-    public GameObject player;
+    // public GameObject player;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -30,7 +30,7 @@ public class NPC : MonoBehaviour
             icone.transform.LeanScale(Vector3.zero, 0.2f);
             FindAnyObjectByType<DialogueManager>().AbrirDialogo(dialogo);
             dialogoAtivado = true;
-            player.GetComponent<PlayerControle>().DesabilitarTodosMovimentos();
+            PlayerControle.instance.DesabilitarTodosMovimentos();
         }
     }
 
@@ -38,12 +38,12 @@ public class NPC : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            icone.transform.LeanScale(new Vector3(0.3f, 0.3f, 0.3f), 0.2f);
             if (dialogoAtivado)
             {
                 FindAnyObjectByType<DialogueManager>().FecharDialogo();
                 dialogoAtivado = false;
-                player.GetComponent<PlayerControle>().HabilitarTodosMovimentos();
+                icone.transform.LeanScale(new Vector3(0.3f, 0.3f, 0.3f), 0.2f);
+                PlayerControle.instance.HabilitarTodosMovimentos();
             }
         }
     }

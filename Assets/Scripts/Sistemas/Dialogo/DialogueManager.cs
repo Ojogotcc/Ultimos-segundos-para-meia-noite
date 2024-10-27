@@ -99,6 +99,10 @@ public class DialogueManager : MonoBehaviour
             Nome.LeanScale(Vector3.one, delayNome/2);
         });
 
+        if (TrocarCameras.estaCameraAtiva(PlayerControle.instance.cameraMiraPessoa)) TrocarCameras.TrocarCamera(PlayerControle.instance.cameraTerceiraPessoa);
+
+        PlayerControle.instance.MudarEstadoAnimacao("Player_frente_idle");
+
         DefinirConfiguracoesIniciais();
 
         ProximaMensagem();        
@@ -307,7 +311,7 @@ public class DialogueManager : MonoBehaviour
         Avatar0.LeanMoveLocal(new Vector3(-1144f, -540f, -10f), delayAvatares);
         Avatar1.LeanMoveLocal(new Vector3(1144f, -540f, 0f), delayAvatares).setOnComplete(() => {
             Vinheta.LeanScale(new Vector3(1f, 0f, 1f), .2f);
-            background.transform.localScale = Vector3.zero;
+            Dialogo_GO.SetActive(false);
         });        
 
         FundoEscolhas.SetActive(false);
@@ -319,11 +323,13 @@ public class DialogueManager : MonoBehaviour
         estaAtivo = false;
         estaEscolhendo = false;
         Parallax_GO.SetActive(true);
-        Dialogo_GO.SetActive(false);
+       
         Debug.Log("Diálogo foi fechado");  
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;        
+
+        PlayerControle.instance.HabilitarTodosMovimentos();
     }
 
     void Update()
