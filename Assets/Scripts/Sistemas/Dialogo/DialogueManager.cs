@@ -22,9 +22,9 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI[] escolhasTextos;
     
     [Header("Bools")]
-    public static bool estaAtivo = false;
-    public static bool estaDigitando = false;
-    public static bool estaEscolhendo = false;
+    public bool estaAtivo = false;
+    public bool estaDigitando = false;
+    public bool estaEscolhendo = false;
 
     [Header("Digitacao")]
     public float delayDigitar = 0.1f;
@@ -265,6 +265,9 @@ public class DialogueManager : MonoBehaviour
             FundoEscolhas.SetActive(false);
             return;
         }
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         estaEscolhendo = true;
         FundoEscolhas.SetActive(true);
 

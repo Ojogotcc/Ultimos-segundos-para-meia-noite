@@ -28,23 +28,16 @@ public class NPC : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && icone.activeSelf && !dialogoAtivado)
         {
             icone.transform.LeanScale(Vector3.zero, 0.2f);
-            FindAnyObjectByType<DialogueManager>().AbrirDialogo(dialogo);
+            DialogueManager.instance.AbrirDialogo(dialogo);
             dialogoAtivado = true;
             PlayerControle.instance.DesabilitarTodosMovimentos();
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        else if (Input.GetKeyDown(KeyCode.F) && dialogoAtivado)
         {
-            if (dialogoAtivado)
-            {
-                FindAnyObjectByType<DialogueManager>().FecharDialogo();
-                dialogoAtivado = false;
-                icone.transform.LeanScale(new Vector3(0.3f, 0.3f, 0.3f), 0.2f);
-                PlayerControle.instance.HabilitarTodosMovimentos();
-            }
+            DialogueManager.instance.FecharDialogo();
+            dialogoAtivado = false;
+            icone.transform.LeanScale(new Vector3(0.3f, 0.3f, 0.3f), 0.2f);
+            PlayerControle.instance.HabilitarTodosMovimentos();
         }
     }
 }

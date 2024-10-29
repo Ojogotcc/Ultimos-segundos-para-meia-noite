@@ -113,6 +113,7 @@ public class PlayerControle : MonoBehaviour
         if (podeMover) MovimentacaoCamera();
         if (podeMover) Animacoes(); // Atualiza as animacoes com base nos inputs     
     }
+    
     // public void MudarSensibilidadeCamera(float value)
     // {
     //     mouseSensibilidadeY = value;

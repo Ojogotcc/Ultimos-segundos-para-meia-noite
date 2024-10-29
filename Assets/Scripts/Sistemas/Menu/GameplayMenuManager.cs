@@ -32,10 +32,13 @@ public class GameplayManager : MonoBehaviour
     public void Despausar()
     {
         player.estaAtivadoMenu = false;
+        Time.timeScale = 1;
         menuPausa.SetActive(false);
+
+        if (DialogueManager.instance.estaAtivo) return; 
+        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 1;
     }
 
     public void AbrirConfig()

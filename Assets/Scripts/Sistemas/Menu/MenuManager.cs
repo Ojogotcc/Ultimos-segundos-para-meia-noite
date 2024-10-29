@@ -51,7 +51,7 @@ public class MenuManager : MonoBehaviour
 
     public void AbrirJogo()
     {
-        Debug.Log("Bot�o pressionado");
+        Debug.Log("Botao pressionado");
         EfeitoManager.instance.PlayEfeito(abrirClip, transform, 1f, 0f, 0f);
         if (JaJogou)
         {
