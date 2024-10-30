@@ -378,15 +378,16 @@ public class PlayerControle : MonoBehaviour
     public void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("Capacitor") )
         {
-            Debug.Log("colidiu");
+            Debug.Log("Capacitor colidido");
             energiaAtual = energiaAtual + 50;
             if(energiaAtual > energiaMaxima)
             {
                 energiaAtual = energiaMaxima;
             }
-            Destroy(capacitor, .5f);
+            Destroy(other.gameObject, .5f);
             
-            energia.fillAmount = (energiaAtual/energiaMaxima);
+            energia.fillAmount = (energiaAtual / energiaMaxima);
+            StartCoroutine(DelayBarras(energiadelay, energia, 1f));
         }
     }
 }

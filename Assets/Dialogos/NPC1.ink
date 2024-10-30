@@ -14,7 +14,7 @@ Protagonista: Opa, Bom?
 
 Protagonista: Mascara legal.
 
-Militar: Curtiu? O problema que não dá pra enxergar sem.
+Militar: Curtiu? O problema é que não dá pra enxergar com ela.
 
 Militar: Qual digimon você escolhe?
     * [Agumon]
@@ -27,10 +27,10 @@ Militar: Qual digimon você escolhe?
 Militar: Você escolheu o {digimon}!
 
 # AparenciaL1: com_mascara
-Militar: Tome muito cuidado nessa terras, há uma lenda que o ET bilu anda por aí
+Militar: Tome muito cuidado nessas terras, há uma lenda que o ET bilu anda por aí.
 
 # AparenciaL1: com_mascara
-Militar: E também o mario foi visto recentemente aqui
+Militar: E também o mario foi visto recentemente aqui. Conhece o mário?
 
 # Aparencia(sorrindo)
 Protagonista: Que mario??

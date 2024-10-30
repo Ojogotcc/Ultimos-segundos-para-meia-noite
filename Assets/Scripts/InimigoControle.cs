@@ -123,7 +123,7 @@ public class InimigoControle : MonoBehaviour
 
         if (!jaAtacou)
         {
-            //MudarEstadoAnimacao("IA_frente_charge");
+            MudarEstadoAnimacao("IA_frente_charge");
 
             AnimatorStateInfo estadoAnimacao = animator.GetCurrentAnimatorStateInfo(0);
 
@@ -167,11 +167,9 @@ public class InimigoControle : MonoBehaviour
     private void DestruirInimigo()
     {
         Instantiate(efeitoMorte, transform.position, Quaternion.identity);
-        int randomG = Random.Range(0, 1);
-        if(randomG == 1)
-            capacitor = Instantiate(capacitor, transform.position, Quaternion.identity);
-        else
-            Destroy(gameObject);
+        float randomG = Random.Range(0f, 1f);
+        if (randomG >= 0.8f) Instantiate(capacitor, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()

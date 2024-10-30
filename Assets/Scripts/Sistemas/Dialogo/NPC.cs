@@ -9,7 +9,7 @@ public class NPC : MonoBehaviour
 {
     public TextAsset dialogo; 
     public GameObject icone;
-    public static bool dialogoAtivado = false;
+    public bool dialogoAtivado = false;
 
     // public GameObject player;
     
@@ -39,5 +39,12 @@ public class NPC : MonoBehaviour
             icone.transform.LeanScale(new Vector3(0.3f, 0.3f, 0.3f), 0.2f);
             PlayerControle.instance.HabilitarTodosMovimentos();
         }
+    }
+
+    public void FecharDialogo()
+    {
+        dialogoAtivado = false;
+        icone.transform.LeanScale(new Vector3(0.3f, 0.3f, 0.3f), 0.2f);
+        PlayerControle.instance.HabilitarTodosMovimentos();
     }
 }
