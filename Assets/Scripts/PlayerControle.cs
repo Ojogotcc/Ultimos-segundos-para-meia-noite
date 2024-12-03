@@ -28,6 +28,7 @@ public class PlayerControle : MonoBehaviour
     public GameObject playerTiro; // Prefab do tiro
     public GameObject playerTiroPos; // Posicao de onde ira sair o tiro
     public float fireRate; // Intervalo de tiros (quanto menor mais rapido)
+
     [Header("Condições")]
     private bool podeAtirar = true; // Verifica se pode atirar
     public bool podeMover = true; // Verifica se pode atirar
@@ -64,6 +65,11 @@ public class PlayerControle : MonoBehaviour
     [SerializeField] public Image vida;
     [SerializeField] public Image energia;
     [SerializeField] public Image energiadelay;
+
+
+    [Header("Dialgos Ativos")]
+    public bool estaDialogoNormal;
+    public bool estaDialogoGameplay;
 
     [Header("Cameras")]
     public CinemachineVirtualCamera cameraTerceiraPessoa;

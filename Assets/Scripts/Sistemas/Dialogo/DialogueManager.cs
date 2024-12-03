@@ -74,6 +74,10 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        if (PlayerControle.instance.estaDialogoGameplay) return;
+
+        PlayerControle.instance.estaDialogoNormal= true;
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
@@ -330,8 +334,9 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Diálogo foi fechado");  
 
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;        
-
+        Cursor.lockState = CursorLockMode.Locked;
+        
+        PlayerControle.instance.estaDialogoNormal = false;
         PlayerControle.instance.HabilitarTodosMovimentos();
     }
 
