@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering.HighDefinition;
 
 public class InimigoControle : MonoBehaviour
 {
@@ -123,6 +124,8 @@ public class InimigoControle : MonoBehaviour
 
         if (!jaAtacou)
         {
+            MusicaManager.instance.TocarMusicaPorrada();
+
             MudarEstadoAnimacao("IA_frente_charge");
 
             AnimatorStateInfo estadoAnimacao = animator.GetCurrentAnimatorStateInfo(0);

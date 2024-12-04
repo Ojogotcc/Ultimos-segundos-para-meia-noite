@@ -10,6 +10,7 @@ TagManager:
   - Menu Config
   - Sound
   - Capacitor
+  - Dialogos
   layers:
   - Default
   - TransparentFX

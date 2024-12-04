@@ -1,11 +1,8 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
-using UnityEditor.ShaderGraph.Internal;
 
 public class DialogueManagerGameplay : MonoBehaviour
 {
@@ -23,6 +20,7 @@ public class DialogueManagerGameplay : MonoBehaviour
     public float delayDigitar = 0.2f;
     public float delayFalas = 1f;
 
+    public AudioClip EfeitoAbrirDialogo;
     private Story historiaAtual;
     private string Avatar0Inicial = null;
     private string Avatar0AparenciaInicial = null;
@@ -39,6 +37,9 @@ public class DialogueManagerGameplay : MonoBehaviour
     public RectTransform Nome;
     public RectTransform Texto;
 
+    public bool DialogoFimDoJogo;
+    private TextAsset JSONATUAL;
+
     public static DialogueManagerGameplay instance;
 
     private void Awake()
@@ -46,7 +47,6 @@ public class DialogueManagerGameplay : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -67,13 +67,15 @@ public class DialogueManagerGameplay : MonoBehaviour
 
         PlayerControle.instance.estaDialogoGameplay = true;
 
+        EfeitoManager.instance.PlayEfeito(EfeitoAbrirDialogo, transform, 1f, 0f, 0f);
+
+        JSONATUAL = inkJSON;
         historiaAtual = new Story(inkJSON.text);
         estaAtivo = true;
         estaDigitando = false;
 
         DialogoGameplay_GO.SetActive(true);
 
-        // Animacoes
         Vinheta.localScale = new Vector3(1f, 0f, 1f);
         Vinheta.LeanScale(new Vector3(1f, 1f, 1f), .2f);
         Avatar0.localPosition = new Vector3(-1042f, -540f, -10f);
@@ -85,7 +87,6 @@ public class DialogueManagerGameplay : MonoBehaviour
             Nome.LeanScale(Vector3.one, delayNome/2);
         });
 
-
         DefinirConfiguracoesIniciais();
         ProximaMensagem();        
     }
@@ -93,20 +94,18 @@ public class DialogueManagerGameplay : MonoBehaviour
     void DefinirConfiguracoesIniciais()
     {
         Avatar0Inicial = (string) historiaAtual.variablesState["Avatar0Inicial"];
-        Avatar0AparenciaInicial = (string) historiaAtual.variablesState["Avatar0AparenciaInicial"];
 
         Debug.Log("Avatar0Inicial:" + Avatar0Inicial);
-        Debug.Log("Avatar0AparenciaInicial:" + Avatar0AparenciaInicial);
-        AplicarAparencia(0, Avatar0Inicial, Avatar0AparenciaInicial);
+        AplicarAparencia(Avatar0Inicial);
     }
 
-    void AplicarAparencia(int lado, string personagem, string aparencia)
+    void AplicarAparencia(string personagem)
     {
-        string animacaoNome = personagem + "_" + aparencia;
-        if (lado == 0)
-        {
-            charAnimator0.Play(animacaoNome);
-        }
+        string animacaoNome = "";
+        if (personagem == "Protagonista") animacaoNome = "Protagonista_serio";
+        if (personagem == "Sombra") animacaoNome = "Sombra";
+  
+        charAnimator0.Play(animacaoNome);
     }
 
     void MostrarMensagem()
@@ -114,37 +113,13 @@ public class DialogueManagerGameplay : MonoBehaviour
         StopAllCoroutines();
         estaDigitando = false;
 
+        if (JSONATUAL.name == "Dialogo_Final") DialogoFimDoJogo = true;
+
         string[] texto = historiaAtual.Continue().Split(":");
+        AplicarAparencia(texto[0]);
         charNome.text = texto[0];
-        ProcessarTags(historiaAtual.currentTags);
 
         StartCoroutine(DigitarFrase(texto[1].Trim()));
-    }
-
-    void ProcessarTags(List<string> tags)
-    {   
-        if (tags.Count > 0)
-        {
-            foreach (string tag in tags)
-            {
-                if (tag.Contains("Aparencia"))
-                {
-                    if (tag.Contains("L0"))
-                    {
-                        AplicarAparencia(0, Avatar0Inicial, tag.Replace("AparenciaL0:", "").Trim());
-                    }
-                }
-            }
-        }
-        else
-        {
-            ReverterAparenciaInicial();
-        }
-    }
-
-    void ReverterAparenciaInicial()
-    {
-        AplicarAparencia(0, Avatar0Inicial, Avatar0AparenciaInicial);
     }
 
     IEnumerator DigitarFrase(string frase)
@@ -175,7 +150,14 @@ public class DialogueManagerGameplay : MonoBehaviour
         }
         else
         {
-            FecharDialogo();
+            if (DialogoFimDoJogo)
+            {
+                FinalManager.instance.Acabou();
+            }
+            else
+            {
+                FecharDialogo();
+            }            
         }
     }
 

@@ -13,7 +13,7 @@ public class TiroProjetil : MonoBehaviour
     {
         if (other == null) return;                   
 
-        if (tiroData.atirador == "Player")
+        if (tiroData.atirador == "Player" && !other.CompareTag("Dialogos"))
         {
             Destroy(gameObject);
             if (tiroData.efeitoImpacto) Instantiate(tiroData.efeitoImpacto, transform.position, Quaternion.identity);

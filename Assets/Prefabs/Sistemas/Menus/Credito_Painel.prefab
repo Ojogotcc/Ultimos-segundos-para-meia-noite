@@ -199,7 +199,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Cr\xE9ditos do jogo"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ed2806529a10b8541955d03852563450, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c7c3410e9eb8f8d45947b1db0ac54dd8, type: 2}
   m_sharedMaterial: {fileID: -1536272391065654444, guid: ed2806529a10b8541955d03852563450,
     type: 2}
   m_fontSharedMaterials: []
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 1.2922974, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5567438390927592049
@@ -334,7 +334,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Agradecemos por jogar nosso jogo!!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ed2806529a10b8541955d03852563450, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c7c3410e9eb8f8d45947b1db0ac54dd8, type: 2}
   m_sharedMaterial: {fileID: -1536272391065654444, guid: ed2806529a10b8541955d03852563450,
     type: 2}
   m_fontSharedMaterials: []
@@ -399,7 +399,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 1.2922974, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6002285258873775156
@@ -551,16 +551,17 @@ MonoBehaviour:
     Danilo Martins - Game designer e programador
 
     Filipe
-    Matozo - Programador chefe
+    Matozo - Programador e game designer chefe
 
-    Gabriel Leal - Compositor Sonoro e musical
+    Gabriel Leal - Compositor sonoro
+    e musical
 
-    Nicolas
-    Jordan - Pesquisador e roterista
+    Nicolas Jordan - Pesquisador e roterista
 
-    Pedro Henrique Bispo - Modelador 3D e artista'
+    Pedro Henrique Bispo
+    - Modelador 3D e artista'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ed2806529a10b8541955d03852563450, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c7c3410e9eb8f8d45947b1db0ac54dd8, type: 2}
   m_sharedMaterial: {fileID: -1536272391065654444, guid: ed2806529a10b8541955d03852563450,
     type: 2}
   m_fontSharedMaterials: []
@@ -625,6 +626,6 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 1.2922974, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}

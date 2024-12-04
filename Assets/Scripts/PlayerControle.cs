@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Cinemachine;
 using UnityEngine;
@@ -82,6 +81,9 @@ public class PlayerControle : MonoBehaviour
     public AudioClip hitClip;
     public AudioClip ataqueClip;
     public GameObject efeitodanotela;
+
+    public GameObject ParallaxHUD_GO;
+    public GameObject Gameover_GO;
 
     private void OnEnable()
     {
@@ -280,7 +282,16 @@ public class PlayerControle : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            destinoTiro = hit.point;
+            if (hit.collider.CompareTag("Dialogos"))
+            {
+                // Ignora o hit com "Dialogos" e define um destino padrão
+                destinoTiro = ray.GetPoint(200);
+            }
+            else
+            {
+                // Define o destino com base no hit válido
+                destinoTiro = hit.point;
+            }
         }
         else
         {
@@ -343,7 +354,7 @@ public class PlayerControle : MonoBehaviour
     public void TomarDano(int dano)
     {
         vidaAtual -= dano;
-        vida.fillAmount = (vidaAtual / vidaMaxima);
+        vida.fillAmount = vidaAtual / vidaMaxima;
         StartCoroutine(DelayBarras(vidadelay, vida, 1f)); // Muda a barra da vida
 
         EfeitoManager.instance.PlayEfeito(hitClip, transform, 1f, 0f, .1f); // Toca o sfx de dano
@@ -355,9 +366,26 @@ public class PlayerControle : MonoBehaviour
             estaMorto = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            LoadingManager.instance.CarregarCena("MenuPrincipal"); // tem q colocar o menu GameOver
+            Time.timeScale = 0f;
+            ParallaxHUD_GO.SetActive(false);
+            Gameover_GO.SetActive(true);
+            Destroy(gameObject);
+            // LoadingManager.instance.CarregarCena("MenuPrincipal"); // tem q colocar o menu GameOver
         }
     }
+
+    public void Curar(int Qvida)
+    {
+        vidaAtual += Qvida;
+        vida.fillAmount = vidaAtual / vidaMaxima;
+        StartCoroutine(DelayBarras(vidadelay, vida, 1f)); 
+
+        if(vidaAtual > vidaMaxima)
+        {
+            vidaAtual = vidaMaxima;
+        }
+    }
+
 
     private IEnumerator DelayBarras(Image delay, Image normal, float delayTime)
     {
@@ -385,10 +413,12 @@ public class PlayerControle : MonoBehaviour
         if(other.gameObject.CompareTag("Capacitor") )
         {
             Debug.Log("Capacitor colidido");
-            energiaAtual = energiaAtual + 50;
+            energiaAtual = energiaAtual + 10;
             if(energiaAtual > energiaMaxima)
             {
                 energiaAtual = energiaMaxima;
+                float randomG = Random.Range(0f, 1f);
+                if (randomG >= 0.95f) Curar(15);
             }
             Destroy(other.gameObject, .5f);
             
